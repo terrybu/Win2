@@ -1,0 +1,6 @@
+framework module Pods_Win2_Ver2 {
+  umbrella header "Pods-Win2-Ver2-umbrella.h"
+
+  export *
+  module * { export * }
+}

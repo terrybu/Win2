@@ -1,0 +1,20 @@
+func pressedDoneButton() {
+print("press done")
+if let title = titleTextField.text, body = bodyTextField.text, link = linkTextField.text {
+let newNotice = Notice(title: title, body: body, link: link, date: CustomDateFormatter.sharedInstance.returnTodaysDateStringInFormat())
+var savedNoticesArrayData = NSUserDefaults.standardUserDefaults().objectForKey(kUserDefaultsSavedNoticesArrayData) as? NSData
+if let data = savedNoticesArrayData {
+var savedNoticesArray = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [Notice]
+print(savedNoticesArray)
+savedNoticesArray?.append(newNotice)
+let newArrayData = NSKeyedArchiver.archivedDataWithRootObject(savedNoticesArray!)
+NSUserDefaults.standardUserDefaults().setObject(newArrayData, forKey: kUserDefaultsSavedNoticesArrayData)
+} else {
+let newArray = [newNotice]
+let newArrayData = NSKeyedArchiver.archivedDataWithRootObject(newArray)
+NSUserDefaults.standardUserDefaults().setObject(newArrayData, forKey: kUserDefaultsSavedNoticesArrayData)
+}
+} else {
+UIAlertController.presentAlert(self, alertTitle: "Empty Fields", alertMessage: "Please fill out every field to submit a new Notice", confirmTitle: "OK")
+}
+}

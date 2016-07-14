@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="NanumBarunGothic.otf">
+            <string>NanumBarunGothicOTF</string>
+        </mutableArray>
+        <mutableArray key="NanumBarunGothic.ttf">
+            <string>NanumBarunGothic</string>
+        </mutableArray>
+        <mutableArray key="NanumBarunGothicBold.otf">
+            <string>NanumBarunGothicOTFBold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NoticeWidget" customModule="Win2" customModuleProvider="target">
+            <connections>
+                <outlet property="noticeBodyLabel" destination="dyE-2Y-e87" id="bpH-i1-sYI"/>
+                <outlet property="noticeTitleLabel" destination="tbD-sc-5cu" id="97q-C6-s9O"/>
+                <outlet property="viewMoreNoticeButton" destination="6QR-t0-HgS" id="i29-2U-1WE"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="mmT-Ju-T51">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공지사항 제목" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyE-2Y-e87" userLabel="QTTitleLabel">
+                    <rect key="frame" x="175" y="51" width="250" height="82"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="0Hu-F1-n4z"/>
+                        <constraint firstAttribute="height" constant="82" id="JnA-gl-JSc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="NanumBarunGothicOTF" family="NanumBarunGothicOTF" pointSize="26"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="rule_ver" translatesAutoresizingMaskIntoConstraints="NO" id="gfl-Bf-DC2">
+                    <rect key="frame" x="300" y="136" width="1" height="18"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6QR-t0-HgS">
+                    <rect key="frame" x="265" y="179" width="70" height="30"/>
+                    <fontDescription key="fontDescription" name="NanumBarunGothicOTFBold" family="NanumBarunGothicOTF" pointSize="15"/>
+                    <state key="normal" title="더보기" backgroundImage="btn_more">
+                        <color key="titleColor" red="0.62352941179999999" green="0.36078431370000003" blue="0.75294117650000003" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="btn_more_pressed">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="btn_more_pressed"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="공지사항" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbD-sc-5cu">
+                    <rect key="frame" x="251" y="20" width="99" height="21"/>
+                    <fontDescription key="fontDescription" name="NanumBarunGothic" family="NanumBarunGothic" pointSize="18"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.1333333333" green="0.10980392160000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="6QR-t0-HgS" secondAttribute="bottom" constant="20" id="0FU-Hk-ldf"/>
+                <constraint firstItem="gfl-Bf-DC2" firstAttribute="centerX" secondItem="mmT-Ju-T51" secondAttribute="centerX" id="8xK-fj-vkb"/>
+                <constraint firstItem="gfl-Bf-DC2" firstAttribute="top" secondItem="tbD-sc-5cu" secondAttribute="bottom" constant="10" id="Jp3-7y-LrP"/>
+                <constraint firstItem="dyE-2Y-e87" firstAttribute="centerX" secondItem="mmT-Ju-T51" secondAttribute="centerX" id="MiM-Tj-xtp"/>
+                <constraint firstItem="gfl-Bf-DC2" firstAttribute="top" secondItem="dyE-2Y-e87" secondAttribute="bottom" constant="10" id="MmU-pa-Ay1"/>
+                <constraint firstItem="6QR-t0-HgS" firstAttribute="top" secondItem="gfl-Bf-DC2" secondAttribute="bottom" constant="25" id="OT6-ue-sXd"/>
+                <constraint firstItem="6QR-t0-HgS" firstAttribute="centerX" secondItem="mmT-Ju-T51" secondAttribute="centerX" id="PXh-zw-awM"/>
+                <constraint firstItem="tbD-sc-5cu" firstAttribute="top" secondItem="mmT-Ju-T51" secondAttribute="top" constant="20" id="U40-Gl-1G1"/>
+                <constraint firstItem="6QR-t0-HgS" firstAttribute="top" secondItem="gfl-Bf-DC2" secondAttribute="bottom" constant="10" id="cxc-Fm-cEW"/>
+                <constraint firstItem="dyE-2Y-e87" firstAttribute="top" secondItem="tbD-sc-5cu" secondAttribute="bottom" constant="10" id="kzr-Yu-9jx"/>
+                <constraint firstItem="tbD-sc-5cu" firstAttribute="centerX" secondItem="mmT-Ju-T51" secondAttribute="centerX" id="qBd-Fk-8AG"/>
+                <constraint firstItem="dyE-2Y-e87" firstAttribute="top" secondItem="tbD-sc-5cu" secondAttribute="bottom" constant="20" id="ufd-VE-Wkl"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="ufd-VE-Wkl"/>
+                    <exclude reference="0FU-Hk-ldf"/>
+                    <exclude reference="cxc-Fm-cEW"/>
+                    <exclude reference="Jp3-7y-LrP"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn_more" width="70" height="30"/>
+        <image name="btn_more_pressed" width="70" height="30"/>
+        <image name="rule_ver" width="1" height="18"/>
+    </resources>
+</document>

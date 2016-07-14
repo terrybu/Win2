@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="NanumBarunGothic.ttf">
+            <string>NanumBarunGothic</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SocialServicesViewController" customModule="Win2" customModuleProvider="target">
+            <connections>
+                <outlet property="constraintContentViewHeight" destination="8yY-eT-5Wo" id="3Li-eV-tu5"/>
+                <outlet property="constraintHeightExpandableView" destination="6AL-TG-u7u" id="tBg-OZ-f8s"/>
+                <outlet property="contentView" destination="ORS-3t-r0f" id="ujv-3C-kSf"/>
+                <outlet property="expandableAboutView" destination="3nn-3j-jMR" id="tfm-m6-oMV"/>
+                <outlet property="socialNewsWidgetView" destination="4Am-bY-ktp" id="H9i-n4-J2L"/>
+                <outlet property="tableView" destination="hpe-Ey-gxm" id="gBF-Bf-bsa"/>
+                <outlet property="view" destination="NWf-DX-3BX" id="aHr-Uj-FeR"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="NWf-DX-3BX">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="808"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jH9-Lk-7NC">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="808"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ORS-3t-r0f" userLabel="Content View">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="700"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3nn-3j-jMR" customClass="ExpandableAboutView" customModule="Win2" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="54" id="6AL-TG-u7u"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="aboutLabelTitle" value="ABOUT"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="titleLabeltitle" value="긍휼보로, &quot;Compassion to Passion!&quot;"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="textViewContentText">
+                                            <string key="value">“마음을 다하고 지혜를 다하고 힘을 다하여 하나님을 사랑하는 것과 또 이웃을 제 몸과 같이 사랑하는 것이 전체로 드리는 모든 번제물과 기타 제물보다 나으니이다.” -마가복음 12:33
+ 
+밀알 선교팀, Better Future, Better Day, Better K-Town, 밥팀, 꽃팀, 워십댄스팀을 통해 긍휼보로는 하나님께서 주신 마음으로 이웃을 섬기는 보로입니다.</string>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hpe-Ey-gxm">
+                                    <rect key="frame" x="0.0" y="66" width="600" height="250"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="208" id="M0N-3S-cRJ"/>
+                                        <constraint firstAttribute="height" constant="208" id="WLG-qI-Wk4"/>
+                                        <constraint firstAttribute="height" constant="100" id="hSM-3k-mUg"/>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="208" id="jwx-J4-qt2"/>
+                                        <constraint firstAttribute="height" constant="250" id="rgJ-69-8zw"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="M0N-3S-cRJ"/>
+                                            <exclude reference="WLG-qI-Wk4"/>
+                                            <exclude reference="hSM-3k-mUg"/>
+                                            <exclude reference="jwx-J4-qt2"/>
+                                        </mask>
+                                    </variation>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="Ltg-gJ-HUS"/>
+                                        <outlet property="delegate" destination="-1" id="Mpc-ZZ-dhI"/>
+                                    </connections>
+                                </tableView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ib-KH-Rwx" userLabel="ApplyView">
+                                    <rect key="frame" x="0.0" y="328" width="600" height="150"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="긍휼부 사역 신청서" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccF-d0-eCf" userLabel="titleLabel">
+                                            <rect key="frame" x="205" y="45" width="190" height="29"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="200" id="I3Q-0n-jgF"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="NanumBarunGothic" family="NanumBarunGothic" pointSize="25"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="I3Q-0n-jgF"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5tv-VZ-zJc">
+                                            <rect key="frame" x="265" y="90" width="70" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                            <state key="normal" title="신청" backgroundImage="btn_Apply_white">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <state key="selected" backgroundImage="btn_Apply_white_pressed">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <state key="highlighted" backgroundImage="btn_Apply_white_pressed">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="applyButtonPressed" destination="-1" eventType="touchUpInside" id="i4u-gM-TOe"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.62352941179999999" green="0.36078431370000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="5tv-VZ-zJc" firstAttribute="top" secondItem="ccF-d0-eCf" secondAttribute="bottom" constant="16" id="1Cz-ig-lBz"/>
+                                        <constraint firstAttribute="centerX" secondItem="ccF-d0-eCf" secondAttribute="centerX" id="SyA-EG-x9L"/>
+                                        <constraint firstItem="ccF-d0-eCf" firstAttribute="centerY" secondItem="3Ib-KH-Rwx" secondAttribute="centerY" constant="-16" id="UJf-d4-w7D"/>
+                                        <constraint firstItem="ccF-d0-eCf" firstAttribute="top" secondItem="3Ib-KH-Rwx" secondAttribute="top" constant="16" id="fbt-SO-jDa"/>
+                                        <constraint firstAttribute="centerX" secondItem="5tv-VZ-zJc" secondAttribute="centerX" id="jt0-we-8Qo"/>
+                                        <constraint firstAttribute="height" constant="150" id="s3a-c8-tkK"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="fbt-SO-jDa"/>
+                                        </mask>
+                                    </variation>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Am-bY-ktp" customClass="BoroSpecificNewsWidgetView" customModule="Win2" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="477" width="600" height="223"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="categoryTitle" value="긍휼부 소식"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="3nn-3j-jMR" firstAttribute="leading" secondItem="ORS-3t-r0f" secondAttribute="leading" id="1cm-Zu-je3"/>
+                                <constraint firstItem="3nn-3j-jMR" firstAttribute="top" secondItem="ORS-3t-r0f" secondAttribute="top" id="4Y5-cF-zch"/>
+                                <constraint firstAttribute="height" constant="700" id="8yY-eT-5Wo"/>
+                                <constraint firstItem="4Am-bY-ktp" firstAttribute="leading" secondItem="ORS-3t-r0f" secondAttribute="leading" id="9bC-OZ-IAx"/>
+                                <constraint firstAttribute="trailing" secondItem="3nn-3j-jMR" secondAttribute="trailing" id="A5J-HK-mYn"/>
+                                <constraint firstAttribute="bottom" secondItem="4Am-bY-ktp" secondAttribute="bottom" id="NS4-5Z-aRj"/>
+                                <constraint firstItem="4Am-bY-ktp" firstAttribute="top" secondItem="3Ib-KH-Rwx" secondAttribute="bottom" constant="-1" id="Q9D-3A-bNQ"/>
+                                <constraint firstItem="hpe-Ey-gxm" firstAttribute="top" secondItem="3nn-3j-jMR" secondAttribute="bottom" constant="12" id="YkF-wr-YDb"/>
+                                <constraint firstAttribute="trailing" secondItem="4Am-bY-ktp" secondAttribute="trailing" id="bcg-kR-9Cn"/>
+                                <constraint firstItem="3Ib-KH-Rwx" firstAttribute="top" secondItem="hpe-Ey-gxm" secondAttribute="bottom" constant="12" id="kk6-af-2D3"/>
+                                <constraint firstItem="hpe-Ey-gxm" firstAttribute="leading" secondItem="ORS-3t-r0f" secondAttribute="leading" id="lYN-7J-arC"/>
+                                <constraint firstItem="3Ib-KH-Rwx" firstAttribute="leading" secondItem="ORS-3t-r0f" secondAttribute="leading" id="nK8-yz-qu0"/>
+                                <constraint firstAttribute="trailing" secondItem="hpe-Ey-gxm" secondAttribute="trailing" id="p6N-dv-d0a"/>
+                                <constraint firstAttribute="trailing" secondItem="3Ib-KH-Rwx" secondAttribute="trailing" id="q7Q-lW-r1p"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="ORS-3t-r0f" firstAttribute="top" secondItem="jH9-Lk-7NC" secondAttribute="top" id="8TF-3B-Qv9"/>
+                        <constraint firstAttribute="trailing" secondItem="ORS-3t-r0f" secondAttribute="trailing" id="FRh-NM-kPv"/>
+                        <constraint firstItem="ORS-3t-r0f" firstAttribute="centerX" secondItem="jH9-Lk-7NC" secondAttribute="centerX" id="aTV-AR-Acs"/>
+                        <constraint firstItem="ORS-3t-r0f" firstAttribute="leading" secondItem="jH9-Lk-7NC" secondAttribute="leading" id="cQe-dL-IoE"/>
+                        <constraint firstAttribute="bottom" secondItem="ORS-3t-r0f" secondAttribute="bottom" id="kmL-Wq-GZc"/>
+                        <constraint firstAttribute="bottom" secondItem="ORS-3t-r0f" secondAttribute="bottom" id="zA3-ox-zL9"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="kmL-Wq-GZc"/>
+                        </mask>
+                    </variation>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="jH9-Lk-7NC" secondAttribute="trailing" id="6S8-dC-S1d"/>
+                <constraint firstAttribute="bottom" secondItem="jH9-Lk-7NC" secondAttribute="bottom" id="Jq2-6q-h2G"/>
+                <constraint firstItem="jH9-Lk-7NC" firstAttribute="leading" secondItem="NWf-DX-3BX" secondAttribute="leading" id="ZkK-iU-x4a"/>
+                <constraint firstAttribute="trailingMargin" secondItem="ORS-3t-r0f" secondAttribute="trailing" id="kKd-iU-mcV"/>
+                <constraint firstItem="jH9-Lk-7NC" firstAttribute="top" secondItem="NWf-DX-3BX" secondAttribute="top" id="lIo-KA-9YL"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="kKd-iU-mcV"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="245" y="-907"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn_Apply_white" width="70" height="30"/>
+        <image name="btn_Apply_white_pressed" width="70" height="30"/>
+    </resources>
+</document>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="NanumBarunGothic.ttf">
+            <string>NanumBarunGothic</string>
+            <string>NanumBarunGothic</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PurpleSegmentedControlView" customModule="In2_PI_Swift" customModuleProvider="target">
+            <connections>
+                <outlet property="myFeedButton" destination="f6y-XL-oUV" id="VF6-O9-w89"/>
+                <outlet property="piFeedButton" destination="RWF-Gf-CDa" id="fg8-W1-sLe"/>
+                <outlet property="purpleSegmentIndicatorBarImageView" destination="VaG-nA-EQa" id="deO-Ng-j8O"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="34"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6y-XL-oUV">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
+                    <fontDescription key="fontDescription" name="NanumBarunGothic" family="NanumBarunGothic" pointSize="15"/>
+                    <state key="normal" title="My Feed">
+                        <color key="titleColor" red="0.62352941179999999" green="0.36078431370000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="myFeedButtonPressed:" destination="-1" eventType="touchUpInside" id="I7g-n9-AY1"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWF-Gf-CDa">
+                    <rect key="frame" x="300" y="0.0" width="300" height="30"/>
+                    <fontDescription key="fontDescription" name="NanumBarunGothic" family="NanumBarunGothic" pointSize="15"/>
+                    <state key="normal" title="PI Feed">
+                        <color key="titleColor" red="0.73333333329999995" green="0.73725490199999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="piFeedButtonPressed:" destination="-1" eventType="touchUpInside" id="edG-DF-Brg"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selector_MyPI" translatesAutoresizingMaskIntoConstraints="NO" id="VaG-nA-EQa">
+                    <rect key="frame" x="0.0" y="30" width="300" height="4"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="4" id="O05-s1-0dU"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="RWF-Gf-CDa" secondAttribute="trailing" id="GwH-1a-cPu"/>
+                <constraint firstItem="f6y-XL-oUV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KX9-JX-H5U"/>
+                <constraint firstItem="RWF-Gf-CDa" firstAttribute="width" secondItem="f6y-XL-oUV" secondAttribute="width" id="Lz9-ok-8fa"/>
+                <constraint firstItem="VaG-nA-EQa" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:2" id="Nek-YV-VNR"/>
+                <constraint firstItem="RWF-Gf-CDa" firstAttribute="leading" secondItem="f6y-XL-oUV" secondAttribute="trailing" id="Pip-IW-PLq"/>
+                <constraint firstAttribute="trailing" secondItem="f6y-XL-oUV" secondAttribute="trailing" id="PnS-SJ-WS2"/>
+                <constraint firstItem="RWF-Gf-CDa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="TQN-Db-JO2"/>
+                <constraint firstItem="VaG-nA-EQa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Txx-WM-mfX"/>
+                <constraint firstItem="VaG-nA-EQa" firstAttribute="top" secondItem="f6y-XL-oUV" secondAttribute="bottom" id="ce2-Rc-d6v"/>
+                <constraint firstItem="f6y-XL-oUV" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:2" id="dwS-bo-WmU"/>
+                <constraint firstItem="f6y-XL-oUV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="kYx-DC-Jbz"/>
+                <constraint firstAttribute="bottom" secondItem="VaG-nA-EQa" secondAttribute="bottom" id="ydF-Ev-z6x"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="PnS-SJ-WS2"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="339" y="342"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="selector_MyPI" width="55" height="4"/>
+    </resources>
+</document>

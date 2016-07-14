@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="NanumBarunGothic.ttf">
+            <string>NanumBarunGothic</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EvangelismViewController" customModule="Win2" customModuleProvider="target">
+            <connections>
+                <outlet property="constraintContentViewHeight" destination="5M3-v9-Nso" id="CWp-FN-mcQ"/>
+                <outlet property="constraintHeightExpandableView" destination="RDm-Gq-kxS" id="L24-h6-NsF"/>
+                <outlet property="contentView" destination="5F8-t9-mad" id="pd5-Dg-cNu"/>
+                <outlet property="evangelismImageView" destination="RQs-Po-ZrF" id="rEN-c8-EbJ"/>
+                <outlet property="evangelismNewsWidgetView" destination="mfR-rw-T9N" id="H6a-UF-a0g"/>
+                <outlet property="expandableAboutView" destination="R8W-w8-knd" id="LeD-sm-Is7"/>
+                <outlet property="playButton" destination="Ikk-J3-y9R" id="ha2-yJ-Dvl"/>
+                <outlet property="view" destination="DN5-o6-VOg" id="Hz3-uG-weq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="DN5-o6-VOg">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DD3-g5-pN9">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5F8-t9-mad" userLabel="Content View">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="605"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R8W-w8-knd" customClass="ExpandableAboutView" customModule="Win2" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="54" id="RDm-Gq-kxS"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="aboutLabelTitle" value="ABOUT"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="titleLabeltitle" value="선교보로, &quot;선교는 사람 살려&quot;"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="textViewContentText">
+                                            <string key="value">“오직 성령이 너희에게 임하시면 너희가 권능을 받고 예루살렘과 온 유대와 사마리아와 땅끝까지 이르러 내 증인이 되리라.” -사도행전 1:8
+ 
+단기선교, 직장인선교, 북한선교, 문화선교, 글로벌이슈 사역을 통해 여러분의 전문성, 재능, 취미로 사람을 살립니다. </string>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="evangelismPhilly" translatesAutoresizingMaskIntoConstraints="NO" id="RQs-Po-ZrF" userLabel="PhillyImageView">
+                                    <rect key="frame" x="0.0" y="54" width="600" height="300"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="300" id="3vj-Qg-vxp"/>
+                                    </constraints>
+                                </imageView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mfR-rw-T9N" userLabel="EvangelismNewsWidget" customClass="BoroSpecificNewsWidgetView" customModule="Win2" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="354" width="600" height="143"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="143" id="34f-xy-ecb"/>
+                                        <constraint firstAttribute="height" constant="400" id="Baf-3R-on0"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="categoryTitle" value="선교부 소식"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="Baf-3R-on0"/>
+                                        </mask>
+                                    </variation>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015년 겨울 선교 필라델피아" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwn-bu-o21">
+                                    <rect key="frame" x="199" y="94" width="203" height="20"/>
+                                    <fontDescription key="fontDescription" name="NanumBarunGothic" family="NanumBarunGothic" pointSize="17"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ikk-J3-y9R">
+                                    <rect key="frame" x="269" y="157" width="63" height="63"/>
+                                    <state key="normal" backgroundImage="Btn_Play"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="mfR-rw-T9N" secondAttribute="bottom" constant="48" id="14E-W8-2WX"/>
+                                <constraint firstAttribute="height" constant="605" id="5M3-v9-Nso"/>
+                                <constraint firstItem="RQs-Po-ZrF" firstAttribute="top" secondItem="uwn-bu-o21" secondAttribute="bottom" constant="-60" id="5WO-Ls-Cdn"/>
+                                <constraint firstItem="mfR-rw-T9N" firstAttribute="top" secondItem="R8W-w8-knd" secondAttribute="bottom" id="66z-X5-h3r"/>
+                                <constraint firstItem="R8W-w8-knd" firstAttribute="top" secondItem="5F8-t9-mad" secondAttribute="top" id="C25-dx-qiu"/>
+                                <constraint firstAttribute="trailing" secondItem="R8W-w8-knd" secondAttribute="trailing" id="J3v-34-Qr5"/>
+                                <constraint firstAttribute="bottom" secondItem="mfR-rw-T9N" secondAttribute="bottom" id="JTN-7B-GYv"/>
+                                <constraint firstAttribute="trailing" secondItem="mfR-rw-T9N" secondAttribute="trailing" id="K8C-9v-jR4"/>
+                                <constraint firstItem="mfR-rw-T9N" firstAttribute="bottom" secondItem="R8W-w8-knd" secondAttribute="bottom" id="Kg3-MN-q7W"/>
+                                <constraint firstItem="R8W-w8-knd" firstAttribute="leading" secondItem="5F8-t9-mad" secondAttribute="leading" id="Ozu-gp-utT"/>
+                                <constraint firstItem="R8W-w8-knd" firstAttribute="top" secondItem="RQs-Po-ZrF" secondAttribute="bottom" id="RV4-UP-Lw1"/>
+                                <constraint firstItem="RQs-Po-ZrF" firstAttribute="top" secondItem="R8W-w8-knd" secondAttribute="bottom" id="TPN-PR-fqb"/>
+                                <constraint firstItem="uwn-bu-o21" firstAttribute="centerX" secondItem="5F8-t9-mad" secondAttribute="centerX" id="Yca-7N-7Hc"/>
+                                <constraint firstItem="RQs-Po-ZrF" firstAttribute="leading" secondItem="5F8-t9-mad" secondAttribute="leading" id="e93-AA-V3a"/>
+                                <constraint firstItem="Ikk-J3-y9R" firstAttribute="top" secondItem="uwn-bu-o21" secondAttribute="bottom" constant="43" id="jr1-eS-ZiW"/>
+                                <constraint firstItem="RQs-Po-ZrF" firstAttribute="top" secondItem="5F8-t9-mad" secondAttribute="top" id="lFk-d9-YaZ"/>
+                                <constraint firstItem="Ikk-J3-y9R" firstAttribute="centerX" secondItem="uwn-bu-o21" secondAttribute="centerX" id="mSd-j4-0mg"/>
+                                <constraint firstItem="mfR-rw-T9N" firstAttribute="top" secondItem="R8W-w8-knd" secondAttribute="bottom" constant="5" id="qHX-fa-W0P"/>
+                                <constraint firstItem="mfR-rw-T9N" firstAttribute="top" secondItem="RQs-Po-ZrF" secondAttribute="bottom" id="qgq-5u-7px"/>
+                                <constraint firstAttribute="trailing" secondItem="RQs-Po-ZrF" secondAttribute="trailing" id="xbl-Nc-97t"/>
+                                <constraint firstItem="mfR-rw-T9N" firstAttribute="leading" secondItem="5F8-t9-mad" secondAttribute="leading" id="yGa-pQ-aIu"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="RV4-UP-Lw1"/>
+                                    <exclude reference="lFk-d9-YaZ"/>
+                                    <exclude reference="14E-W8-2WX"/>
+                                    <exclude reference="66z-X5-h3r"/>
+                                    <exclude reference="JTN-7B-GYv"/>
+                                    <exclude reference="Kg3-MN-q7W"/>
+                                    <exclude reference="qHX-fa-W0P"/>
+                                </mask>
+                            </variation>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="5F8-t9-mad" secondAttribute="trailing" id="1IV-c1-nx2"/>
+                        <constraint firstItem="5F8-t9-mad" firstAttribute="top" secondItem="DD3-g5-pN9" secondAttribute="top" id="POh-1l-zbd"/>
+                        <constraint firstItem="5F8-t9-mad" firstAttribute="centerX" secondItem="DD3-g5-pN9" secondAttribute="centerX" id="a8r-8Z-9yO"/>
+                        <constraint firstItem="5F8-t9-mad" firstAttribute="leading" secondItem="DD3-g5-pN9" secondAttribute="leading" id="hbE-Rf-6XQ"/>
+                        <constraint firstAttribute="bottom" secondItem="5F8-t9-mad" secondAttribute="bottom" id="yET-7W-A1u"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="DD3-g5-pN9" secondAttribute="bottom" id="SNb-Kg-n28"/>
+                <constraint firstItem="DD3-g5-pN9" firstAttribute="leading" secondItem="DN5-o6-VOg" secondAttribute="leading" id="eUU-Yk-yv5"/>
+                <constraint firstAttribute="trailing" secondItem="DD3-g5-pN9" secondAttribute="trailing" id="wrQ-nR-2XK"/>
+                <constraint firstItem="DD3-g5-pN9" firstAttribute="top" secondItem="DN5-o6-VOg" secondAttribute="top" id="ygZ-of-FhX"/>
+            </constraints>
+            <point key="canvasLocation" x="327" y="-65"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Btn_Play" width="63" height="63"/>
+        <image name="evangelismPhilly" width="960" height="720"/>
+    </resources>
+</document>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NoticeCreationViewController" customModule="Win2" customModuleProvider="target">
+            <connections>
+                <outlet property="bodyTextField" destination="juC-Sr-jQM" id="UCs-7L-9vy"/>
+                <outlet property="linkTextField" destination="YYx-Y5-Gtg" id="S7A-eI-7Fk"/>
+                <outlet property="titleTextField" destination="pgh-GI-PaS" id="jy5-Ru-Lty"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="제목" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pgh-GI-PaS" customClass="PaddedTextField" customModule="Win2" customModuleProvider="target">
+                    <rect key="frame" x="32" y="32" width="536" height="39"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="QOE-Ey-4lT"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="fPP-la-FhD"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="line" placeholder="본문" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="juC-Sr-jQM" customClass="PaddedTextField" customModule="Win2" customModuleProvider="target">
+                    <rect key="frame" x="32" y="103" width="536" height="183"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="183" id="cri-g7-msf"/>
+                    </constraints>
+                    <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="bCZ-UU-0N2"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="링크" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YYx-Y5-Gtg" customClass="PaddedTextField" customModule="Win2" customModuleProvider="target">
+                    <rect key="frame" x="32" y="318" width="536" height="39"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="zHr-uI-Z9v"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="HjO-au-aim"/>
+                    </connections>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="YYx-Y5-Gtg" firstAttribute="leading" secondItem="pgh-GI-PaS" secondAttribute="leading" id="G2p-hF-cAn"/>
+                <constraint firstItem="juC-Sr-jQM" firstAttribute="top" secondItem="pgh-GI-PaS" secondAttribute="bottom" constant="32" id="HcD-KS-2eM"/>
+                <constraint firstItem="pgh-GI-PaS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="32" id="NyL-hC-eTS"/>
+                <constraint firstItem="YYx-Y5-Gtg" firstAttribute="trailing" secondItem="pgh-GI-PaS" secondAttribute="trailing" id="QWJ-Ca-mbo"/>
+                <constraint firstAttribute="trailing" secondItem="pgh-GI-PaS" secondAttribute="trailing" constant="32" id="XH9-5h-oIi"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="YYx-Y5-Gtg" secondAttribute="bottom" constant="32" id="p5J-RX-o0f"/>
+                <constraint firstItem="juC-Sr-jQM" firstAttribute="leading" secondItem="pgh-GI-PaS" secondAttribute="leading" id="qel-qK-HfY"/>
+                <constraint firstItem="juC-Sr-jQM" firstAttribute="trailing" secondItem="pgh-GI-PaS" secondAttribute="trailing" id="t6S-ik-VZK"/>
+                <constraint firstItem="YYx-Y5-Gtg" firstAttribute="top" secondItem="juC-Sr-jQM" secondAttribute="bottom" constant="32" id="wsg-hh-oc2"/>
+                <constraint firstItem="YYx-Y5-Gtg" firstAttribute="top" secondItem="juC-Sr-jQM" secondAttribute="bottom" constant="32" id="yR7-bw-aas"/>
+                <constraint firstItem="pgh-GI-PaS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="32" id="z1z-zU-xKZ"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="yR7-bw-aas"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="116" y="124"/>
+        </view>
+    </objects>
+</document>

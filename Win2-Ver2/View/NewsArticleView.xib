@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="NanumBarunGothic.ttf">
+            <string>NanumBarunGothic</string>
+            <string>NanumBarunGothic</string>
+            <string>NanumBarunGothic</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewsArticleView">
+            <connections>
+                <outlet property="backgroundImageView" destination="0OP-jh-p7e" id="C8c-lX-KbW"/>
+                <outlet property="categoryLabel" destination="mfu-yd-3gC" id="BOP-uC-0fu"/>
+                <outlet property="dateLabel" destination="leB-9p-VNW" id="rs9-qg-hW0"/>
+                <outlet property="titleLabel" destination="7Aj-th-ja0" id="aZz-VJ-qUr"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1gS-1b-BEh">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sampleGray" translatesAutoresizingMaskIntoConstraints="NO" id="0OP-jh-p7e" userLabel="backgroundImageView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="rrF-ad-s17"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="rrF-ad-s17"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기사 제목을 두줄로 이곳에 입력하십시오" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Aj-th-ja0" userLabel="articleTitleLabel">
+                    <rect key="frame" x="16" y="165" width="580" height="82"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="82" id="LqO-zP-yLR"/>
+                        <constraint firstAttribute="width" constant="217" id="VBH-XA-HfS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="NanumBarunGothic" family="NanumBarunGothic" pointSize="26"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="VBH-XA-HfS"/>
+                        </mask>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfu-yd-3gC" userLabel="articleCategoryLabel" customClass="PaddedLabel" customModule="Win2" customModuleProvider="target">
+                    <rect key="frame" x="16" y="127" width="67" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="33" id="sSx-7d-hbi"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="NanumBarunGothic" family="NanumBarunGothic" pointSize="16"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08/08/15" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leB-9p-VNW" userLabel="articleDateLabel">
+                    <rect key="frame" x="16" y="267" width="66" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Uqq-uQ-2WP"/>
+                        <constraint firstAttribute="width" constant="74" id="qEI-Gs-O7L"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="NanumBarunGothic" family="NanumBarunGothic" pointSize="15"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="qEI-Gs-O7L"/>
+                        </mask>
+                    </variation>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="mfu-yd-3gC" firstAttribute="leading" secondItem="1gS-1b-BEh" secondAttribute="leading" constant="54" id="29y-JR-AQX"/>
+                <constraint firstAttribute="trailing" secondItem="0OP-jh-p7e" secondAttribute="trailing" id="860-fR-ai0"/>
+                <constraint firstItem="0OP-jh-p7e" firstAttribute="top" secondItem="1gS-1b-BEh" secondAttribute="top" id="BKl-pG-JAa"/>
+                <constraint firstAttribute="trailing" secondItem="7Aj-th-ja0" secondAttribute="trailing" constant="4" id="NYK-Rk-QZa"/>
+                <constraint firstAttribute="bottom" secondItem="0OP-jh-p7e" secondAttribute="bottom" id="QUv-cx-iv0"/>
+                <constraint firstAttribute="bottom" secondItem="leB-9p-VNW" secondAttribute="bottom" constant="12" id="f89-pj-HNH"/>
+                <constraint firstItem="mfu-yd-3gC" firstAttribute="leading" secondItem="7Aj-th-ja0" secondAttribute="leading" id="fHI-qI-ZWN"/>
+                <constraint firstItem="leB-9p-VNW" firstAttribute="top" secondItem="7Aj-th-ja0" secondAttribute="bottom" priority="999" constant="20" id="jzO-bu-AL5"/>
+                <constraint firstItem="mfu-yd-3gC" firstAttribute="top" secondItem="1gS-1b-BEh" secondAttribute="top" constant="41" id="lDG-Jv-hJ2"/>
+                <constraint firstItem="leB-9p-VNW" firstAttribute="leading" secondItem="7Aj-th-ja0" secondAttribute="leading" id="pyH-vL-3xJ"/>
+                <constraint firstItem="0OP-jh-p7e" firstAttribute="leading" secondItem="1gS-1b-BEh" secondAttribute="leading" id="qCj-ui-3Ph"/>
+                <constraint firstItem="leB-9p-VNW" firstAttribute="leading" secondItem="1gS-1b-BEh" secondAttribute="leading" constant="16" id="shd-MZ-hQ8"/>
+                <constraint firstItem="7Aj-th-ja0" firstAttribute="top" secondItem="mfu-yd-3gC" secondAttribute="bottom" constant="5" id="xBj-Dp-mr3"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="29y-JR-AQX"/>
+                    <exclude reference="lDG-Jv-hJ2"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="74" y="-634.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="sampleGray" width="600" height="600"/>
+    </resources>
+</document>

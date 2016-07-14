@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="NanumBarunGothic.ttf">
+            <string>NanumBarunGothic</string>
+        </mutableArray>
+        <mutableArray key="NanumBarunGothicBold.ttf">
+            <string>NanumBarunGothicBold</string>
+            <string>NanumBarunGothicBold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExpandableAboutView">
+            <connections>
+                <outlet property="aboutLabel" destination="vt8-gx-oqh" id="ubl-Oo-0uw"/>
+                <outlet property="arrowImageButton" destination="f2i-F2-szr" id="lBb-lO-lJw"/>
+                <outlet property="textView" destination="6bK-sB-FoZ" id="iiL-xZ-aqO"/>
+                <outlet property="titleLabel" destination="CcP-eQ-vUK" id="kN3-R9-Ydb"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="ExpandableAboutView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="250"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bK-sB-FoZ">
+                    <rect key="frame" x="16" y="92" width="576" height="158"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <fontDescription key="fontDescription" name="NanumBarunGothic" family="NanumBarunGothic" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQz-O6-15V">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="About_content area" translatesAutoresizingMaskIntoConstraints="NO" id="p85-v2-MHL">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2i-F2-szr" userLabel="ExpandButton">
+                            <rect key="frame" x="569" y="16" width="15" height="22"/>
+                            <state key="normal" image="btn_down_w"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ABOUT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vt8-gx-oqh" userLabel="AboutLabel">
+                            <rect key="frame" x="16" y="18" width="54" height="19"/>
+                            <fontDescription key="fontDescription" name="NanumBarunGothicBold" family="NanumBarunGothic" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="vt8-gx-oqh" firstAttribute="leading" secondItem="NQz-O6-15V" secondAttribute="leading" constant="16" id="9jr-Mq-orU"/>
+                        <constraint firstAttribute="bottom" secondItem="p85-v2-MHL" secondAttribute="bottom" id="CEN-ZC-SUg"/>
+                        <constraint firstAttribute="trailing" secondItem="p85-v2-MHL" secondAttribute="trailing" id="F8t-Ab-f3D"/>
+                        <constraint firstItem="p85-v2-MHL" firstAttribute="top" secondItem="NQz-O6-15V" secondAttribute="top" id="aHT-fl-cf2"/>
+                        <constraint firstAttribute="trailing" secondItem="f2i-F2-szr" secondAttribute="trailing" constant="16" id="bmK-fC-dxC"/>
+                        <constraint firstAttribute="height" constant="54" id="hGp-cZ-BP6"/>
+                        <constraint firstItem="p85-v2-MHL" firstAttribute="leading" secondItem="NQz-O6-15V" secondAttribute="leading" id="m4j-u7-Cfr"/>
+                        <constraint firstItem="f2i-F2-szr" firstAttribute="centerY" secondItem="p85-v2-MHL" secondAttribute="centerY" id="qBY-Ba-4Rg"/>
+                        <constraint firstItem="vt8-gx-oqh" firstAttribute="centerY" secondItem="NQz-O6-15V" secondAttribute="centerY" id="tVN-q8-JJa"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TitleLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CcP-eQ-vUK">
+                    <rect key="frame" x="16" y="66" width="76" height="20"/>
+                    <fontDescription key="fontDescription" name="NanumBarunGothicBold" family="NanumBarunGothic" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="6bK-sB-FoZ" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="3IW-dG-vDO"/>
+                <constraint firstItem="NQz-O6-15V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9Wz-kT-fzE"/>
+                <constraint firstAttribute="bottom" secondItem="6bK-sB-FoZ" secondAttribute="bottom" id="RCv-cH-N5o"/>
+                <constraint firstAttribute="trailing" secondItem="NQz-O6-15V" secondAttribute="trailing" id="ROb-x8-fqr"/>
+                <constraint firstItem="6bK-sB-FoZ" firstAttribute="leading" secondItem="CcP-eQ-vUK" secondAttribute="leading" id="S4f-Up-eyZ"/>
+                <constraint firstItem="CcP-eQ-vUK" firstAttribute="leading" secondItem="vt8-gx-oqh" secondAttribute="leading" id="UBm-M0-AYf"/>
+                <constraint firstItem="CcP-eQ-vUK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="66" id="VPT-lT-NoV"/>
+                <constraint firstItem="NQz-O6-15V" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="i4A-bn-ji4"/>
+                <constraint firstItem="6bK-sB-FoZ" firstAttribute="top" secondItem="CcP-eQ-vUK" secondAttribute="bottom" constant="6" id="l5u-kV-dW9"/>
+                <constraint firstItem="CcP-eQ-vUK" firstAttribute="top" secondItem="NQz-O6-15V" secondAttribute="bottom" constant="12" id="xpS-dI-ETf"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="289" y="174"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="About_content area" width="375" height="54"/>
+        <image name="btn_down_w" width="15" height="10"/>
+    </resources>
+</document>

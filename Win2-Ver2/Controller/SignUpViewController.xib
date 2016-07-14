@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="NanumBarunGothic.ttf">
+            <string>NanumBarunGothic</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="Win2" customModuleProvider="target">
+            <connections>
+                <outlet property="birthdayDatePicker" destination="QtW-iX-h0K" id="VQS-IZ-N7n"/>
+                <outlet property="birthdaySwitch" destination="87o-uG-fgO" id="zsM-Xd-Ly2"/>
+                <outlet property="confirmPasswordTextField" destination="Nil-Rw-qQP" id="WBd-AV-AYg"/>
+                <outlet property="emailTextField" destination="ic7-k8-T4M" id="9yT-oZ-Wwp"/>
+                <outlet property="firstNameTextField" destination="DwB-LX-N0u" id="T0H-5g-R3I"/>
+                <outlet property="lastNameTextField" destination="kX8-ut-zBg" id="TuH-c0-r3Y"/>
+                <outlet property="passwordTextField" destination="qbC-w6-vPA" id="Juv-AE-Sg2"/>
+                <outlet property="view" destination="2dG-SN-dIW" id="eXe-ql-RiG"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2dG-SN-dIW">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" background="textfield_short" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DwB-LX-N0u" userLabel="FirstNameField" customClass="PaddedTextField" customModule="Win2" customModuleProvider="target">
+                    <rect key="frame" x="16" y="32" width="175" height="38"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="38" id="LgP-bY-24T"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" background="textfield_long" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qbC-w6-vPA" userLabel="PasswordField" customClass="PaddedTextField" customModule="Win2" customModuleProvider="target">
+                    <rect key="frame" x="16" y="140" width="366" height="38"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="760" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iz-o8-NFJ" userLabel="SignUpConfirmButton">
+                    <rect key="frame" x="75" y="372" width="264" height="42"/>
+                    <state key="normal" backgroundImage="btn_SignUP"/>
+                    <connections>
+                        <action selector="signUpButtonPressed:" destination="-1" eventType="touchUpInside" id="oHa-DR-nEW"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" background="textfield_short" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kX8-ut-zBg" userLabel="LastNameField" customClass="PaddedTextField" customModule="Win2" customModuleProvider="target">
+                    <rect key="frame" x="207" y="32" width="175" height="38"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" background="textfield_long" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Nil-Rw-qQP" userLabel="PasswordField" customClass="PaddedTextField" customModule="Win2" customModuleProvider="target">
+                    <rect key="frame" x="16" y="194" width="366" height="38"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" textAlignment="natural" minimumFontSize="17" background="textfield_long" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ic7-k8-T4M" userLabel="EmailField" customClass="PaddedTextField" customModule="Win2" customModuleProvider="target">
+                    <rect key="frame" x="16" y="86" width="366" height="38"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                </textField>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="87o-uG-fgO">
+                    <rect key="frame" x="304" y="249" width="51" height="31"/>
+                    <color key="onTintColor" red="0.62352941179999999" green="0.36078431370000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                </switch>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="800" text="*(Optional) 생년월일 정보를 공유하시겠습니까?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTE-V6-aPK">
+                    <rect key="frame" x="16" y="256" width="280" height="17"/>
+                    <fontDescription key="fontDescription" name="NanumBarunGothic" family="NanumBarunGothic" pointSize="14"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="QtW-iX-h0K">
+                    <rect key="frame" x="47" y="289" width="320" height="67"/>
+                    <color key="tintColor" red="0.62352941179999999" green="0.36078431370000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="67" id="yeY-sQ-hm2"/>
+                    </constraints>
+                    <date key="date" timeIntervalSinceReferenceDate="-31530039.676064014">
+                        <!--2000-01-02 01:39:20 +0000-->
+                    </date>
+                </datePicker>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="vTE-V6-aPK" firstAttribute="top" secondItem="ic7-k8-T4M" secondAttribute="bottom" constant="32" id="0aH-12-lu8"/>
+                <constraint firstItem="ic7-k8-T4M" firstAttribute="leading" secondItem="qbC-w6-vPA" secondAttribute="leading" id="7F3-vU-6vY"/>
+                <constraint firstItem="ic7-k8-T4M" firstAttribute="leading" secondItem="qbC-w6-vPA" secondAttribute="leading" id="7Pe-q4-KsT"/>
+                <constraint firstAttribute="trailing" secondItem="ic7-k8-T4M" secondAttribute="trailing" constant="32" id="AO0-wi-lNi"/>
+                <constraint firstItem="87o-uG-fgO" firstAttribute="centerY" secondItem="vTE-V6-aPK" secondAttribute="centerY" id="CCN-99-jCC"/>
+                <constraint firstItem="Nil-Rw-qQP" firstAttribute="leading" secondItem="qbC-w6-vPA" secondAttribute="leading" id="I9a-Vc-je1"/>
+                <constraint firstItem="2iz-o8-NFJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vTE-V6-aPK" secondAttribute="bottom" constant="16" id="LNc-VA-Nwu"/>
+                <constraint firstItem="Nil-Rw-qQP" firstAttribute="trailing" secondItem="qbC-w6-vPA" secondAttribute="trailing" id="OS2-Kc-DMZ"/>
+                <constraint firstItem="qbC-w6-vPA" firstAttribute="leading" secondItem="2dG-SN-dIW" secondAttribute="leading" constant="32" id="PCm-fP-t3q"/>
+                <constraint firstItem="87o-uG-fgO" firstAttribute="leading" secondItem="vTE-V6-aPK" secondAttribute="trailing" constant="8" id="R3u-jy-ezM"/>
+                <constraint firstItem="Nil-Rw-qQP" firstAttribute="width" secondItem="qbC-w6-vPA" secondAttribute="width" id="Ung-vP-tNI"/>
+                <constraint firstItem="DwB-LX-N0u" firstAttribute="width" secondItem="ic7-k8-T4M" secondAttribute="width" multiplier="1:0.5" id="VIh-8q-r8F"/>
+                <constraint firstItem="kX8-ut-zBg" firstAttribute="trailing" secondItem="ic7-k8-T4M" secondAttribute="trailing" id="WnZ-kE-h3m"/>
+                <constraint firstItem="kX8-ut-zBg" firstAttribute="centerY" secondItem="DwB-LX-N0u" secondAttribute="centerY" id="ZGC-55-N4P"/>
+                <constraint firstItem="ic7-k8-T4M" firstAttribute="height" secondItem="DwB-LX-N0u" secondAttribute="height" id="ZH0-dZ-gd3"/>
+                <constraint firstItem="DwB-LX-N0u" firstAttribute="top" secondItem="2dG-SN-dIW" secondAttribute="top" constant="32" id="ZVH-ja-qPg"/>
+                <constraint firstItem="ic7-k8-T4M" firstAttribute="leading" secondItem="DwB-LX-N0u" secondAttribute="leading" id="b2r-nO-7Hz"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kX8-ut-zBg" secondAttribute="trailing" constant="2" id="b9V-9r-QT6"/>
+                <constraint firstItem="kX8-ut-zBg" firstAttribute="width" secondItem="DwB-LX-N0u" secondAttribute="width" id="dan-7a-y5T"/>
+                <constraint firstItem="ic7-k8-T4M" firstAttribute="top" secondItem="DwB-LX-N0u" secondAttribute="bottom" constant="16" id="dbd-tF-j28"/>
+                <constraint firstItem="ic7-k8-T4M" firstAttribute="top" secondItem="qbC-w6-vPA" secondAttribute="bottom" constant="48" id="dfk-Ih-vK6"/>
+                <constraint firstItem="2iz-o8-NFJ" firstAttribute="centerX" secondItem="2dG-SN-dIW" secondAttribute="centerX" id="eOF-Y1-hJc"/>
+                <constraint firstItem="ic7-k8-T4M" firstAttribute="width" secondItem="qbC-w6-vPA" secondAttribute="width" id="edZ-u7-NVF"/>
+                <constraint firstItem="vTE-V6-aPK" firstAttribute="top" secondItem="Nil-Rw-qQP" secondAttribute="bottom" constant="24" id="fSc-ge-qWY"/>
+                <constraint firstItem="ic7-k8-T4M" firstAttribute="height" secondItem="qbC-w6-vPA" secondAttribute="height" id="fVI-73-pjs"/>
+                <constraint firstItem="ic7-k8-T4M" firstAttribute="leading" secondItem="DwB-LX-N0u" secondAttribute="leading" id="fXa-xa-3WG"/>
+                <constraint firstItem="vTE-V6-aPK" firstAttribute="leading" secondItem="Nil-Rw-qQP" secondAttribute="leading" id="g4S-Wu-m16"/>
+                <constraint firstItem="2iz-o8-NFJ" firstAttribute="top" secondItem="QtW-iX-h0K" secondAttribute="bottom" priority="999" constant="16" id="glD-mS-aQk"/>
+                <constraint firstItem="ic7-k8-T4M" firstAttribute="trailing" secondItem="kX8-ut-zBg" secondAttribute="trailing" id="iDh-1T-nOn"/>
+                <constraint firstItem="ic7-k8-T4M" firstAttribute="leading" secondItem="qbC-w6-vPA" secondAttribute="leading" id="j7i-t7-biK"/>
+                <constraint firstItem="QtW-iX-h0K" firstAttribute="top" secondItem="vTE-V6-aPK" secondAttribute="bottom" constant="16" id="jR2-dI-aek"/>
+                <constraint firstItem="Nil-Rw-qQP" firstAttribute="height" secondItem="qbC-w6-vPA" secondAttribute="height" id="lWN-lU-KJz"/>
+                <constraint firstItem="2iz-o8-NFJ" firstAttribute="top" secondItem="ic7-k8-T4M" secondAttribute="bottom" constant="96" id="lcX-Bt-nBW"/>
+                <constraint firstAttribute="trailing" secondItem="ic7-k8-T4M" secondAttribute="trailing" constant="16" id="lsL-5s-zEv"/>
+                <constraint firstItem="DwB-LX-N0u" firstAttribute="leading" secondItem="2dG-SN-dIW" secondAttribute="leadingMargin" constant="8" id="mlj-SY-LgY"/>
+                <constraint firstItem="Nil-Rw-qQP" firstAttribute="centerX" secondItem="ic7-k8-T4M" secondAttribute="centerX" id="nl7-2U-sSb"/>
+                <constraint firstItem="qbC-w6-vPA" firstAttribute="top" secondItem="ic7-k8-T4M" secondAttribute="bottom" constant="16" id="oht-WV-8qe"/>
+                <constraint firstItem="QtW-iX-h0K" firstAttribute="centerX" secondItem="2dG-SN-dIW" secondAttribute="centerX" id="p3c-zm-m8m"/>
+                <constraint firstItem="kX8-ut-zBg" firstAttribute="height" secondItem="DwB-LX-N0u" secondAttribute="height" id="q3H-69-vYO"/>
+                <constraint firstItem="kX8-ut-zBg" firstAttribute="leading" secondItem="DwB-LX-N0u" secondAttribute="trailing" constant="16" id="rHc-yy-BfB"/>
+                <constraint firstAttribute="trailing" secondItem="qbC-w6-vPA" secondAttribute="trailing" constant="32" id="tju-js-zAb"/>
+                <constraint firstItem="Nil-Rw-qQP" firstAttribute="top" secondItem="qbC-w6-vPA" secondAttribute="bottom" constant="16" id="vbp-qX-418"/>
+                <constraint firstItem="ic7-k8-T4M" firstAttribute="trailing" secondItem="kX8-ut-zBg" secondAttribute="trailing" id="vvp-Kg-5LS"/>
+                <constraint firstItem="ic7-k8-T4M" firstAttribute="trailing" secondItem="qbC-w6-vPA" secondAttribute="trailing" id="vz1-Mb-zF4"/>
+                <constraint firstItem="ic7-k8-T4M" firstAttribute="top" secondItem="Nil-Rw-qQP" secondAttribute="bottom" constant="16" id="xfd-ie-6Wn"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2iz-o8-NFJ" secondAttribute="bottom" constant="4" id="y1R-DQ-om1"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="VIh-8q-r8F"/>
+                    <exclude reference="7F3-vU-6vY"/>
+                    <exclude reference="dfk-Ih-vK6"/>
+                    <exclude reference="fXa-xa-3WG"/>
+                    <exclude reference="iDh-1T-nOn"/>
+                    <exclude reference="j7i-t7-biK"/>
+                    <exclude reference="lsL-5s-zEv"/>
+                    <exclude reference="vvp-Kg-5LS"/>
+                    <exclude reference="vz1-Mb-zF4"/>
+                    <exclude reference="xfd-ie-6Wn"/>
+                    <exclude reference="PCm-fP-t3q"/>
+                    <exclude reference="tju-js-zAb"/>
+                    <exclude reference="b9V-9r-QT6"/>
+                    <exclude reference="OS2-Kc-DMZ"/>
+                    <exclude reference="nl7-2U-sSb"/>
+                    <exclude reference="0aH-12-lu8"/>
+                    <exclude reference="LNc-VA-Nwu"/>
+                    <exclude reference="lcX-Bt-nBW"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="394" y="-949"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn_SignUP" width="264" height="42"/>
+        <image name="textfield_long" width="264" height="42"/>
+        <image name="textfield_short" width="114" height="42"/>
+    </resources>
+</document>

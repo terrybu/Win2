@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommunicationsViewController" customModule="Win2" customModuleProvider="target">
+            <connections>
+                <outlet property="constraintHeightExpandableView" destination="sxV-AA-QRm" id="5LS-Ny-Gi4"/>
+                <outlet property="expandableAboutView" destination="lyq-qD-abU" id="kPv-1M-Xcb"/>
+                <outlet property="tableView" destination="o4F-2f-0g7" id="EQw-f3-Az7"/>
+                <outlet property="view" destination="UtZ-sG-UvY" id="iH0-YM-FUd"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="UtZ-sG-UvY">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyq-qD-abU" customClass="ExpandableAboutView" customModule="Win2" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="54" id="sxV-AA-QRm"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="aboutLabelTitle" value="ABOUT"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="titleLabeltitle" value="소통보로는 &quot;너와 나의 연결고리!&quot;"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="textViewContentText">
+                            <string key="value">"그리스도로부터 온몸이 각 마디를 통해 함께 연결되고 결합됩니다. 각 지체가 맡은 분량대로 기능하는 가운데 그 몸을 자라게 하며 사랑 가운데 스스로를 세워갑니다." -에베소서 4:16
+ 
+파이매거진, 앱&amp;웹팀, 광고&amp;기획팀이 속한 소통보로는 예수님의 사랑을 서로서로 소통하는 공동체를 만들기 위해 힘씁니다.</string>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o4F-2f-0g7">
+                    <rect key="frame" x="0.0" y="54" width="600" height="546"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="GQH-Ms-AWV"/>
+                        <outlet property="delegate" destination="-1" id="gaa-MG-G4J"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="lyq-qD-abU" firstAttribute="leading" secondItem="UtZ-sG-UvY" secondAttribute="leading" id="FPI-HW-aYc"/>
+                <constraint firstAttribute="trailing" secondItem="lyq-qD-abU" secondAttribute="trailing" id="Fix-Xd-7a1"/>
+                <constraint firstItem="o4F-2f-0g7" firstAttribute="top" secondItem="lyq-qD-abU" secondAttribute="top" id="Pf6-qm-Ofp"/>
+                <constraint firstItem="o4F-2f-0g7" firstAttribute="top" secondItem="lyq-qD-abU" secondAttribute="bottom" id="RhK-AO-3fe"/>
+                <constraint firstItem="lyq-qD-abU" firstAttribute="top" secondItem="UtZ-sG-UvY" secondAttribute="top" id="SsO-tX-Sba"/>
+                <constraint firstAttribute="bottom" secondItem="o4F-2f-0g7" secondAttribute="bottom" id="eFS-hZ-R56"/>
+                <constraint firstItem="o4F-2f-0g7" firstAttribute="leading" secondItem="UtZ-sG-UvY" secondAttribute="leading" id="jSu-n8-yB4"/>
+                <constraint firstAttribute="trailing" secondItem="o4F-2f-0g7" secondAttribute="trailing" id="wfM-rI-9bh"/>
+                <constraint firstItem="o4F-2f-0g7" firstAttribute="top" secondItem="UtZ-sG-UvY" secondAttribute="top" id="wiZ-au-eVv"/>
+                <constraint firstItem="o4F-2f-0g7" firstAttribute="top" secondItem="lyq-qD-abU" secondAttribute="bottom" id="zvt-DX-XgV"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Pf6-qm-Ofp"/>
+                    <exclude reference="wiZ-au-eVv"/>
+                    <exclude reference="zvt-DX-XgV"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="405" y="-584"/>
+        </view>
+    </objects>
+</document>

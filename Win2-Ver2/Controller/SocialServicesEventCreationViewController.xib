@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="NanumBarunGothic.ttf">
+            <string>NanumBarunGothic</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SocialServicesEventCreationViewController" customModule="Win2" customModuleProvider="target">
+            <connections>
+                <outlet property="eventDatePicker" destination="DAd-Jh-X8C" id="cAy-rR-jBt"/>
+                <outlet property="eventDescriptionTextview" destination="Cml-7K-Nql" id="ATI-8D-ejq"/>
+                <outlet property="eventTeamName" destination="1zc-su-2Ft" id="gET-qi-LIQ"/>
+                <outlet property="eventTitle" destination="7T3-Gp-7fM" id="xmg-cJ-6rf"/>
+                <outlet property="view" destination="08g-MR-axY" id="pL5-IK-7Ib"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="08g-MR-axY">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZh-Pi-BCb" userLabel="Content View">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="이벤트 제목" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7T3-Gp-7fM" customClass="PaddedTextField" customModule="Win2" customModuleProvider="target">
+                            <rect key="frame" x="60" y="12" width="480" height="39"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="39" id="cfI-SC-Npq"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="VwY-St-Aqa"/>
+                            </connections>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="팀 이름" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1zc-su-2Ft" customClass="PaddedTextField" customModule="Win2" customModuleProvider="target">
+                            <rect key="frame" x="60" y="59" width="480" height="39"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="39" id="ndU-Kd-Ayd"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="gLV-Ym-wc2"/>
+                            </connections>
+                        </textField>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="DAd-Jh-X8C">
+                            <rect key="frame" x="60" y="304" width="480" height="216"/>
+                            <date key="date" timeIntervalSinceReferenceDate="476553261.92228597">
+                                <!--2016-02-07 15:54:21 +0000-->
+                            </date>
+                        </datePicker>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이벤트 날짜/시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dh8-Vu-NhN">
+                            <rect key="frame" x="60" y="282" width="104" height="18"/>
+                            <fontDescription key="fontDescription" name="NanumBarunGothic" family="NanumBarunGothic" pointSize="15"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Cml-7K-Nql">
+                            <rect key="frame" x="60" y="106" width="480" height="168"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="168" id="1SR-fT-VRn"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="1zc-su-2Ft" firstAttribute="leading" secondItem="7T3-Gp-7fM" secondAttribute="leading" id="0S8-T2-etS"/>
+                        <constraint firstItem="7T3-Gp-7fM" firstAttribute="top" secondItem="BZh-Pi-BCb" secondAttribute="top" constant="12" id="1Hr-Z3-fRS"/>
+                        <constraint firstItem="1zc-su-2Ft" firstAttribute="centerX" secondItem="7T3-Gp-7fM" secondAttribute="centerX" id="2Hu-wS-6eU"/>
+                        <constraint firstItem="dh8-Vu-NhN" firstAttribute="leading" secondItem="Cml-7K-Nql" secondAttribute="leading" id="9Rx-Ny-gaI"/>
+                        <constraint firstItem="DAd-Jh-X8C" firstAttribute="leading" secondItem="dh8-Vu-NhN" secondAttribute="leading" id="EPK-Y6-hEw"/>
+                        <constraint firstItem="Cml-7K-Nql" firstAttribute="leading" secondItem="1zc-su-2Ft" secondAttribute="leading" id="HtR-hi-QcG"/>
+                        <constraint firstItem="1zc-su-2Ft" firstAttribute="width" secondItem="7T3-Gp-7fM" secondAttribute="width" id="NV9-IB-wQZ"/>
+                        <constraint firstAttribute="height" constant="600" id="Olr-am-Qlb"/>
+                        <constraint firstItem="Cml-7K-Nql" firstAttribute="trailing" secondItem="1zc-su-2Ft" secondAttribute="trailing" id="ZHu-Vv-qcz"/>
+                        <constraint firstItem="Cml-7K-Nql" firstAttribute="top" secondItem="1zc-su-2Ft" secondAttribute="bottom" constant="8" id="bbL-tw-OLx"/>
+                        <constraint firstItem="7T3-Gp-7fM" firstAttribute="width" secondItem="BZh-Pi-BCb" secondAttribute="width" multiplier="0.8:1" id="hff-wh-hxF"/>
+                        <constraint firstItem="DAd-Jh-X8C" firstAttribute="top" secondItem="dh8-Vu-NhN" secondAttribute="bottom" constant="4" id="i04-BB-DvN"/>
+                        <constraint firstItem="DAd-Jh-X8C" firstAttribute="trailing" secondItem="Cml-7K-Nql" secondAttribute="trailing" id="pOR-Wu-xqe"/>
+                        <constraint firstItem="1zc-su-2Ft" firstAttribute="top" secondItem="7T3-Gp-7fM" secondAttribute="bottom" constant="8" id="vyb-j0-NUo"/>
+                        <constraint firstItem="7T3-Gp-7fM" firstAttribute="centerX" secondItem="BZh-Pi-BCb" secondAttribute="centerX" id="wsP-po-tOI"/>
+                        <constraint firstItem="dh8-Vu-NhN" firstAttribute="top" secondItem="Cml-7K-Nql" secondAttribute="bottom" constant="8" id="xLQ-E0-F0Q"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Olr-am-Qlb"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="BZh-Pi-BCb" firstAttribute="top" secondItem="08g-MR-axY" secondAttribute="top" id="8xo-xZ-OMe"/>
+                <constraint firstItem="BZh-Pi-BCb" firstAttribute="leading" secondItem="08g-MR-axY" secondAttribute="leading" id="BUG-E4-5VT"/>
+                <constraint firstAttribute="bottom" secondItem="BZh-Pi-BCb" secondAttribute="bottom" id="YJU-cB-DHe"/>
+                <constraint firstAttribute="trailing" secondItem="BZh-Pi-BCb" secondAttribute="trailing" id="wdb-dA-gIu"/>
+            </constraints>
+            <point key="canvasLocation" x="107" y="91"/>
+        </view>
+    </objects>
+</document>

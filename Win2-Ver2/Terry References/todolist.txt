@@ -1,0 +1,10 @@
+====================
+***Possible Improvements Backlog
+- Communications:
+2.6.2016
+= the "Long apply widget view" would spill out its contents over the about bar for some crazy reason
+- Gonna remove it for now. If it ever becomes a problem, need some surgery in there. Might take some time figuring out exactly what was going wrong with Auto layout between About Expanding View and the Long Apply Widget View
+
+***MiscGallery page is pulling from 3 recently updated albums, one of which is 한줄나눔 which uses a lot of same images and very uninteresting. Skip it?
+
+***Firebase can grab that GRAVATAR for you based on your email addres. Might be fun to put up the User name and gravar up on the right side of the Left Nav Drawer 
