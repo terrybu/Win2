@@ -26,11 +26,10 @@ class HomeScreenViewController: ParentViewController, FacebookFeedQueryDelegate 
         self.navigationItem.titleView = smallLogoView
         
         setUpUniqueUIForHomeVC()
-        blackOverlayAndLoadingSpinnerUntilFBDataFinishedLoading()
         FacebookFeedQuery.sharedInstance.delegate = self
         FacebookFeedQuery.sharedInstance.getFeedFromPIMagazine { (error) -> Void in
             if error != nil {
-                print(error?.description)
+                print(error!)
                 self.activityIndicator.stopAnimating()
             }
         }
@@ -38,7 +37,7 @@ class HomeScreenViewController: ParentViewController, FacebookFeedQueryDelegate 
             if success {
                 self.activeNotice = FirebaseManager.sharedManager.activeNotice!
                 self.noticeWidget.body = self.activeNotice!.title
-                self.noticeWidget.viewMoreNoticeButton.addTarget(self, action: "viewMoreNotice", for: UIControlEvents.touchUpInside)
+                self.noticeWidget.viewMoreNoticeButton.addTarget(self, action: #selector(HomeScreenViewController.viewMoreNotice), for: UIControlEvents.touchUpInside)
             }
         })
     }
@@ -56,7 +55,7 @@ class HomeScreenViewController: ParentViewController, FacebookFeedQueryDelegate 
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navigation_bar"), for: UIBarMetrics.default)
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        let hamburger = UIBarButtonItem(image: UIImage(named: "hamburger"), style: UIBarButtonItemStyle.done, target: self, action: Selector("hamburgerPressed:"))
+        let hamburger = UIBarButtonItem(image: UIImage(named: "hamburger"), style: UIBarButtonItemStyle.done, target: self, action: Selector(("hamburgerPressed:")))
         navigationItem.leftBarButtonItem = hamburger
     }
     

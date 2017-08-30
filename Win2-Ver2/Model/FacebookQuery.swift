@@ -16,11 +16,11 @@ class FacebookQuery {
         FBSDKGraphRequest(graphPath: graphPathString, parameters: params).start { (connection, data, error) -> Void in
             if (error == nil) {
                 if let onSuccess = onSuccess {
-                    onSuccess(JSON(data))
+                    onSuccess(JSON(data!))
                 }
             } else {
                 if let onError = onError {
-                    onError(error as! NSError)
+                    onError(error as NSError?)
                 }
             }
         }
