@@ -14,36 +14,36 @@ import FirebaseAuth
 class FirebaseManager {
     
     static let sharedManager = FirebaseManager()
-    var rootRef = FIRDatabase.database().reference()
+    var rootRef = Database.database().reference()
     var noticesArray: [Notice]?
     var activeNotice: Notice?
     var eventsArray: [SocialServiceEvent]?
 
-    func loginUser(email: String, password: String, completion: ((success: Bool) -> Void)) {
-        FIRAuth.auth()!.signInAnonymouslyWithCompletion() { (user, error) in
+    func loginUser(_ email: String, password: String, completion: @escaping ((_ success: Bool) -> Void)) {
+        Auth.auth().signInAnonymously() { (user, error) in
                 if error != nil {
                     // There was an error logging in to this account
                     print(error)
-                    completion(success: false)
+                    completion(false)
                 } else {
                     // Authentication just completed successfully :)
                     // The logged in user's unique identifier
                     print ("Signed in with uid:", user!.uid)
-                    completion(success: true)
+                    completion(true)
                 }
         }
     }
     
-    func createUser(email: String, password: String, firstName: String, lastName: String, birthdayString: String?, completion: ((success:Bool, error: NSError?) -> Void)) {
-            FIRAuth.auth()?.createUserWithEmail(email, password: password, completion: { (user, error) in
+    func createUser(_ email: String, password: String, firstName: String, lastName: String, birthdayString: String?, completion: @escaping ((_ success:Bool, _ error: NSError?) -> Void)) {
+            Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
                 if error != nil {
                     // There was an error creating the account
                     print(error)
-                    completion(success: false, error: error)
+                    completion(false, error as! NSError)
                 } else {
                     let uid = user?.uid
                     print("Successfully created user account with uid: \(uid)")
-                    completion(success: true, error: nil)
+                    completion(true, nil)
                     // Create a new user dictionary accessing the user's info
                     // provided by the authData parameter
                     var newUser = [
@@ -68,7 +68,7 @@ class FirebaseManager {
 
     //MARK: writing to firebase
     
-    func createNewNoticeOnFirebase(notice: Notice, completion: (success: Bool)->Void) {
+    func createNewNoticeOnFirebase(_ notice: Notice, completion: @escaping (_ success: Bool)->Void) {
         let noticesRef = rootRef.child("Notices")
         let noticeDict = [
             "title": notice.title,
@@ -76,20 +76,20 @@ class FirebaseManager {
             "link": notice.link,
             "date": notice.date,
             "active": 0
-        ]
+        ] as [String : Any]
         let newNoticeIDRef = noticesRef.childByAutoId()
         newNoticeIDRef.setValue(noticeDict) { (error, firebase) -> Void in
             if error != nil {
                 print(error)
-                completion(success: false)
+                completion(false)
             } else {
                 print("new notice created")
-                completion(success: true)
+                completion(true)
             }
         }
     }
-    func createNewSocialServiceEventOnFirebase(serviceEvent: SocialServiceEvent, completion: (success: Bool)->Void) {
-        let eventsRef = rootRef.childByAppendingPath("SocialServiceEvents")
+    func createNewSocialServiceEventOnFirebase(_ serviceEvent: SocialServiceEvent, completion: @escaping (_ success: Bool)->Void) {
+        let eventsRef = rootRef.child(byAppendingPath: "SocialServiceEvents")
         let eventDict = [
             "title": serviceEvent.title,
             "teamName": serviceEvent.teamName,
@@ -100,34 +100,34 @@ class FirebaseManager {
         newEventIDRef.setValue(eventDict) { (error, firebase) -> Void in
             if error != nil {
                 print(error)
-                completion(success: false)
+                completion(false)
             } else {
                 print("new social service event created")
-                completion(success: true)
+                completion(true)
             }
         }
     }
     
     
     //MARK: Getting data from Firebase
-    func getNoticeObjectsFromFirebase(completion: (success: Bool)->Void) {
+    func getNoticeObjectsFromFirebase(_ completion: @escaping (_ success: Bool)->Void) {
         // Get a reference to our posts
-        let ref = rootRef.childByAppendingPath("Notices")
+        let ref = rootRef.child(byAppendingPath: "Notices")
         // Attach a closure to read the data at our posts reference
-        ref.observeEventType(.Value, withBlock: { snapshot in
+        ref.observe(.value, with: { snapshot in
             print(snapshot.value)
             if let snapshotDict = snapshot.value as? NSDictionary {
                 self.noticesArray = []
                 for noticeObjectKey in snapshotDict.allKeys {
                     //looping through all hashes
                     print(noticeObjectKey)
-                    if let noticeDictionary = snapshotDict.objectForKey(noticeObjectKey) as? NSDictionary {
+                    if let noticeDictionary = snapshotDict.object(forKey: noticeObjectKey) as? NSDictionary {
                         // get dictionary for individual record for specific hash
-                        let title = noticeDictionary.objectForKey("title") as! String
-                        let body = noticeDictionary.objectForKey("body") as! String
-                        let link = noticeDictionary.objectForKey("link") as! String
-                        let date = noticeDictionary.objectForKey("date") as! String
-                        let active = noticeDictionary.objectForKey("active") as! NSNumber
+                        let title = noticeDictionary.object(forKey: "title") as! String
+                        let body = noticeDictionary.object(forKey: "body") as! String
+                        let link = noticeDictionary.object(forKey: "link") as! String
+                        let date = noticeDictionary.object(forKey: "date") as! String
+                        let active = noticeDictionary.object(forKey: "active") as! NSNumber
                         let notice = Notice(title: title, body: body, link: link, date: date)
                         notice.active = active.boolValue
                         notice.firebaseID = noticeObjectKey as? String
@@ -139,90 +139,88 @@ class FirebaseManager {
                         }
                     }
                 }
-                completion(success: true)
+                completion(true)
             }
-            }, withCancelBlock: { error in
-                print(error.description)
-                completion(success: false)
+            }, withCancel: { error in
+                print(error)
+                completion(false)
         })
     }
     
-    func getServiceEventObjectsFromFirebase(completion: (success: Bool)->Void) {
+    func getServiceEventObjectsFromFirebase(_ completion: @escaping (_ success: Bool)->Void) {
         // Get a reference to our posts
-        let ref = rootRef.childByAppendingPath("SocialServiceEvents")
+        let ref = rootRef.child(byAppendingPath: "SocialServiceEvents")
         // Attach a closure to read the data at our posts reference
-        ref.observeEventType(.Value, withBlock: { snapshot in
-            print(snapshot.value)
+        ref.observe(.value, with: { snapshot in
             if let snapshotDict = snapshot.value as? NSDictionary {
                 self.eventsArray = []
                 for eventObjectKey in snapshotDict.allKeys {
                     //looping through all hashes
-                    if let eventDict = snapshotDict.objectForKey(eventObjectKey) as? NSDictionary {
+                    if let eventDict = snapshotDict.object(forKey: eventObjectKey) as? NSDictionary {
                         // get dictionary for individual record for specific hash
-                        let title = eventDict.objectForKey("title") as! String
-                        let team = eventDict.objectForKey("teamName") as! String
-                        let descr = eventDict.objectForKey("description") as! String
-                        let date = eventDict.objectForKey("date") as! String
+                        let title = eventDict.object(forKey: "title") as! String
+                        let team = eventDict.object(forKey: "teamName") as! String
+                        let descr = eventDict.object(forKey: "description") as! String
+                        let date = eventDict.object(forKey: "date") as! String
                         let event = SocialServiceEvent(title: title, teamName: team, description: descr, date: date)
                         event.firebaseID = eventObjectKey as? String
                         self.eventsArray?.append(event)
                     }
                 }
-                completion(success: true)
+                completion(true)
             }
-            }, withCancelBlock: { error in
-                print(error.description)
-                completion(success: false)
+            }, withCancel: { error in
+                completion(false)
         })
     }
 
     
     //MARK: Updating
-    func updateNoticeObjectActiveFlag(notice: Notice, completion: ((success: Bool) -> Void)?) {
-        let noticeRef = rootRef.childByAppendingPath("Notices").childByAppendingPath(notice.firebaseID!)
+    func updateNoticeObjectActiveFlag(_ notice: Notice, completion: ((_ success: Bool) -> Void)?) {
+        let noticeRef = rootRef.child(byAppendingPath: "Notices").child(byAppendingPath: notice.firebaseID!)
         noticeRef.updateChildValues(["active" : notice.active], withCompletionBlock: { error, firebaseRef in
             if error == nil {
                 print("updating child values completed \(firebaseRef.key)")
                 if let completion = completion {
-                  completion(success: true)
+                  completion(true)
                 }
             } else {
                 print(error)
                 if let completion = completion {
-                    completion(success:false)
+                    completion(false)
                 }
             }
         })
     }
     
     //MARK: Deleting
-    func deleteNotice(notice: Notice, completion: ((success: Bool) -> Void)?) {
-        let noticeRef = rootRef.childByAppendingPath("Notices").childByAppendingPath(notice.firebaseID!)
-        noticeRef.removeValueWithCompletionBlock { error, firebaseRef in
+    func deleteNotice(_ notice: Notice, completion: ((_ success: Bool) -> Void)?) {
+        let noticeRef = rootRef.child(byAppendingPath: "Notices").child(byAppendingPath: notice.firebaseID!)
+        noticeRef.removeValue { error, firebaseRef in
             if error == nil {
                 if let completion = completion {
-                    completion(success: true)
+                    completion(true)
                 }
             } else {
                 print(error)
                 if let completion = completion {
-                    completion(success:false)
+                    completion(false)
                 }
             }
         }
     }
     
-    func deleteEvent(event: SocialServiceEvent, completion: ((success: Bool) -> Void)?) {
-        let noticeRef = rootRef.childByAppendingPath("SocialServiceEvents").childByAppendingPath(event.firebaseID!)
-        noticeRef.removeValueWithCompletionBlock { error, firebaseRef in
+    func deleteEvent(_ event: SocialServiceEvent, completion: ((_ success: Bool) -> Void)?) {
+        let noticeRef = rootRef.child(byAppendingPath: "SocialServiceEvents").child(byAppendingPath: event.firebaseID!)
+        noticeRef.removeValue { error, firebaseRef in
             if error == nil {
                 if let completion = completion {
-                    completion(success: true)
+                    completion(true)
                 }
             } else {
                 print(error)
                 if let completion = completion {
-                    completion(success:false)
+                    completion(false)
                 }
             }
         }

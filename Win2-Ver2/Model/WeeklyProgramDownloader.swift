@@ -10,7 +10,7 @@ import AFNetworking
 import SwiftyJSON
 
 protocol WeeklyProgramDownloaderDelegate {
-    func didFinishDownloadinglistOfTenWeeklyProgramsFromImportIO(downloadedProgramsArray: [WeeklyProgram]?)
+    func didFinishDownloadinglistOfTenWeeklyProgramsFromImportIO(_ downloadedProgramsArray: [WeeklyProgram]?)
 }
 
 class WeeklyProgramDownloader {
@@ -39,7 +39,7 @@ class WeeklyProgramDownloader {
         let manager = AFHTTPSessionManager()
         manager.requestSerializer = AFJSONRequestSerializer()
         manager.responseSerializer = AFJSONResponseSerializer()
-        manager.GET(kImportIOURLForScrapingTenRecentWeeklyPrograms, parameters: nil,
+        manager.get(kImportIOURLForScrapingTenRecentWeeklyPrograms, parameters: nil,
             success: { (task, responseObject) -> Void in
                 let jsonData = JSON(responseObject!)
                 let resultsArray = jsonData["results"].arrayValue
@@ -72,7 +72,7 @@ class WeeklyProgramDownloader {
     
     - returns: PDF direct download link
     */
-    func getURLStringForSingleProgramDownload(pdfDownloadPageURL: String) -> String?{
+    func getURLStringForSingleProgramDownload(_ pdfDownloadPageURL: String) -> String?{
         //the logic in this method is not scalable because i'm basically guessing at the url format
         //but a lot of things could go wrong if the URL ever gets messed up
         //*for example, if Samuel uploads on September a programme from August, it will be under 29/2015/09/08/08.02 instead of 29/2015/08/08.02 due to wordpress rules
@@ -84,7 +84,7 @@ class WeeklyProgramDownloader {
         //we are trying to identify the one link
         
         let xPathQueryString = "//div[@class='cview editor']/p"
-        let divNodes = hppleParser?.searchWithXPathQuery(xPathQueryString) as! [TFHppleElement]
+        let divNodes = hppleParser?.search(withXPathQuery: xPathQueryString) as! [TFHppleElement]
         for element: TFHppleElement in divNodes {
             for child: TFHppleElement in element.children as! [TFHppleElement
                 ] {
@@ -92,41 +92,41 @@ class WeeklyProgramDownloader {
                 //Note that Hpple will not catch the link correctly sometimes because as you can see from our xPathQueryString above, we are looking for the case where the <a href> tag resides inside a div with class 'cview editor'
                 //If somebody on the wordpress side makes a mistake and for some weird reason puts the <a href> tag inside another div, Hpple will fail to catch because <div class="cview editor"> will have ended prematurely
                     
-                    
-                if child.tagName == "a" {
-                        let aHrefLinkStringForDirectDownloadPDF = child.objectForKey("href")
-//                        print(aHrefLinkStringForDirectDownloadPDF)
-                        //it gets tricky here to accommodate all edge cases
-                        //usually, the pdf name would end with korean characters -주보
-                        //but no, sometimes it's just like 11.27.2015
-                    
-                        //this forloop below should catch if korean characters was ever used in the PDF direct download URL and then return a sanitized version of that to return to WorshipVC
-                        //for all other cases, shouldn't I just return the
-                        let strLen = aHrefLinkStringForDirectDownloadPDF.characters.count
-                        for var i = strLen-1; i >= 0; i-- {
-                            let char = aHrefLinkStringForDirectDownloadPDF[i]
-                            if char == "보" {
-                                let koreanWordJooboSanitized = aHrefLinkStringForDirectDownloadPDF[i-1...i].stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
-                                let beginning = aHrefLinkStringForDirectDownloadPDF[0...i-2]
-                                let end = aHrefLinkStringForDirectDownloadPDF[i+1...strLen-1]
-//                                print(beginning + koreanWordJooboSanitized! + end)
-                                return beginning + koreanWordJooboSanitized! + end
-                            }
-                        }
-                        //if this check goes through without last character equaling "보" 
-                        //just return the aHrefLinkString
-                        return aHrefLinkStringForDirectDownloadPDF
-                }
+//                    
+//                if child.tagName == "a" {
+//                        let aHrefLinkStringForDirectDownloadPDF = child.object(forKey: "href")
+////                        print(aHrefLinkStringForDirectDownloadPDF)
+//                        //it gets tricky here to accommodate all edge cases
+//                        //usually, the pdf name would end with korean characters -주보
+//                        //but no, sometimes it's just like 11.27.2015
+//                    
+//                        //this forloop below should catch if korean characters was ever used in the PDF direct download URL and then return a sanitized version of that to return to WorshipVC
+//                        //for all other cases, shouldn't I just return the
+//                        let strLen = aHrefLinkStringForDirectDownloadPDF?.characters.count
+//                        for var i = strLen!-1; i >= 0; i -= 1 {
+//                            let char = aHrefLinkStringForDirectDownloadPDF?[i]
+//                            if char == "보" {
+//                                let koreanWordJooboSanitized = aHrefLinkStringForDirectDownloadPDF?[i-1...i].addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+//                                let beginning = aHrefLinkStringForDirectDownloadPDF?[0...i-2]
+//                                let end = aHrefLinkStringForDirectDownloadPDF?[i+1...strLen!-1]
+////                                print(beginning + koreanWordJooboSanitized! + end)
+//                                return beginning! + koreanWordJooboSanitized! + end!
+//                            }
+//                        }
+//                        //if this check goes through without last character equaling "보" 
+//                        //just return the aHrefLinkString
+//                        return aHrefLinkStringForDirectDownloadPDF
+//                }
             }
         }
         
         return nil
     }
 
-    private func getSourceFileOfPageWithProgrammePDFDownloadLink(pdfDownloadURL: String) -> TFHpple? {
-        let data = NSData(contentsOfURL: NSURL(string: pdfDownloadURL)!)
+    fileprivate func getSourceFileOfPageWithProgrammePDFDownloadLink(_ pdfDownloadURL: String) -> TFHpple? {
+        let data = try? Data(contentsOf: URL(string: pdfDownloadURL)!)
         if let data = data {
-            return TFHpple(HTMLData: data)
+            return TFHpple(htmlData: data)
         }
         return nil
     }

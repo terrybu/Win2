@@ -10,8 +10,8 @@ import UIKit
 
 class SocialServicesViewController: ParentViewController, UITableViewDelegate, UITableViewDataSource{
 
-    private var expandedAboutViewHeight: CGFloat = 0
-    private let kOriginalContentViewHeight: CGFloat = 700
+    fileprivate var expandedAboutViewHeight: CGFloat = 0
+    fileprivate let kOriginalContentViewHeight: CGFloat = 700
     @IBOutlet var contentView: UIView!
     @IBOutlet var expandableAboutView: ExpandableAboutView!
     @IBOutlet weak var constraintHeightExpandableView: NSLayoutConstraint!
@@ -24,7 +24,7 @@ class SocialServicesViewController: ParentViewController, UITableViewDelegate, U
     
     
     @IBAction func applyButtonPressed() {
-        self.presentSFSafariVCIfAvailable(NSURL(string: kApplySocialServicesTeamGoogleDocURL)!)
+        self.presentSFSafariVCIfAvailable(URL(string: kApplySocialServicesTeamGoogleDocURL)!)
         
     }
     
@@ -38,7 +38,7 @@ class SocialServicesViewController: ParentViewController, UITableViewDelegate, U
                 socialFeedPost = feedObject
                 socialNewsWidgetView.title = feedObject.parsedTitle
                 socialNewsWidgetView.dateLabel.text = feedObject.parsedDate
-                socialNewsWidgetView.viewMoreButton.addTarget(self, action: "viewMoreButtonWasPressed", forControlEvents: UIControlEvents.TouchUpInside)
+                socialNewsWidgetView.viewMoreButton.addTarget(self, action: #selector(SocialServicesViewController.viewMoreButtonWasPressed), for: UIControlEvents.touchUpInside)
                 break
             }
         }
@@ -49,16 +49,16 @@ class SocialServicesViewController: ParentViewController, UITableViewDelegate, U
     }
     
     @objc
-    private func viewMoreButtonWasPressed() {
+    fileprivate func viewMoreButtonWasPressed() {
         if let feedObject = socialFeedPost {
             FacebookFeedQuery.sharedInstance.displayFacebookPostObjectInWebView(feedObject, view: self.view, navigationController: navigationController)
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-        activityIndicator.center = CGPointMake(view.center.x, 100)
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        activityIndicator.center = CGPoint(x: view.center.x, y: 100)
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         FirebaseManager.sharedManager.getServiceEventObjectsFromFirebase({
@@ -73,19 +73,19 @@ class SocialServicesViewController: ParentViewController, UITableViewDelegate, U
     
     
     //MARK: UITableViewDataSource
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let eventsArray = eventsArray {
             return eventsArray.count
         }
         return 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "reuse")
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "reuse")
         
         let event = eventsArray![indexPath.row]
         cell.textLabel!.text = event.title
@@ -94,18 +94,18 @@ class SocialServicesViewController: ParentViewController, UITableViewDelegate, U
         return cell
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 40))
-        let label = UILabel(frame: CGRectMake(12, 5, 300, 18))
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
+        let label = UILabel(frame: CGRect(x: 12, y: 5, width: 300, height: 18))
         label.text = "긍휼부 이벤트 리스트"
-        headerView.backgroundColor = UIColor.whiteColor()
-        label.textColor = UIColor.blackColor()
-        label.font = UIFont.boldSystemFontOfSize(17)
+        headerView.backgroundColor = UIColor.white
+        label.textColor = UIColor.black
+        label.font = UIFont.boldSystemFont(ofSize: 17)
         headerView.addSubview(label)
         return headerView
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let event = eventsArray![indexPath.row]
         UIAlertController.presentAlert(self, alertTitle: event.title, alertMessage: "날짜: \(event.date) \nTeam: \(event.teamName)\n\n \(event.description)", confirmTitle: "OK")
     }
@@ -116,7 +116,7 @@ class SocialServicesViewController: ParentViewController, UITableViewDelegate, U
         super.init(coder: aDecoder)!
     }
     
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     

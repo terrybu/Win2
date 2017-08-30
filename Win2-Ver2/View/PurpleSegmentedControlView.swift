@@ -16,8 +16,8 @@ protocol PurpleSegmentedControlViewDelegate {
 }
 
 enum HomeScreenSegmentedControlIndex {
-    case MyFeed
-    case PIFeed
+    case myFeed
+    case piFeed
 }
 
 private let purpleBarSelectorBelowLabelHeightPadding:CGFloat = 1
@@ -31,15 +31,15 @@ private let purpleBarSelectorBelowLabelHeightPadding:CGFloat = 1
     @IBOutlet var myFeedButton: UIButton!
     @IBOutlet var piFeedButton: UIButton!
     
-    @IBAction func myFeedButtonPressed(sender: UIButton) {
-        sender.setTitleColor(UIColor.In2DeepPurple(), forState: UIControlState.Normal)
-        piFeedButton.setTitleColor(UIColor(rgba: "#bbbcbc"), forState: UIControlState.Normal)
+    @IBAction func myFeedButtonPressed(_ sender: UIButton) {
+        sender.setTitleColor(UIColor.In2DeepPurple(), for: UIControlState())
+        piFeedButton.setTitleColor(UIColor(rgba: "#bbbcbc"), for: UIControlState())
         purpleSegmentIndicatorBarImageView.frame = CGRect(x: 0, y: myFeedButton.frame.height + purpleBarSelectorBelowLabelHeightPadding, width:view.frame.size.width/2, height: 4)
         delegate?.didPressMyFeedButton()
     }
-    @IBAction func piFeedButtonPressed(sender: UIButton) {
-        sender.setTitleColor(UIColor.In2DeepPurple(), forState: UIControlState.Normal)
-        myFeedButton.setTitleColor(UIColor(rgba: "#bbbcbc"), forState: UIControlState.Normal)
+    @IBAction func piFeedButtonPressed(_ sender: UIButton) {
+        sender.setTitleColor(UIColor.In2DeepPurple(), for: UIControlState())
+        myFeedButton.setTitleColor(UIColor(rgba: "#bbbcbc"), for: UIControlState())
         purpleSegmentIndicatorBarImageView.frame = CGRect(x: view.frame.width/2, y: myFeedButton.frame.height + purpleBarSelectorBelowLabelHeightPadding, width:view.frame.size.width/2, height: 4)
         delegate?.didPressPIFeedButton()
     }
@@ -53,13 +53,13 @@ private let purpleBarSelectorBelowLabelHeightPadding:CGFloat = 1
     */
     
     override init(frame: CGRect) {
-        self.selectedSegment = HomeScreenSegmentedControlIndex.MyFeed
+        self.selectedSegment = HomeScreenSegmentedControlIndex.myFeed
         super.init(frame: frame)
         setUp()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.selectedSegment = HomeScreenSegmentedControlIndex.MyFeed
+        self.selectedSegment = HomeScreenSegmentedControlIndex.myFeed
         super.init(coder: aDecoder)
         setUp()
     }
@@ -67,14 +67,14 @@ private let purpleBarSelectorBelowLabelHeightPadding:CGFloat = 1
     func setUp() {
         view = loadViewFromNib()
         view.frame = bounds
-        view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         addSubview(view)
     }
     
     func loadViewFromNib() -> UIView {
-        let bundle = NSBundle(forClass: self.dynamicType)
+        let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "PurpleSegmentedControlView", bundle: bundle)
-        return nib.instantiateWithOwner(self, options: nil)[0] as! UIView
+        return nib.instantiate(withOwner: self, options: nil)[0] as! UIView
     }
     
     

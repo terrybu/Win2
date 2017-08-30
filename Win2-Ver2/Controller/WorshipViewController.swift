@@ -24,8 +24,8 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
     var thisMonthProgramsArray = [WeeklyProgram]()
     var thisMonthProgramsAreEmpty: Bool = false
     var headerTitleStringForPraiseSongsListSection: String?
-    let indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-    private let kOriginalContentViewHeight: CGFloat = 650
+    let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    fileprivate let kOriginalContentViewHeight: CGFloat = 650
     //Constraints
     @IBOutlet weak var constraintHeightExpandableView: NSLayoutConstraint!
     @IBOutlet weak var constraintContentViewHeight: NSLayoutConstraint!
@@ -36,9 +36,9 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
         setUpStandardUIForViewControllers()
         setUpExpandableAboutView(kOriginalAboutViewHeight, expandableAboutView: expandableAboutView, heightBuffer: 0, view: view, constraintHeightExpandableView: constraintHeightExpandableView, constraintContentViewHeight: constraintContentViewHeight, originalContentviewHeight: kOriginalContentViewHeight)
         getPraiseSongNamesListAndHeaderFromFacebook()
-        weeklyProgramsTableView.hidden = true
+        weeklyProgramsTableView.isHidden = true
         if weeklyProgramsArray.isEmpty {
-            indicator.center = CGPointMake(view.center.x, weeklyProgramsTableView.center.y)
+            indicator.center = CGPoint(x: view.center.x, y: weeklyProgramsTableView.center.y)
             view.addSubview(indicator)
             indicator.startAnimating()
         }
@@ -46,7 +46,7 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
         WeeklyProgramDownloader.sharedInstance.getTenRecentWeeklyProgramsListFromImportIO()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(WorshipViewController.didPressSeeMoreWorshipVideos))
-        worshipVideosClickView.userInteractionEnabled = true
+        worshipVideosClickView.isUserInteractionEnabled = true
         worshipVideosClickView.addGestureRecognizer(tapGesture)
     }
     
@@ -71,7 +71,7 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
     
     - parameter postBody: Body message of the post
     */
-    private func parseEachLineOfPraiseSongPostBodyMessageToFillSongsArray(postBody: String) {
+    fileprivate func parseEachLineOfPraiseSongPostBodyMessageToFillSongsArray(_ postBody: String) {
         var i = 0
         var newSongName = ""
         while i < postBody.characters.count {
@@ -104,31 +104,31 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
     
     
     //MARK: WeeklyProgramDownloader Delegate methods
-    func didFinishDownloadinglistOfTenWeeklyProgramsFromImportIO(downloadedProgramsArray: [WeeklyProgram]?) {
+    func didFinishDownloadinglistOfTenWeeklyProgramsFromImportIO(_ downloadedProgramsArray: [WeeklyProgram]?) {
         if let downloadedProgramsArray = downloadedProgramsArray {
             self.weeklyProgramsArray = downloadedProgramsArray
             weeklyProgramsTableView.reloadData()
             indicator.stopAnimating()
-            weeklyProgramsTableView.hidden = false
+            weeklyProgramsTableView.isHidden = false
         }
     }
     
     //MARK: UITableViewDataSource Methods
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (tableView == weeklyProgramsTableView) {
             let todaysMonth = DateManager.sharedInstance.getTodaysMonth()
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM.dd.yyyy"
             for program in weeklyProgramsArray {
                 if let dateProgramString = program.dateString {
-                    let dateProgramNSDate = dateFormatter.dateFromString(dateProgramString)
+                    let dateProgramNSDate = dateFormatter.date(from: dateProgramString)
                     if let dateProgramNSDate = dateProgramNSDate {
                         print(dateProgramNSDate)
-                        let thisProgramDateComponents = NSCalendar.currentCalendar().components([.Day, .Month, .Year], fromDate: dateProgramNSDate)
+                        let thisProgramDateComponents = (Calendar.current as NSCalendar).components([.day, .month, .year], from: dateProgramNSDate)
                         if thisProgramDateComponents.month == todaysMonth {
                             print(thisProgramDateComponents)
                             thisMonthProgramsArray.append(program)
@@ -154,12 +154,12 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
     }
     
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell
         cell = UITableViewCell()
         if (tableView == weeklyProgramsTableView) {
             if thisMonthProgramsAreEmpty {
-                cell.textLabel?.font = UIFont.systemFontOfSize(13.0)
+                cell.textLabel?.font = UIFont.systemFont(ofSize: 13.0)
                 if indexPath.row == 0 {
                     cell.textLabel!.text = "이번 달의 주보는 아직 업로드되지 않았습니다."
                 } else {
@@ -172,7 +172,7 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
             }
         } else {
             if praiseSongsListIsEmpty {
-                cell.textLabel?.font = UIFont.systemFontOfSize(14.0)
+                cell.textLabel?.font = UIFont.systemFont(ofSize: 14.0)
                 if indexPath.row == 0 {
                     cell.textLabel!.text = "최근에 찬양송 리스트가 업데이트되지 않았거나"
                 } else {
@@ -187,41 +187,41 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
     }
     
     //MARK: UITableViewDelegate
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 40))
-        headerView.backgroundColor = UIColor.whiteColor()
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
+        headerView.backgroundColor = UIColor.white
         var label: UILabel
         if (tableView == weeklyProgramsTableView) {
-            label = UILabel(frame: CGRectMake(12, 5, tableView.frame.size.width * 0.75, 18))
+            label = UILabel(frame: CGRect(x: 12, y: 5, width: tableView.frame.size.width * 0.75, height: 18))
             label.text = getTodaysMonthStringForWeeklyProgramsTableView()
             
             //"See more arrow button" to the right of section header
-            let button = UIButton(type: UIButtonType.Custom)
-            button.frame = CGRectMake(tableView.frame.size.width - 70, 5, 50, 20)
-            button.setTitle("더보기", forState: UIControlState.Normal)
-            button.titleLabel!.font = UIFont.boldSystemFontOfSize(16)
-            button.setTitleColor(UIColor.In2DeepPurple(), forState: UIControlState.Normal)
-            button.addTarget(self, action: "seeMoreArrowWasPressedForWeeklyProgramsTableView", forControlEvents: UIControlEvents.TouchUpInside)
+            let button = UIButton(type: UIButtonType.custom)
+            button.frame = CGRect(x: tableView.frame.size.width - 70, y: 5, width: 50, height: 20)
+            button.setTitle("더보기", for: UIControlState())
+            button.titleLabel!.font = UIFont.boldSystemFont(ofSize: 16)
+            button.setTitleColor(UIColor.In2DeepPurple(), for: UIControlState())
+            button.addTarget(self, action: #selector(WorshipViewController.seeMoreArrowWasPressedForWeeklyProgramsTableView), for: UIControlEvents.touchUpInside)
             headerView.addSubview(button)
             //This is the same function as "더보기" just to the right of the text.
-            let moreArrowButton = UIButton(type: UIButtonType.Custom)
-            moreArrowButton.frame = CGRectMake(tableView.frame.size.width-30, 5, 30, 20)
-            moreArrowButton.setImage(UIImage(named: "btn_more_B"), forState: .Normal)
-            moreArrowButton.addTarget(self, action: "seeMoreArrowWasPressedForWeeklyProgramsTableView", forControlEvents: UIControlEvents.TouchUpInside)
+            let moreArrowButton = UIButton(type: UIButtonType.custom)
+            moreArrowButton.frame = CGRect(x: tableView.frame.size.width-30, y: 5, width: 30, height: 20)
+            moreArrowButton.setImage(UIImage(named: "btn_more_B"), for: UIControlState())
+            moreArrowButton.addTarget(self, action: #selector(WorshipViewController.seeMoreArrowWasPressedForWeeklyProgramsTableView), for: UIControlEvents.touchUpInside)
             headerView.addSubview(moreArrowButton)
         } else {
-            label = UILabel(frame: CGRectMake(12, 5, 300, 18))
+            label = UILabel(frame: CGRect(x: 12, y: 5, width: 300, height: 18))
             if let headerTitle = headerTitleStringForPraiseSongsListSection {
                 label.text = headerTitle
             } else {
                 //something went wrong so Praise Songs List not appearing at all
                 //Two reasons: internet failure or Facebook query json data failed to retrieve Praise Songs Data in its recent 20 objects 
                 label.text = "찬양송 리스트가 작동하지 않고 있습니다."
-                headerView.backgroundColor = UIColor.grayColor()
-                label.textColor = UIColor.whiteColor()
+                headerView.backgroundColor = UIColor.gray
+                label.textColor = UIColor.white
             }
         }
-        label.font = UIFont.boldSystemFontOfSize(17)
+        label.font = UIFont.boldSystemFont(ofSize: 17)
         headerView.addSubview(label)
         
         return headerView
@@ -233,34 +233,34 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
     func getTodaysMonthStringForWeeklyProgramsTableView() -> String {
         let todaysMonthInt = DateManager.sharedInstance.getTodaysMonth()
         let todaysYearInt = DateManager.sharedInstance.getTodaysYear()
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         let monthNames = dateFormatter.standaloneMonthSymbols
-        let monthName = monthNames[todaysMonthInt-1]
+        let monthName = monthNames?[todaysMonthInt-1]
         return "\(monthName) \(todaysYearInt) 주보 보기"
     }
     
     func seeMoreArrowWasPressedForWeeklyProgramsTableView() {
         print("seeMoreArrowWasPressed")
-        performSegueWithIdentifier("AllWeeklyProgramsTableViewControllerSegue", sender: self)
+        performSegue(withIdentifier: "AllWeeklyProgramsTableViewControllerSegue", sender: self)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AllWeeklyProgramsTableViewControllerSegue" {
-            let programsVC = segue.destinationViewController as! AllWeeklyProgramsTableViewController
+            let programsVC = segue.destination as! AllWeeklyProgramsTableViewController
             programsVC.allWeeklyProgramsArray = self.weeklyProgramsArray
         }
         self.navigationItem.backBarButtonItem?.title = ""
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == weeklyProgramsTableView {
             if thisMonthProgramsAreEmpty {
                 return
@@ -272,8 +272,8 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
         else if tableView == songsTableView {
             let songObject = songObjectsArray[indexPath.row]
             if let songURLString = songObject.songYouTubeURL {
-                let trimSpacesFromURLString = songURLString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-                let url = NSURL(string: trimSpacesFromURLString)
+                let trimSpacesFromURLString = songURLString.trimmingCharacters(in: CharacterSet.whitespaces)
+                let url = URL(string: trimSpacesFromURLString)
                 if let url = url {
                     presentSFSafariVCIfAvailable(url)
                 }
@@ -283,11 +283,11 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
 
     //MARK: IBActions
     @IBAction func didPressSeeMoreWorshipVideos() {
-        presentSFSafariVCIfAvailable(NSURL(string: kYoutubeIn2WorshipVideosURL)!)
+        presentSFSafariVCIfAvailable(URL(string: kYoutubeIn2WorshipVideosURL)!)
     }
     
     @IBAction func didPressApplyButtonForWorshipTeam() {
-        presentSFSafariVCIfAvailable(NSURL(string: kApplyWorshipTeamGoogleDocURL)!)
+        presentSFSafariVCIfAvailable(URL(string: kApplyWorshipTeamGoogleDocURL)!)
     }
     
 }

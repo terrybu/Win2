@@ -19,9 +19,9 @@ import UIKit
         didSet {
             if expanded == false {
                 //if expanded becomes false, then it means it just closed. Arrow should point down
-                arrowImageButton.setImage(UIImage(named: "btn_down_w"), forState: UIControlState.Normal)
+                arrowImageButton.setImage(UIImage(named: "btn_down_w"), for: UIControlState())
             } else {
-                arrowImageButton.setImage(UIImage(named: "btn_up_w"), forState: UIControlState.Normal)
+                arrowImageButton.setImage(UIImage(named: "btn_up_w"), for: UIControlState())
             }
         }
     }
@@ -72,14 +72,14 @@ import UIKit
     func setUp() {
         view = loadViewFromNib()
         view.frame = bounds
-        view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         addSubview(view)
     }
     
     func loadViewFromNib() -> UIView {
-        let bundle = NSBundle(forClass: self.dynamicType)
+        let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "ExpandableAboutView", bundle: bundle)
-        return nib.instantiateWithOwner(self, options: nil)[0] as! UIView
+        return nib.instantiate(withOwner: self, options: nil)[0] as! UIView
     }
 
 }

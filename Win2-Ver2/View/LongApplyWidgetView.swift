@@ -11,13 +11,13 @@ import UIKit
 @IBDesignable class LongApplyWidgetView: UIView {
     
     var view: UIView!
-    var applyButtonPressedHandler: ((sender: UIButton) -> Void)?
+    var applyButtonPressedHandler: ((_ sender: UIButton) -> Void)?
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var applyButton: UIButton!
     
-    @IBAction func applyButtonPressed(sender: UIButton) {
+    @IBAction func applyButtonPressed(_ sender: UIButton) {
         if let handler = applyButtonPressedHandler {
-            handler(sender: sender)
+            handler(sender)
         }
     }
     
@@ -43,14 +43,14 @@ import UIKit
     func setUp() {
         view = loadViewFromNib()
         view.frame = bounds
-        view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         addSubview(view)
     }
     
     func loadViewFromNib() -> UIView {
-        let bundle = NSBundle(forClass: self.dynamicType)
+        let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "LongApplyWidgetView", bundle: bundle)
-        return nib.instantiateWithOwner(self, options: nil)[0] as! UIView
+        return nib.instantiate(withOwner: self, options: nil)[0] as! UIView
     }
 
 }

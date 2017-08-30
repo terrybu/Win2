@@ -14,15 +14,15 @@ class AllWeeklyProgramsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         self.title = "주보 보기"
-        let homeButton = UIBarButtonItem(image: UIImage(named: "home"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("homeButtonPressed"))
+        let homeButton = UIBarButtonItem(image: UIImage(named: "home"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(AllWeeklyProgramsTableViewController.homeButtonPressed))
         navigationItem.rightBarButtonItem = homeButton
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let allWeeklyProgramsArray = allWeeklyProgramsArray {
             if allWeeklyProgramsArray.count == 0 {
                 return 2
@@ -32,7 +32,7 @@ class AllWeeklyProgramsTableViewController: UITableViewController {
         return 2
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let allWeeklyProgramsArray = allWeeklyProgramsArray else {
             let cell = UITableViewCell()
             if indexPath.row == 0 {
@@ -42,14 +42,14 @@ class AllWeeklyProgramsTableViewController: UITableViewController {
             }
             return cell
         }
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "AllWeeklyProgramsTableViewCellIdentifier")
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "AllWeeklyProgramsTableViewCellIdentifier")
         let program = allWeeklyProgramsArray[indexPath.row]
         cell.textLabel?.text = program.title
         cell.accessoryView = UIImageView(image: UIImage(named: "btn_download"))
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let weeklyProgram = allWeeklyProgramsArray![indexPath.row]
         WeeklyProgramDisplayManager.sharedInstance.displayWeeklyProgramLogic(weeklyProgram, view: view, navController: self.navigationController!, viewController: self)
     }

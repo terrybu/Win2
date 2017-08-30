@@ -47,24 +47,24 @@ import UIKit
     func setUp() {
         view = loadViewFromNib()
         view.frame = bounds
-        view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         addSubview(view)
     }
     
     func loadViewFromNib() -> UIView {
-        let bundle = NSBundle(forClass: self.dynamicType)
+        let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "NewsArticleView", bundle: bundle)
-        return nib.instantiateWithOwner(self, options: nil)[0] as! UIView
+        return nib.instantiate(withOwner: self, options: nil)[0] as! UIView
     }
     
     override func awakeFromNib() {
         categoryLabel.layer.borderWidth = 1
-        categoryLabel.layer.borderColor = UIColor.whiteColor().CGColor
+        categoryLabel.layer.borderColor = UIColor.white.cgColor
         categoryLabel.edgeInsets = UIEdgeInsetsMake(0, 10, 0, 10)
         
         if blackOverlay == nil {
             blackOverlay = UIView(frame:self.frame)
-            blackOverlay!.backgroundColor = UIColor.blackColor()
+            blackOverlay!.backgroundColor = UIColor.black
             blackOverlay!.alpha = 0.4
             self.backgroundImageView.addSubview(blackOverlay!)
         }

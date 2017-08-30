@@ -14,7 +14,7 @@ let kParamsOnlyAccessToken = [
 ]
 
 protocol FacebookPhotoQueryDelegate {
-    func didFinishGettingFacebookPhotos(fbPhotoObjectsArray: [FBPhoto])
+    func didFinishGettingFacebookPhotos(_ fbPhotoObjectsArray: [FBPhoto])
 }
 
 class FacebookPhotoQuery: FacebookQuery {
@@ -22,7 +22,7 @@ class FacebookPhotoQuery: FacebookQuery {
     static let sharedInstance = FacebookPhotoQuery()
     var delegate: FacebookPhotoQueryDelegate?
     var FBPhotoObjectsArray = [FBPhoto]()
-    func getPhotosFromMostRecentThreeAlbums(completion: ((error: NSError!) -> Void)?) {
+    func getPhotosFromMostRecentThreeAlbums(_ completion: ((_ error: NSError?) -> Void)?) {
 
         super.getFBDataJSON(kGraphPathPIMagazineAlbumsString, params: kParamsOnlyAccessToken,
             onSuccess: { (jsonData) -> Void in
@@ -56,13 +56,13 @@ class FacebookPhotoQuery: FacebookQuery {
             },
             onError: { (error) -> Void in
                 if let completion = completion {
-                    completion(error: error)
+                    completion(error)
                 }
         })
     }
     
-    private func getDataFromFBAlbum(albumID: String, params: [String : String], completion: (() -> Void)?) {
-        FBSDKGraphRequest(graphPath: albumID, parameters: params).startWithCompletionHandler { (connection, albumPhotos, error) -> Void in
+    fileprivate func getDataFromFBAlbum(_ albumID: String, params: [String : String], completion: (() -> Void)?) {
+        FBSDKGraphRequest(graphPath: albumID, parameters: params).start { (connection, albumPhotos, error) -> Void in
             //            println(albumPhotos)
             let albumPhotosJSON = JSON(albumPhotos)
             let photos = albumPhotosJSON["photos"]
@@ -78,14 +78,14 @@ class FacebookPhotoQuery: FacebookQuery {
         }
     }
     
-    func getNormalSizePhotoURLStringFrom(id: String, completion: ((normImgUrlString: String) -> Void)?) -> Void{
+    func getNormalSizePhotoURLStringFrom(_ id: String, completion: ((_ normImgUrlString: String) -> Void)?) -> Void{
         let graphPathString = "\(id)/picture?type=normal&redirect=false"
         super.getFBDataJSON(graphPathString, params: kParamsOnlyAccessToken,
             onSuccess: { (jsonData) -> Void in
               let object = jsonData["data"]
               let url = object["url"]
               if let completion = completion {
-                completion(normImgUrlString: url.stringValue)
+                completion(url.stringValue)
               }
         },
             onError: { (error: NSError!) -> Void in
@@ -93,7 +93,7 @@ class FacebookPhotoQuery: FacebookQuery {
         })
     }
     
-    func getNormalSizePhotoURLStringForCommunicationsFrom(id: String, completion: ((normImgUrlString: String) -> Void)?) -> Void{
+    func getNormalSizePhotoURLStringForCommunicationsFrom(_ id: String, completion: ((_ normImgUrlString: String) -> Void)?) -> Void{
         let params = [
             "access_token": kAppAccessToken,
             "fields" : "full_picture"
@@ -103,7 +103,7 @@ class FacebookPhotoQuery: FacebookQuery {
             onSuccess: { (jsonData) -> Void in
                 let url = jsonData["full_picture"]
                 if let completion = completion {
-                    completion(normImgUrlString: url.stringValue)
+                    completion(url.stringValue)
                 }
             },
             onError: { (error: NSError!) -> Void in

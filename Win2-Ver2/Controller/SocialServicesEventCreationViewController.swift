@@ -18,11 +18,11 @@ class SocialServicesEventCreationViewController: UIViewController, UITextFieldDe
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "pressedDoneButton")
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(SocialServicesEventCreationViewController.pressedDoneButton))
         self.navigationItem.rightBarButtonItem = doneButton
         
         eventDescriptionTextview.layer.borderWidth = 1.5
-        eventDescriptionTextview.layer.borderColor = UIColor(rgba: "#BBBCBC").CGColor
+        eventDescriptionTextview.layer.borderColor = UIColor(rgba: "#BBBCBC").cgColor
     }
     
     func pressedDoneButton() {
@@ -30,7 +30,7 @@ class SocialServicesEventCreationViewController: UIViewController, UITextFieldDe
         //firebase logic
         let newEvent = SocialServiceEvent(title: eventTitle.text!, teamName: eventTeamName.text!, description: eventDescriptionTextview.text!, date: CustomDateFormatter.sharedInstance.convertDateTimeToFirebaseStringFormat(eventDatePicker.date))
         FirebaseManager.sharedManager.createNewSocialServiceEventOnFirebase(newEvent) { (success) -> Void in
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewController(animated: true)
         }
         
     }
@@ -46,7 +46,7 @@ class SocialServicesEventCreationViewController: UIViewController, UITextFieldDe
     /**
     * Called when 'return' key pressed. return NO to ignore.
     */
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
@@ -56,7 +56,7 @@ class SocialServicesEventCreationViewController: UIViewController, UITextFieldDe
     /**
      * Called when the user click on the view (outside the UITextField).
      */
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         self.eventDescriptionTextview.endEditing(true)
     }

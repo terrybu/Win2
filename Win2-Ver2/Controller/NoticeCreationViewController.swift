@@ -17,18 +17,18 @@ class NoticeCreationViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "pressedDoneButton")
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(NoticeCreationViewController.pressedDoneButton))
         self.navigationItem.rightBarButtonItem = doneButton
     }
     
     func pressedDoneButton() {
         print("press done")
-        if let title = titleTextField.text, body = bodyTextField.text, link = linkTextField.text {
+        if let title = titleTextField.text, let body = bodyTextField.text, let link = linkTextField.text {
             let newNotice = Notice(title: title, body: body, link: link, date: CustomDateFormatter.sharedInstance.returnTodaysDateStringInFormat())
             
             //Push new notice into Firebase
             FirebaseManager.sharedManager.createNewNoticeOnFirebase(newNotice, completion: { (success) -> Void in
-                self.navigationController?.popViewControllerAnimated(true)
+                self.navigationController?.popViewController(animated: true)
             })
             
             
@@ -46,7 +46,7 @@ class NoticeCreationViewController: UIViewController, UITextFieldDelegate {
     /**
      * Called when 'return' key pressed. return NO to ignore.
      */
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
@@ -54,7 +54,7 @@ class NoticeCreationViewController: UIViewController, UITextFieldDelegate {
     /**
      * Called when the user click on the view (outside the UITextField).
      */
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
 

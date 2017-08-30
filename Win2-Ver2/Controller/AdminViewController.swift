@@ -18,46 +18,46 @@ class AdminViewController: UIViewController {
         super.viewDidLoad()
         setUpUIForNavBarAndStatus()
         
-        let backButton = UIBarButtonItem(image: UIImage(named: "btn_X"), style: UIBarButtonItemStyle.Done, target: self, action: "dismissVC")
+        let backButton = UIBarButtonItem(image: UIImage(named: "btn_X"), style: UIBarButtonItemStyle.done, target: self, action: #selector(AdminViewController.dismissVC))
         self.navigationItem.leftBarButtonItem = backButton
         
-        if AuthenticationManager.sharedManager.currentUserMode == .SocialServicesAdmin {
-            noticeButton.enabled = false
+        if AuthenticationManager.sharedManager.currentUserMode == .socialServicesAdmin {
+            noticeButton.isEnabled = false
         } else {
-            noticeButton.enabled = true
+            noticeButton.isEnabled = true
         }
     }
     
     func dismissVC() {
-        self.navigationController?.dismissViewControllerAnimated(false, completion: nil)
+        self.navigationController?.dismiss(animated: false, completion: nil)
     }
     
-    private func setUpUIForNavBarAndStatus() {
+    fileprivate func setUpUIForNavBarAndStatus() {
         self.title = "Admin Mode"
-        let statusBarBackgroundView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.size.width, height: 20))
+        let statusBarBackgroundView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 20))
         statusBarBackgroundView.backgroundColor = UIColor(patternImage: UIImage(named:"status_bar")!)
         navigationController!.view.addSubview(statusBarBackgroundView)
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navigation_bar"), forBarMetrics: UIBarMetrics.Default)
-        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navigation_bar"), for: UIBarMetrics.default)
+        navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName : UIColor.whiteColor(),
+            NSForegroundColorAttributeName : UIColor.white,
             NSFontAttributeName : UIFont(name: "NanumBarunGothic", size: 18.0)!
         ]
         navigationController!.navigationBar.shadowImage = UIImage()
-        let whiteHairLineCustom = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.size.width, height: 0.5))
-        whiteHairLineCustom.backgroundColor = UIColor.whiteColor()
+        let whiteHairLineCustom = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 0.5))
+        whiteHairLineCustom.backgroundColor = UIColor.white
         whiteHairLineCustom.alpha = 0.5
         view.addSubview(whiteHairLineCustom)
     }
     
     
-    @IBAction func noticeButtonPressed(sender: AnyObject) {
+    @IBAction func noticeButtonPressed(_ sender: AnyObject) {
         let noticeVC = NoticeAdminViewController()
         self.navigationController?.pushViewController(noticeVC, animated: true)
     }
     
     
-    @IBAction func socialServicesSchedulePressed(sender: AnyObject) {
+    @IBAction func socialServicesSchedulePressed(_ sender: AnyObject) {
         let socialServiceEventAdminVC = SocialServicesEventAdminTableViewController()
         self.navigationController?.pushViewController(socialServiceEventAdminVC, animated: true)
     }
@@ -67,7 +67,7 @@ class AdminViewController: UIViewController {
         super.init(coder: aDecoder)!
     }
     
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     

@@ -32,27 +32,27 @@ class ExpandableAboutViewHandler: NSObject, UIGestureRecognizerDelegate {
         if !expandableView.expanded {
             print("Expand - pressed view when it wasn't expanded")
             
-            UIView.animateWithDuration(0.5, animations: { () -> Void in
+            UIView.animate(withDuration: 0.5, animations: { () -> Void in
                 self.constraintExpandableViewHeight.constant = self.expandedAboutViewHeight
                 self.constraintContentViewHeight.constant += self.expandedAboutViewHeight - self.originalAboutViewHeight
                 self.viewControllerView.layoutIfNeeded()
                 self.expandableView.expanded = true
                 
-                }) { (completed) -> Void in
+                }, completion: { (completed) -> Void in
                     //
-            }
+            }) 
         }
         else {
             print("Collapse - pressed view when it WAS expanded")
-            UIView.animateWithDuration(0.5, animations: { () -> Void in
+            UIView.animate(withDuration: 0.5, animations: { () -> Void in
                 self.constraintExpandableViewHeight.constant = self.originalAboutViewHeight
                 self.constraintContentViewHeight.constant =  self.originalContentViewHeight
                 self.viewControllerView.layoutIfNeeded()
                 self.expandableView.expanded = false
                 
-                }) { (completed) -> Void in
+                }, completion: { (completed) -> Void in
                     //
-            }
+            }) 
         }
     }
     

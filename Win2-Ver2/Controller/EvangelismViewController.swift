@@ -17,7 +17,7 @@ class EvangelismViewController: ParentViewController, UIGestureRecognizerDelegat
     @IBOutlet weak var constraintHeightExpandableView: NSLayoutConstraint!
     @IBOutlet weak var constraintContentViewHeight: NSLayoutConstraint!
     var expandedAboutViewHeight:CGFloat = 0
-    private let kOriginalContentViewHeight: CGFloat = 600
+    fileprivate let kOriginalContentViewHeight: CGFloat = 600
     
     var evangelismFeedObject: FBFeedPost?
     @IBOutlet var evangelismNewsWidgetView: BoroSpecificNewsWidgetView!
@@ -33,7 +33,7 @@ class EvangelismViewController: ParentViewController, UIGestureRecognizerDelegat
                 evangelismFeedObject = feedObject
                 evangelismNewsWidgetView.title = feedObject.parsedTitle
                 evangelismNewsWidgetView.dateLabel.text = feedObject.parsedDate
-                evangelismNewsWidgetView.viewMoreButton.addTarget(self, action: "viewMoreButtonWasPressedForEvangelismNews", forControlEvents: UIControlEvents.TouchUpInside)
+                evangelismNewsWidgetView.viewMoreButton.addTarget(self, action: #selector(EvangelismViewController.viewMoreButtonWasPressedForEvangelismNews), for: UIControlEvents.touchUpInside)
                 break
             }
         }
@@ -42,26 +42,26 @@ class EvangelismViewController: ParentViewController, UIGestureRecognizerDelegat
             evangelismNewsWidgetView.dateLabel.text = nil
         }
         
-        evangelismImageView.userInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: "playVideo")
+        evangelismImageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EvangelismViewController.playVideo))
         tapGesture.delegate = self
         tapGesture.numberOfTapsRequired = 1
         evangelismImageView.addGestureRecognizer(tapGesture)
-        playButton.addTarget(self, action: "playVideo", forControlEvents: UIControlEvents.TouchUpInside)
+        playButton.addTarget(self, action: #selector(EvangelismViewController.playVideo), for: UIControlEvents.touchUpInside)
     }
     
     func playVideo()  {
-         let path = NSBundle.mainBundle().pathForResource("phillyMission", ofType:"mp4")
-        let player = AVPlayer(URL: NSURL(fileURLWithPath: path!))
+         let path = Bundle.main.path(forResource: "phillyMission", ofType:"mp4")
+        let player = AVPlayer(url: URL(fileURLWithPath: path!))
         let playerController = AVPlayerViewController()
         playerController.player = player
-        self.presentViewController(playerController, animated: true) {
+        self.present(playerController, animated: true) {
             player.play()
         }
     }
     
     @objc
-    private func viewMoreButtonWasPressedForEvangelismNews() {
+    fileprivate func viewMoreButtonWasPressedForEvangelismNews() {
         if let feedObject = evangelismFeedObject {
             FacebookFeedQuery.sharedInstance.displayFacebookPostObjectInWebView(feedObject, view: self.view, navigationController: navigationController)
         }
@@ -72,7 +72,7 @@ class EvangelismViewController: ParentViewController, UIGestureRecognizerDelegat
         super.init(coder: aDecoder)!
     }
     
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 }

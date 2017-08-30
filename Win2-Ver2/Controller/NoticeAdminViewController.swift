@@ -17,14 +17,14 @@ class NoticeAdminViewController: UIViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
         
         self.title = "공지사항"
-        let addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addNotice")
+        let addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(NoticeAdminViewController.addNotice))
         self.navigationItem.rightBarButtonItem = addButton
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-        activityIndicator.center = CGPointMake(view.center.x, 100)
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        activityIndicator.center = CGPoint(x: view.center.x, y: 100)
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         FirebaseManager.sharedManager.getNoticeObjectsFromFirebase({
@@ -44,35 +44,35 @@ class NoticeAdminViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     //MARK: TableViewDataSource Protocol Methods
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         if let savedNoticesArray = savedNoticesArray {
             return 1
         }
         return 0
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let savedNoticesArray = savedNoticesArray {
             return savedNoticesArray.count
         }
         return 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: nil)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: nil)
         let notice = savedNoticesArray![indexPath.row]
         cell.textLabel!.text = notice.title
         cell.detailTextLabel!.text = notice.date
         if notice.active == true {
-            cell.accessoryType = .Checkmark
+            cell.accessoryType = .checkmark
         }
         return cell
     }
     
     //MARK: TableViewDelegate Protocol Methods
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
             for notice in savedNoticesArray! {
                 if notice.active {
                     notice.active = false
@@ -89,13 +89,13 @@ class NoticeAdminViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
     }
     
     
     // Override to support conditional editing of the table view.
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
@@ -103,13 +103,13 @@ class NoticeAdminViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     // Override to support editing the table view.
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             // Delete the row from the data source
             let notice = savedNoticesArray![indexPath.row]
             FirebaseManager.sharedManager.deleteNotice(notice, completion: nil)
-            self.savedNoticesArray?.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
+            self.savedNoticesArray?.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.left)
         }
     }
     

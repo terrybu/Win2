@@ -21,16 +21,16 @@ class CommunicationsTableViewCell: UITableViewCell {
         // Initialization code
         
         categoryLabel.layer.borderWidth = 1
-        categoryLabel.layer.borderColor = UIColor.whiteColor().CGColor
+        categoryLabel.layer.borderColor = UIColor.white.cgColor
         categoryLabel.edgeInsets = UIEdgeInsetsMake(0, 10, 0, 10)
         
         blackOverlay = UIView(frame:self.backgroundImageView.frame)
-        blackOverlay!.backgroundColor = UIColor.blackColor()
+        blackOverlay!.backgroundColor = UIColor.black
         blackOverlay!.alpha = 0.3
         backgroundImageView.addSubview(self.blackOverlay!)
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

@@ -17,7 +17,7 @@ class HomeScreenViewController: ParentViewController, FacebookFeedQueryDelegate 
     @IBOutlet weak var newsArticleView: NewsArticleView!
     @IBOutlet weak var noticeWidget: NoticeWidget!
     var activeNotice: Notice?
-    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
+    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class HomeScreenViewController: ParentViewController, FacebookFeedQueryDelegate 
         FacebookFeedQuery.sharedInstance.delegate = self
         FacebookFeedQuery.sharedInstance.getFeedFromPIMagazine { (error) -> Void in
             if error != nil {
-                print(error.description)
+                print(error?.description)
                 self.activityIndicator.stopAnimating()
             }
         }
@@ -38,7 +38,7 @@ class HomeScreenViewController: ParentViewController, FacebookFeedQueryDelegate 
             if success {
                 self.activeNotice = FirebaseManager.sharedManager.activeNotice!
                 self.noticeWidget.body = self.activeNotice!.title
-                self.noticeWidget.viewMoreNoticeButton.addTarget(self, action: "viewMoreNotice", forControlEvents: UIControlEvents.TouchUpInside)
+                self.noticeWidget.viewMoreNoticeButton.addTarget(self, action: "viewMoreNotice", for: UIControlEvents.touchUpInside)
             }
         })
     }
@@ -52,39 +52,39 @@ class HomeScreenViewController: ParentViewController, FacebookFeedQueryDelegate 
         }
     }
     
-    private func setUpUniqueUIForHomeVC() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navigation_bar"), forBarMetrics: UIBarMetrics.Default)
-        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        let hamburger = UIBarButtonItem(image: UIImage(named: "hamburger"), style: UIBarButtonItemStyle.Done, target: self, action: Selector("hamburgerPressed:"))
+    fileprivate func setUpUniqueUIForHomeVC() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navigation_bar"), for: UIBarMetrics.default)
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        let hamburger = UIBarButtonItem(image: UIImage(named: "hamburger"), style: UIBarButtonItemStyle.done, target: self, action: Selector("hamburgerPressed:"))
         navigationItem.leftBarButtonItem = hamburger
     }
     
-    private func blackOverlayAndLoadingSpinnerUntilFBDataFinishedLoading() {
+    fileprivate func blackOverlayAndLoadingSpinnerUntilFBDataFinishedLoading() {
         black = UIView(frame: view.frame)
-        black.backgroundColor = UIColor.blackColor()
+        black.backgroundColor = UIColor.black
         view.addSubview(black)
         activityIndicator.center = view.center
         activityIndicator.startAnimating()
         view.addSubview(activityIndicator)
     }
     
-    func tappedNewsArticleView(sender: UIGestureRecognizer) {
+    func tappedNewsArticleView(_ sender: UIGestureRecognizer) {
         print(firstObjectID)
         //postURL has to nick out the second part of the _ string from firstObjectID
-        let postURLParam = firstObjectID.componentsSeparatedByString("_").last
+        let postURLParam = firstObjectID.components(separatedBy: "_").last
         let postURL = "\(kFacebookPageURL)\(postURLParam!)"
         let wkWebView = UIWebView(frame: self.view.frame)
-        wkWebView.loadRequest(NSURLRequest(URL: NSURL(string: postURL)!))
+        wkWebView.loadRequest(URLRequest(url: URL(string: postURL)!))
         let emptyVC = UIViewController()
         emptyVC.view = wkWebView
         navigationController?.pushViewController(emptyVC, animated: true)
     }
     
     //MARK: FacebookFeedQueryDelegate 
-    func didFinishGettingFacebookFeedData(fbFeedObjectArray: [FBFeedPost]) {
-        let tapGesture = UITapGestureRecognizer(target: self, action: Selector("tappedNewsArticleView:"))
-        newsArticleView.userInteractionEnabled = true
+    func didFinishGettingFacebookFeedData(_ fbFeedObjectArray: [FBFeedPost]) {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(HomeScreenViewController.tappedNewsArticleView(_:)))
+        newsArticleView.isUserInteractionEnabled = true
         newsArticleView.addGestureRecognizer(tapGesture)
         
         let firstObject = fbFeedObjectArray[0]
@@ -94,7 +94,7 @@ class HomeScreenViewController: ParentViewController, FacebookFeedQueryDelegate 
         firstObjectID = firstObject.id
         if firstObject.type == "photo" {
             FacebookPhotoQuery.sharedInstance.getNormalSizePhotoURLStringForCommunicationsFrom(firstObject.id, completion: { (normImgUrlString) -> Void in
-                    self.newsArticleView.backgroundImageView.setImageWithURL(NSURL(string: normImgUrlString)!)
+                    self.newsArticleView.backgroundImageView.setImageWith(URL(string: normImgUrlString)!)
                 self.black.removeFromSuperview()
                 self.activityIndicator.stopAnimating()
             })

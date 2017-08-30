@@ -16,7 +16,7 @@ class WalkthroughManager: NSObject, EAIntroDelegate{
     
     static let sharedInstance = WalkthroughManager()
     
-    func displayWalkthroughScreen(view: UIView) {
+    func displayWalkthroughScreen(_ view: UIView) {
         let walkthroughVC = UIViewController()
         walkthroughVC.view.frame = view.frame
         let page1 = setUpPageForEAIntroPage(walkthroughVC, title: "Welcome", description: walkthroughDescription1, imageName: "Walkthru-home")
@@ -25,17 +25,17 @@ class WalkthroughManager: NSObject, EAIntroDelegate{
         let introView = EAIntroView(frame: walkthroughVC.view.frame, andPages: [page1, page3])
         //if you want to the navigation bar way
         //let introView = EAIntroView(frame: walkthroughVC.view.frame, andPages: [page1,page2,page3,page4])
-        introView.delegate = self
-        introView.pageControlY = walkthroughVC.view.frame.size.height - 30 - 48 - 64;
-        introView.bgImage = UIImage(named: "bg_gradient")
-        let btn = UIButton(type: UIButtonType.Custom)
-        btn.setBackgroundImage(UIImage(named: "btn_X"), forState: UIControlState.Normal)
-        btn.frame = CGRectMake(0, 0, 24, 20)
-        introView.skipButton = btn
-        introView.skipButtonY = walkthroughVC.view.frame.size.height - 30
-        introView.skipButtonAlignment = EAViewAlignment.Right
-        introView.showInView(walkthroughVC.view, animateDuration: 0.3)
-        view.addSubview(introView)
+        introView?.delegate = self
+        introView?.pageControlY = walkthroughVC.view.frame.size.height - 30 - 48 - 64;
+        introView?.bgImage = UIImage(named: "bg_gradient")
+        let btn = UIButton(type: UIButtonType.custom)
+        btn.setBackgroundImage(UIImage(named: "btn_X"), for: UIControlState())
+        btn.frame = CGRect(x: 0, y: 0, width: 24, height: 20)
+        introView?.skipButton = btn
+        introView?.skipButtonY = walkthroughVC.view.frame.size.height - 30
+        introView?.skipButtonAlignment = EAViewAlignment.right
+        introView?.show(in: walkthroughVC.view, animateDuration: 0.3)
+        view.addSubview(introView!)
     }
     
     //This was a weird decision. Didn't really need defaults token
@@ -53,7 +53,7 @@ class WalkthroughManager: NSObject, EAIntroDelegate{
 //    }
 
     
-    private func setUpPageForEAIntroPage(walkthroughVC: UIViewController, title: String, description: String, imageName: String) -> EAIntroPage {
+    fileprivate func setUpPageForEAIntroPage(_ walkthroughVC: UIViewController, title: String, description: String, imageName: String) -> EAIntroPage {
         let page = EAIntroPage()
         page.title = title
         page.titlePositionY = walkthroughVC.view.frame.size.height - 30
@@ -74,14 +74,14 @@ class WalkthroughManager: NSObject, EAIntroDelegate{
     }
     
     //MARK: EAIntroViewDelegate
-    @objc func introDidFinish(introView: EAIntroView!) {
+    @objc func introDidFinish(_ introView: EAIntroView!) {
         print("intro walkthrough finished")
     }
     
-    func showHomeScreen(view: UIView) {
+    func showHomeScreen(_ view: UIView) {
         displayWalkthroughScreen(view)
-        let revealVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SWRevealViewController") as! SWRevealViewController
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let revealVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = revealVC
         appDelegate.setUpNavBarAndStatusBarImages()
     }

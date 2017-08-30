@@ -17,7 +17,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIGestureRecog
     @IBAction func signUpButtonWasPressed() {
         let signUpViewController = SignUpViewController()
         let signUpNavController = UINavigationController(rootViewController: signUpViewController)
-        presentViewController(signUpNavController, animated: true, completion: nil)
+        present(signUpNavController, animated: true, completion: nil)
     }
     
     convenience init() {
@@ -28,7 +28,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIGestureRecog
     override func viewDidLoad() {
         let backgroundGradientImageView = UIImageView(image: UIImage(named: "bg_gradient"))
         backgroundGradientImageView.frame = view.frame
-        view.insertSubview(backgroundGradientImageView, atIndex: 0)
+        view.insertSubview(backgroundGradientImageView, at: 0)
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -41,11 +41,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIGestureRecog
         devBypassLogin()
     }
     
-    private func devBypassLogin() {
+    fileprivate func devBypassLogin() {
         let rectangle = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        rectangle.backgroundColor = UIColor.clearColor()
-        rectangle.userInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: "developerModeBypassLogin")
+        rectangle.backgroundColor = UIColor.clear
+        rectangle.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.developerModeBypassLogin))
         rectangle.addGestureRecognizer(tapGesture)
         tapGesture.delegate = self
         view.addSubview(rectangle)
@@ -61,15 +61,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIGestureRecog
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        self.navigationController?.navigationBar.hidden = true
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     /**
     * Called when 'return' key pressed. return NO to ignore.
     */
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
@@ -77,7 +77,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIGestureRecog
     /**
     * Called when the user click on the view (outside the UITextField).
     */
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
@@ -85,11 +85,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIGestureRecog
     @IBAction func didPressLoginbutton() {
         let email = emailTextField.text
         let password = passwordTextField.text
-        if let email = email, password = password{
+        if let email = email, let password = password{
             if adminUserDetectedAdminMustBeActivated() == true {
-                let adminVC = AdminViewController()
+                let adminVC = AdminViewController(nibName: "AdminViewController", bundle: nil)
                 let navCtrl = UINavigationController(rootViewController: adminVC)
-                presentViewController(navCtrl, animated: true, completion: nil)
+                present(navCtrl, animated: true, completion: nil)
                 return
             }
             let activityIndicator = UIActivityIndicatorView()
@@ -99,7 +99,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIGestureRecog
             FirebaseManager.sharedManager.loginUser(email, password: password, completion: { (success) -> Void in
                 // completion
                 if success {
-                    NSUserDefaults.standardUserDefaults().setBool(true, forKey: kUserDidLoginBefore)
+                    UserDefaults.standard.set(true, forKey: kUserDidLoginBefore)
                     if let dismissBlock = self.dismissBlock {
                         dismissBlock()
                     }
@@ -114,12 +114,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIGestureRecog
     func adminUserDetectedAdminMustBeActivated() -> Bool {
         let email = emailTextField.text
         let password = passwordTextField.text
-        if let email = email, password = password {
+        if let email = email, let password = password {
             if email == kAdminEmailInput && password == kAdminPasswordHidden {
-                AuthenticationManager.sharedManager.currentUserMode = .Admin
+                AuthenticationManager.sharedManager.currentUserMode = .admin
                 return true
             } else if email == kSocialServicesAdminEmailInput && password == kAdminPasswordHidden {
-                AuthenticationManager.sharedManager.currentUserMode = .SocialServicesAdmin
+                AuthenticationManager.sharedManager.currentUserMode = .socialServicesAdmin
                 return true
             }
         }

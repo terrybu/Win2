@@ -9,12 +9,12 @@
 import Foundation
 
 enum UserMode {
-    case User, Admin, SocialServicesAdmin
+    case user, admin, socialServicesAdmin
 }
 
 class AuthenticationManager {
     
     static let sharedManager = AuthenticationManager()
-    var currentUserMode = UserMode.User //default is just plain User
+    var currentUserMode = UserMode.user //default is just plain User
     
 }

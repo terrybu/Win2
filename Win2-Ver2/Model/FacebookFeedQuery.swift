@@ -11,7 +11,7 @@ import SwiftyJSON
 private let kGraphPathPIMagazineFeedString = "1384548091800506/feed"
 
 protocol FacebookFeedQueryDelegate {
-    func didFinishGettingFacebookFeedData(fbFeedObjectsArray: [FBFeedPost])
+    func didFinishGettingFacebookFeedData(_ fbFeedObjectsArray: [FBFeedPost])
 }
 
 class FacebookFeedQuery: FacebookQuery {
@@ -20,7 +20,7 @@ class FacebookFeedQuery: FacebookQuery {
     var delegate: FacebookFeedQueryDelegate?
     var FBFeedObjectsArray = [FBFeedPost]()
     
-    func getFeedFromPIMagazine(errorCompletionBlock: ((error: NSError!) -> Void)? ) {
+    func getFeedFromPIMagazine(_ errorCompletionBlock: ((_ error: NSError?) -> Void)? ) {
         let params = [
             "access_token": kAppAccessToken,
             "fields": "type, message, created_time"
@@ -43,18 +43,18 @@ class FacebookFeedQuery: FacebookQuery {
             self.delegate?.didFinishGettingFacebookFeedData(self.FBFeedObjectsArray)
         }, onError: { (error) -> Void in
             if let errorCompletion = errorCompletionBlock {
-                errorCompletion(error: error)
+                errorCompletion(error)
             }
         })
     }
     
-    private func parseTitleCategoryDateForFeedArticle(newFeedArticleObject: FBFeedPost) {
+    fileprivate func parseTitleCategoryDateForFeedArticle(_ newFeedArticleObject: FBFeedPost) {
         var categoryStr = ""
         var firstTitleStr = ""
         let msg = newFeedArticleObject.message
         if (!msg.isEmpty) {
             if (msg[0] == "[") {
-                for (var i=1; i < msg.characters.count; i++) {
+                for i in 1 ..< msg.characters.count {
                     categoryStr += msg[i]
                     let j = i + 1
                     if (msg[j] == "]" || categoryStr.characters.count >= 100) {
@@ -67,7 +67,7 @@ class FacebookFeedQuery: FacebookQuery {
                 }
             } else {
                 categoryStr = "Misc."
-                for (var i=0; i < msg.characters.count; i++) {
+                for i in 0 ..< msg.characters.count {
                     firstTitleStr += msg[i]
                     if firstTitleStr.characters.count > 100 {
                         break
@@ -91,7 +91,7 @@ class FacebookFeedQuery: FacebookQuery {
     
     - returns: Returns a short string that represents the Title fo that Facebook article view
     */
-    private func parseFirstLineTitleString(facebookPostMessageBodyWithoutCategoryBracket: String) -> String {
+    fileprivate func parseFirstLineTitleString(_ facebookPostMessageBodyWithoutCategoryBracket: String) -> String {
         //Given a string that starts with an empty space and then a sententece followed by \n or just \n Title \n ... return thet title.
         // " blahblahblah \n" --> should return blahblahblah
         // " \n blahblahblah \n" should also return blahblahblah
@@ -106,7 +106,7 @@ class FacebookFeedQuery: FacebookQuery {
             }
             while (startingStr[i] != "\n") {
                 result += startingStr[i]
-                i++
+                i += 1
                 //this loop was crashing the app when param string was
                 //[PI공지]
                 // 땡스기빙 당일인 이번주 목요일(11/26)에는 미드타운 40가 파리파게트와 아스토리아의 홀리스타가 없음을 알려드립니다.
@@ -116,14 +116,14 @@ class FacebookFeedQuery: FacebookQuery {
                 }
             }
             //to address the case of "[title] \n   \n adsfsd" (where writer used two lines after title)
-            let trimmedString = result.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            let trimmedString = result.trimmingCharacters(in: CharacterSet.whitespaces)
             //in that above case, it will be completely full of whitespaces because it jumped the first \n and then stopped before that second \n ... so in that case, trimmed string will return "" 
             if trimmedString == "" {
                 i += 1
                 result = ""
                 while (startingStr[i] != "\n" && i < 75) {
                     result += startingStr[i]
-                    i++
+                    i += 1
                 }
             }
         }
@@ -134,22 +134,22 @@ class FacebookFeedQuery: FacebookQuery {
             let count = startingStr.characters.count
             while i <= count - 1 && startingStr[i] != "\n" {
                 result += startingStr[i]
-                i++
+                i += 1
             }
         }
         return result
     }
     
-    func retrieveFacebookPostDirectURLString(feedObject: FBFeedPost) -> String{
-        let postURLParam = feedObject.id.componentsSeparatedByString("_").last
+    func retrieveFacebookPostDirectURLString(_ feedObject: FBFeedPost) -> String{
+        let postURLParam = feedObject.id.components(separatedBy: "_").last
         let postURL = "\(kFacebookPageURL)\(postURLParam!)"
         return postURL
     }
     
-    func displayFacebookPostObjectInWebView(feedObject: FBFeedPost, view: UIView, navigationController: UINavigationController?) {
+    func displayFacebookPostObjectInWebView(_ feedObject: FBFeedPost, view: UIView, navigationController: UINavigationController?) {
         let postURLString = FacebookFeedQuery.sharedInstance.retrieveFacebookPostDirectURLString(feedObject)
         let wkWebView = UIWebView(frame: view.frame)
-        wkWebView.loadRequest(NSURLRequest(URL: NSURL(string: postURLString)!))
+        wkWebView.loadRequest(URLRequest(url: URL(string: postURLString)!))
         let emptyVC = UIViewController()
         emptyVC.view = wkWebView
         navigationController?.pushViewController(emptyVC, animated: true)

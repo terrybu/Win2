@@ -10,11 +10,11 @@ import UIKit
 
 extension UIAlertController {
     
-    class func presentAlert(viewController: UIViewController, alertTitle: String, alertMessage: String, confirmTitle: String) {
-        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
-        let confirm = UIAlertAction(title: confirmTitle, style: UIAlertActionStyle.Default, handler: nil)
+    class func presentAlert(_ viewController: UIViewController, alertTitle: String, alertMessage: String, confirmTitle: String) {
+        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let confirm = UIAlertAction(title: confirmTitle, style: UIAlertActionStyle.default, handler: nil)
         alertController.addAction(confirm)
-        viewController.presentViewController(alertController, animated: true, completion: nil)
+        viewController.present(alertController, animated: true, completion: nil)
         alertController.view.tintColor = UIColor.In2DeepPurple()
     }
     

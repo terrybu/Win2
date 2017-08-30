@@ -9,30 +9,30 @@
 class CustomDateFormatter {
     
     static let sharedInstance = CustomDateFormatter()
-    let dateFormatter = NSDateFormatter()
+    let dateFormatter = DateFormatter()
     
-    func convertDateTimeToFirebaseStringFormat(date: NSDate) -> String {
+    func convertDateTimeToFirebaseStringFormat(_ date: Date) -> String {
         dateFormatter.dateFormat = "yyyy-MM-dd EEE hh:mm a"
-        return dateFormatter.stringFromDate(date)
+        return dateFormatter.string(from: date)
     }
     
-    func convertDateToFirebaseStringFormat(date: NSDate) -> String {
+    func convertDateToFirebaseStringFormat(_ date: Date) -> String {
         self.dateFormatter.dateFormat = "MM/dd/yyyy"
-        return dateFormatter.stringFromDate(date)
+        return dateFormatter.string(from: date)
     }
     
     func returnTodaysDateStringInFormat() -> String {
         self.dateFormatter.dateFormat = "MM/dd/yyyy"
-        let today = dateFormatter.stringFromDate(NSDate())
+        let today = dateFormatter.string(from: Date())
         return today
     }
     
-    func convertFBCreatedTimeDateToOurFormattedString(feedObject: FBFeedPost) -> String? {
+    func convertFBCreatedTimeDateToOurFormattedString(_ feedObject: FBFeedPost) -> String? {
         self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
-        let date = dateFormatter.dateFromString(feedObject.created_time)
+        let date = dateFormatter.date(from: feedObject.created_time)
         if let date = date {
             dateFormatter.dateFormat = "yyyy-MM-dd EEE hh:mm a"
-            return dateFormatter.stringFromDate(date)
+            return dateFormatter.string(from: date)
         }
         return nil
     }
