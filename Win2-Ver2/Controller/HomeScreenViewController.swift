@@ -93,8 +93,10 @@ class HomeScreenViewController: ParentViewController, FacebookFeedQueryDelegate 
         firstObjectID = firstObject.id
         if firstObject.type == "photo" {
             FacebookPhotoQuery.sharedInstance.getNormalSizePhotoURLStringForCommunicationsFrom(firstObject.id, completion: { (normImgUrlString) -> Void in
-                    self.newsArticleView.backgroundImageView.setImageWith(URL(string: normImgUrlString)!)
-                self.black.removeFromSuperview()
+                if let urlString = URL(string: normImgUrlString) {
+                    self.newsArticleView.backgroundImageView.setImageWith(urlString)
+                    self.black.removeFromSuperview()
+                }
                 self.activityIndicator.stopAnimating()
             })
         }
