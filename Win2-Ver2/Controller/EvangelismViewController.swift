@@ -17,7 +17,7 @@ class EvangelismViewController: ParentViewController, UIGestureRecognizerDelegat
     @IBOutlet weak var constraintHeightExpandableView: NSLayoutConstraint!
     @IBOutlet weak var constraintContentViewHeight: NSLayoutConstraint!
     var expandedAboutViewHeight:CGFloat = 0
-    fileprivate let kOriginalContentViewHeight: CGFloat = 600
+    fileprivate let kOriginalContentViewHeight: CGFloat = 700
     
     var evangelismFeedObject: FBFeedPost?
     @IBOutlet var evangelismNewsWidgetView: BoroSpecificNewsWidgetView!

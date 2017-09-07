@@ -35,7 +35,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5F8-t9-mad" userLabel="Content View">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="605"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R8W-w8-knd" customClass="ExpandableAboutView" customModule="Win2_Ver2" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
@@ -69,11 +69,11 @@
                                     <rect key="frame" x="157" y="157" width="62" height="62"/>
                                     <state key="normal" backgroundImage="Btn_Play"/>
                                 </button>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mfR-rw-T9N" userLabel="EvangelismNewsWidget" customClass="BoroSpecificNewsWidgetView" customModule="Win2_Ver2" customModuleProvider="target">
-                                    <rect key="frame" x="-175" y="591" width="375" height="143"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mfR-rw-T9N" userLabel="EvangelismNewsWidget" customClass="BoroSpecificNewsWidgetView" customModule="Win2_Ver2" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="354" width="375" height="300"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="143" id="34f-xy-ecb"/>
+                                        <constraint firstAttribute="height" constant="300" id="34f-xy-ecb"/>
                                         <constraint firstAttribute="height" constant="400" id="Baf-3R-on0"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
@@ -89,7 +89,7 @@
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="mfR-rw-T9N" secondAttribute="bottom" constant="48" id="14E-W8-2WX"/>
-                                <constraint firstAttribute="height" constant="605" id="5M3-v9-Nso"/>
+                                <constraint firstAttribute="height" constant="700" id="5M3-v9-Nso"/>
                                 <constraint firstItem="RQs-Po-ZrF" firstAttribute="top" secondItem="uwn-bu-o21" secondAttribute="bottom" constant="-60" id="5WO-Ls-Cdn"/>
                                 <constraint firstItem="mfR-rw-T9N" firstAttribute="top" secondItem="R8W-w8-knd" secondAttribute="bottom" id="66z-X5-h3r"/>
                                 <constraint firstItem="R8W-w8-knd" firstAttribute="top" secondItem="5F8-t9-mad" secondAttribute="top" id="C25-dx-qiu"/>

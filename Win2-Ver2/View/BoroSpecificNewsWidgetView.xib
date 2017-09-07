@@ -1,20 +1,23 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="NanumBarunGothic.ttf">
+        <array key="NanumBarunGothic.ttf">
             <string>NanumBarunGothic</string>
-            <string>NanumBarunGothic</string>
-        </mutableArray>
-        <mutableArray key="NanumBarunGothicBold.ttf">
+        </array>
+        <array key="NanumBarunGothicBold.ttf">
             <string>NanumBarunGothicBold</string>
-            <string>NanumBarunGothicBold</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BoroSpecificNewsWidgetView" customModule="Win2" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BoroSpecificNewsWidgetView" customModule="Win2_Ver2" customModuleProvider="target">
             <connections>
                 <outlet property="bigTitleLabel" destination="CsT-jY-WCU" id="y58-Le-tu1"/>
                 <outlet property="categoryLabel" destination="Gw7-2K-T3r" id="l9j-oG-VYH"/>
@@ -30,23 +33,16 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="카테고리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gw7-2K-T3r">
                     <rect key="frame" x="16" y="10" width="61" height="20"/>
                     <fontDescription key="fontDescription" name="NanumBarunGothic" family="NanumBarunGothic" pointSize="17"/>
-                    <color key="textColor" red="0.32941176470588235" green="0.34509803921568627" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.32941176470588235" green="0.34509803921568627" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puE-jr-zUD">
-                    <rect key="frame" x="16" y="102" width="70" height="30"/>
-                    <fontDescription key="fontDescription" name="NanumBarunGothicBold" family="NanumBarunGothic" pointSize="14"/>
-                    <state key="normal" title="더보기" backgroundImage="btn_more">
-                        <color key="titleColor" red="0.62352941179999999" green="0.36078431370000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="뉴스 제목" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CsT-jY-WCU">
-                    <rect key="frame" x="16" y="55" width="572" height="31"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="뉴스 제목" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CsT-jY-WCU">
+                    <rect key="frame" x="16" y="55" width="572" height="64"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="202" id="Fl9-pP-sq7"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="NanumBarunGothicBold" family="NanumBarunGothic" pointSize="26"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                     <variation key="default">
                         <mask key="constraints">
@@ -54,31 +50,39 @@
                         </mask>
                     </variation>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="날짜" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LpY-0b-uuV">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="날짜" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LpY-0b-uuV">
                     <rect key="frame" x="91" y="10" width="497" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" priority="750" constant="497" id="m4p-XQ-8Jv"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="NanumBarunGothic" family="NanumBarunGothic" pointSize="17"/>
-                    <color key="textColor" red="0.3294117647" green="0.34509803919999998" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.3294117647" green="0.34509803919999998" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puE-jr-zUD">
+                    <rect key="frame" x="16" y="117.5" width="70" height="30"/>
+                    <fontDescription key="fontDescription" name="NanumBarunGothicBold" family="NanumBarunGothic" pointSize="14"/>
+                    <state key="normal" title="더보기" backgroundImage="btn_more">
+                        <color key="titleColor" red="0.62352941179999999" green="0.36078431370000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apB-iq-BaB" userLabel="grayLine">
                     <rect key="frame" x="0.0" y="199" width="600" height="1"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="Fdh-n0-Siq"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="apB-iq-BaB" firstAttribute="top" relation="greaterThanOrEqual" secondItem="puE-jr-zUD" secondAttribute="bottom" constant="16" id="1MG-2I-Nua"/>
                 <constraint firstItem="Gw7-2K-T3r" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Bfo-3r-enL"/>
                 <constraint firstItem="LpY-0b-uuV" firstAttribute="centerY" secondItem="Gw7-2K-T3r" secondAttribute="centerY" id="D65-Bh-T3I"/>
                 <constraint firstItem="Gw7-2K-T3r" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="DGb-UX-lUp"/>
                 <constraint firstAttribute="bottom" secondItem="apB-iq-BaB" secondAttribute="bottom" id="Hlb-XZ-px3"/>
                 <constraint firstAttribute="trailing" secondItem="CsT-jY-WCU" secondAttribute="trailing" constant="12" id="Tsn-92-QkY"/>
-                <constraint firstItem="puE-jr-zUD" firstAttribute="top" secondItem="CsT-jY-WCU" secondAttribute="bottom" constant="16" id="UAb-4u-gsE"/>
+                <constraint firstItem="puE-jr-zUD" firstAttribute="top" secondItem="CsT-jY-WCU" secondAttribute="bottom" constant="32" id="UAb-4u-gsE"/>
                 <constraint firstItem="CsT-jY-WCU" firstAttribute="leading" secondItem="puE-jr-zUD" secondAttribute="leading" id="Ywo-jX-N4u"/>
                 <constraint firstAttribute="trailing" secondItem="apB-iq-BaB" secondAttribute="trailing" id="cw1-cL-aTN"/>
                 <constraint firstItem="CsT-jY-WCU" firstAttribute="leading" secondItem="Gw7-2K-T3r" secondAttribute="leading" id="kx8-dO-AyR"/>

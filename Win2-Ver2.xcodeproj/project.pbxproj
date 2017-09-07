@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		07F0AAB49E41C9D6D3C62D47 /* Pods_Win2_Ver2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 476D14124ED3389010A5DAE9 /* Pods_Win2_Ver2.framework */; };
 		CDCFA2A01F61B5D3007D56B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDCFA29E1F61B59A007D56B8 /* GoogleService-Info.plist */; };
+		CDCFA2A11F61BB68007D56B8 /* AugustJoobo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CDCFA29C1F61AB6F007D56B8 /* AugustJoobo.pdf */; };
+		CDCFA2A21F61BB6A007D56B8 /* SeptemberJoobo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CDCFA29D1F61AB6F007D56B8 /* SeptemberJoobo.pdf */; };
 		D93170871D380318008B09AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93170851D380318008B09AB /* AppDelegate.swift */; };
 		D93170881D380318008B09AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D93170861D380318008B09AB /* Main.storyboard */; };
 		D93171711D3803C8008B09AB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D93171701D3803C8008B09AB /* Default-568h@2x.png */; };
@@ -594,6 +596,7 @@
 				D931721F1D381268008B09AB /* Main.strings in Resources */,
 				D93172561D381268008B09AB /* PurpleSegmentedControlView.xib in Resources */,
 				D93171F81D381268008B09AB /* CommunicationsViewController.xib in Resources */,
+				CDCFA2A21F61BB6A007D56B8 /* SeptemberJoobo.pdf in Resources */,
 				D931721D1D381268008B09AB /* InfoPlist.strings in Resources */,
 				D931720D1D381268008B09AB /* SocialServicesEventAdminTableViewController.xib in Resources */,
 				D93172351D381268008B09AB /* NanumBarunGothicLight.otf in Resources */,
@@ -620,6 +623,7 @@
 				D93172361D381268008B09AB /* NanumBarunGothicUltraLight.otf in Resources */,
 				D931720B1D381268008B09AB /* SignUpViewController.xib in Resources */,
 				D931724F1D381268008B09AB /* LongApplyWidgetView.xib in Resources */,
+				CDCFA2A11F61BB68007D56B8 /* AugustJoobo.pdf in Resources */,
 				D93172081D381268008B09AB /* NurtureViewController.xib in Resources */,
 				D931721C1D381268008B09AB /* Info.plist in Resources */,
 			);

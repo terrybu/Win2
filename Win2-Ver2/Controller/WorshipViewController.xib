@@ -106,6 +106,9 @@
                                             <rect key="frame" x="16" y="56" width="78" height="36"/>
                                             <color key="tintColor" red="0.62352941179999999" green="0.36078431370000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" backgroundImage="btn_Apply_purple"/>
+                                            <connections>
+                                                <action selector="didPressApplyButtonForWorshipTeam" destination="-1" eventType="touchUpInside" id="5J2-uv-xRc"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
