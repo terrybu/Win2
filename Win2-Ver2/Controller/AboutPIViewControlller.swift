@@ -39,7 +39,7 @@ class AboutPIViewController: ParentViewController, UIScrollViewDelegate, UIGestu
         )
         let viewCanvas2 = setUpCanvas(viewWidth, headerTitle: "청년부 소개", bodyText: "2013년 8월 인투교회 3부 예배 안에 청년부와 대학부 공동체가 분리되었으며, 2014년 청년부 예배(3부)와 대학부 예배(4부)로 예배가 증설되었습니다.\n\n2015년 2월 청년부는 86 st.  Amsterdam ave.  에 위치한 West Park Presbyterian Church의 건물을 빌려 West IN2 캠퍼스로 분리 개척되어, 맨하탄을 비롯한 뉴욕 5 BORO의 청년들이 함께 모여 예배하고 그후에 Hotel Pennsylvania 로 옮기게 되었습니다.")
         let viewCanvas3 = setUpCanvas3(viewWidth * 2, headerTitle: "목사님 인사말", bodyText: "크고 화려할 수록 아픈 사람이 많은 곳? 병원 그리고 교회입니다. 뉴욕이 크고 화려해서 아픈 사람이 많기에 Win2가 존재합니다. 뉴욕을 지배하는 영은 허영입니다. 아는 척, 있는 척, 강한 척, 바쁜 척 살지만 실은 늘 두려움과 공허함과 목마름이 있습니다. 예수님께서 연약한 내 모습 그대로 사랑하시기에 Win2가 존재합니다. \n\n가족이 있지만 멀리 있고 보호자가 있지만 나를 보호하지 않았기에 가족과 사랑을 찾아 방황합니다. 그 어느 곳에도 예수님 같은 분이 없기에 Win2가 존재합니다. 환자가 군사가 되는 곳, 내가 정직해 질 수 있는 곳, 뉴욕이 홈타운이 되는 이유, 내가 살 자리가 아니라 죽을 자리를 찾는 이들을 위한 청년공동체. 바로 Win2 입니다.")
-        let viewCanvas4 = setUpCanvas4(viewWidth * 3, headerTitle: "주일예배", bodyText: "Hotel Pennsylvania - 청년부 오후 3:15PM \n18층 Penn Top - 사랑홀 \n401 7th Ave. 18th Floor, New York, NY 10001")
+        let viewCanvas4 = setUpCanvas4(viewWidth * 3, headerTitle: "주일예배", bodyText: "@Hotel Pennsylvania - 청년부 오후 3:15PM \n18층 Penn Top \n401 7th Ave. 18th Floor, New York, NY 10001")
         horizontalScrollView.addSubview(viewCanvas1)
         horizontalScrollView.addSubview(viewCanvas2)
         horizontalScrollView.addSubview(viewCanvas3)

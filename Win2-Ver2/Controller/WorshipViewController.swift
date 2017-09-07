@@ -8,9 +8,9 @@
 
 import UIKit
 import Foundation
+import WebKit
 
-
-class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelegate, UITableViewDelegate, UITableViewDataSource {
+class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelegate {
 
     @IBOutlet var contentView: UIView!
     @IBOutlet var expandableAboutView: ExpandableAboutView!
@@ -19,7 +19,6 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
     @IBOutlet var songsTableView :     UITableView!
     @IBOutlet var weeklyProgramsTableView :     UITableView!
     var songObjectsArray = [PraiseSong]()
-    var praiseSongsListIsEmpty: Bool = false
     var weeklyProgramsArray = [WeeklyProgram]()
     var thisMonthProgramsArray = [WeeklyProgram]()
     var thisMonthProgramsAreEmpty: Bool = false
@@ -53,15 +52,23 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
     func getPraiseSongNamesListAndHeaderFromFacebook() {
         let feedPostObjects = FacebookFeedQuery.sharedInstance.FBFeedObjectsArray
         for postObject in feedPostObjects {
-            praiseSongsListIsEmpty = true
             if postObject.parsedCategory == "PI찬양" {
                 if postObject.type == "status" {
                     parseEachLineOfPraiseSongPostBodyMessageToFillSongsArray(postObject.message)
                     headerTitleStringForPraiseSongsListSection = postObject.parsedTitle
-                    praiseSongsListIsEmpty = false
                     break
                 }
             }
+        }
+        if songObjectsArray.isEmpty {
+            //fill it with dummy objects
+            let song1 = PraiseSong(songTitle: "마커스 - 좋으신 하나님")
+            song1.songYouTubeURL = "https://www.youtube.com/watch?v=1avceqgRFrI"
+            let song2 = PraiseSong(songTitle: "마커스 - 선하신 목자")
+            song2.songYouTubeURL = "https://www.youtube.com/watch?v=hyUAINJrfTs"
+            let song3 = PraiseSong(songTitle: "마커스 - 감사함으로")
+            song3.songYouTubeURL = "https://www.youtube.com/watch?v=6I63UkXJx9Y"
+            songObjectsArray = [song1,song2,song3]
         }
         songsTableView.reloadData()
     }
@@ -113,6 +120,46 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AllWeeklyProgramsTableViewControllerSegue" {
+            let programsVC = segue.destination as! AllWeeklyProgramsTableViewController
+            programsVC.allWeeklyProgramsArray = self.weeklyProgramsArray
+        }
+        self.navigationItem.backBarButtonItem?.title = ""
+    }
+    
+    //Display today's month as title string fit for tableview top
+    func getTodaysMonthStringForWeeklyProgramsTableView() -> String {
+        let todaysMonthInt = DateManager.sharedInstance.getTodaysMonth()
+        let todaysYearInt = DateManager.sharedInstance.getTodaysYear()
+        let dateFormatter = DateFormatter()
+        let monthNames = dateFormatter.standaloneMonthSymbols
+        if let monthNameSymbols = monthNames {
+            let monthName = monthNameSymbols[todaysMonthInt-1]
+            return "\(monthName) \(todaysYearInt) 주보 보기"
+        }
+        return "\(todaysYearInt) 이번달 주보 보기"
+    }
+    
+    func seeMoreArrowWasPressedForWeeklyProgramsTableView() {
+        print("seeMoreArrowWasPressed")
+        performSegue(withIdentifier: "AllWeeklyProgramsTableViewControllerSegue", sender: self)
+    }
+
+    
+    //MARK: IBActions
+    @IBAction func didPressSeeMoreWorshipVideos() {
+        presentSFSafariVCIfAvailable(URL(string: kYoutubeIn2WorshipVideosURL)!)
+    }
+    
+    @IBAction func didPressApplyButtonForWorshipTeam() {
+        presentSFSafariVCIfAvailable(URL(string: kApplyWorshipTeamGoogleDocURL)!)
+    }
+    
+}
+
+extension WorshipViewController: UITableViewDelegate, UITableViewDataSource  {
+    
     //MARK: UITableViewDataSource Methods
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -141,19 +188,14 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
                 return thisMonthProgramsArray.count
             } else {
                 self.thisMonthProgramsAreEmpty = true
-                return 2
+                return 4
             }
         } else if (tableView == songsTableView) {
-            if praiseSongsListIsEmpty {
-                return 2
-            } else {
-                return songObjectsArray.count
-            }
+            return songObjectsArray.count
         }
         return 0
     }
     
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell
         cell = UITableViewCell()
@@ -162,8 +204,12 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
                 cell.textLabel?.font = UIFont.systemFont(ofSize: 13.0)
                 if indexPath.row == 0 {
                     cell.textLabel!.text = "이번 달의 주보는 아직 업로드되지 않았습니다."
-                } else {
+                } else if indexPath.row == 1 {
                     cell.textLabel!.text = "지난 달의 주보는 '더보기'를 참고해주세요"
+                } else if indexPath.row == 2 {
+                    cell.textLabel!.text = "2017년 9월 3일 주보"
+                } else {
+                    cell.textLabel!.text = "2017년 8월 27일 주보"
                 }
             } else {
                 let program = thisMonthProgramsArray[indexPath.row]
@@ -171,19 +217,39 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
                 cell.accessoryView = UIImageView(image: UIImage(named: "btn_download"))
             }
         } else {
-            if praiseSongsListIsEmpty {
-                cell.textLabel?.font = UIFont.systemFont(ofSize: 14.0)
-                if indexPath.row == 0 {
-                    cell.textLabel!.text = "최근에 찬양송 리스트가 업데이트되지 않았거나"
-                } else {
-                    cell.textLabel!.text = "인터넷 연결이 실패하였습니다."
-                }
-            } else {
-                let songObject = songObjectsArray[indexPath.row]
-                cell.textLabel!.text = songObject.songTitle!
-            }
+            let songObject = songObjectsArray[indexPath.row]
+            cell.textLabel!.text = songObject.songTitle!
         }
         return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == weeklyProgramsTableView {
+            if thisMonthProgramsAreEmpty {
+                if indexPath.row == 2 {
+                    displayPDFInWebView(fileName: "SeptemberJoobo")
+                } else if indexPath.row == 3 {
+                    displayPDFInWebView(fileName: "AugustJoobo")
+                }
+            } else {
+                let weeklyProgram = thisMonthProgramsArray[indexPath.row]
+                WeeklyProgramDisplayManager.sharedInstance.displayWeeklyProgramLogic(weeklyProgram, view: self.view, navController: self.navigationController!, viewController: self)
+            }
+        }
+        else if tableView == songsTableView {
+            if songObjectsArray.isEmpty {
+                return
+            }
+            let songObject = songObjectsArray[indexPath.row]
+            if let songURLString = songObject.songYouTubeURL {
+                let trimSpacesFromURLString = songURLString.trimmingCharacters(in: CharacterSet.whitespaces)
+                let url = URL(string: trimSpacesFromURLString)
+                if let url = url {
+                    presentSFSafariVCIfAvailable(url)
+                }
+            }
+        }
     }
     
     //MARK: UITableViewDelegate
@@ -215,8 +281,8 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
                 label.text = headerTitle
             } else {
                 //something went wrong so Praise Songs List not appearing at all
-                //Two reasons: internet failure or Facebook query json data failed to retrieve Praise Songs Data in its recent 20 objects 
-                label.text = "찬양송 리스트가 작동하지 않고 있습니다."
+                //Two reasons: internet failure or Facebook query json data failed to retrieve Praise Songs Data in its recent 20 objects
+                label.text = "찬양송 리스트"
                 headerView.backgroundColor = UIColor.gray
                 label.textColor = UIColor.white
             }
@@ -227,32 +293,6 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
         return headerView
     }
     
-    //Display today's month as title string fit for tableview top
-    func getTodaysMonthStringForWeeklyProgramsTableView() -> String {
-        let todaysMonthInt = DateManager.sharedInstance.getTodaysMonth()
-        let todaysYearInt = DateManager.sharedInstance.getTodaysYear()
-        let dateFormatter = DateFormatter()
-        let monthNames = dateFormatter.standaloneMonthSymbols
-        if let monthNameSymbols = monthNames {
-            let monthName = monthNameSymbols[todaysMonthInt-1]
-            return "\(monthName) \(todaysYearInt) 주보 보기"
-        }
-        return "\(todaysYearInt) 이번달 주보 보기"
-    }
-    
-    func seeMoreArrowWasPressedForWeeklyProgramsTableView() {
-        print("seeMoreArrowWasPressed")
-        performSegue(withIdentifier: "AllWeeklyProgramsTableViewControllerSegue", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AllWeeklyProgramsTableViewControllerSegue" {
-            let programsVC = segue.destination as! AllWeeklyProgramsTableViewController
-            programsVC.allWeeklyProgramsArray = self.weeklyProgramsArray
-        }
-        self.navigationItem.backBarButtonItem?.title = ""
-    }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
@@ -260,38 +300,24 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == weeklyProgramsTableView {
-            if thisMonthProgramsAreEmpty {
-                return
-            } else {
-                let weeklyProgram = thisMonthProgramsArray[indexPath.row]
-                WeeklyProgramDisplayManager.sharedInstance.displayWeeklyProgramLogic(weeklyProgram, view: self.view, navController: self.navigationController!, viewController: self)
+  
+    func displayPDFInWebView(fileName: String) {
+        if let pdfURL = Bundle.main.url(forResource: fileName, withExtension: "pdf", subdirectory: nil, localization: nil)  {
+            do {
+                let data = try Data(contentsOf: pdfURL)
+                let webView = WKWebView(frame: view.frame)
+                webView.load(data, mimeType: "application/pdf", characterEncodingName:"", baseURL: pdfURL.deletingLastPathComponent())
+                let vc = UIViewController()
+                vc.view = webView
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            catch {
+                //
             }
         }
-        else if tableView == songsTableView {
-            if songObjectsArray.isEmpty {
-                return
-            }
-            let songObject = songObjectsArray[indexPath.row]
-            if let songURLString = songObject.songYouTubeURL {
-                let trimSpacesFromURLString = songURLString.trimmingCharacters(in: CharacterSet.whitespaces)
-                let url = URL(string: trimSpacesFromURLString)
-                if let url = url {
-                    presentSFSafariVCIfAvailable(url)
-                }
-            }
-        }
-    }
-
-    //MARK: IBActions
-    @IBAction func didPressSeeMoreWorshipVideos() {
-        presentSFSafariVCIfAvailable(URL(string: kYoutubeIn2WorshipVideosURL)!)
-    }
-    
-    @IBAction func didPressApplyButtonForWorshipTeam() {
-        presentSFSafariVCIfAvailable(URL(string: kApplyWorshipTeamGoogleDocURL)!)
     }
     
 }
+    
+
+
