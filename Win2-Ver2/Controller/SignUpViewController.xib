@@ -1,17 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="NanumBarunGothic.ttf">
+        <array key="NanumBarunGothic.ttf">
             <string>NanumBarunGothic</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="Win2" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="Win2_Ver2" customModuleProvider="target">
             <connections>
                 <outlet property="birthdayDatePicker" destination="QtW-iX-h0K" id="VQS-IZ-N7n"/>
                 <outlet property="birthdaySwitch" destination="87o-uG-fgO" id="zsM-Xd-Ly2"/>
@@ -25,10 +30,10 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="2dG-SN-dIW">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" background="textfield_short" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DwB-LX-N0u" userLabel="FirstNameField" customClass="PaddedTextField" customModule="Win2" customModuleProvider="target">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" background="textfield_short" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DwB-LX-N0u" userLabel="FirstNameField" customClass="PaddedTextField" customModule="Win2_Ver2" customModuleProvider="target">
                     <rect key="frame" x="16" y="32" width="175" height="38"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="38" id="LgP-bY-24T"/>
@@ -36,46 +41,46 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" background="textfield_long" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qbC-w6-vPA" userLabel="PasswordField" customClass="PaddedTextField" customModule="Win2" customModuleProvider="target">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" background="textfield_long" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qbC-w6-vPA" userLabel="PasswordField" customClass="PaddedTextField" customModule="Win2_Ver2" customModuleProvider="target">
                     <rect key="frame" x="16" y="140" width="366" height="38"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="760" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iz-o8-NFJ" userLabel="SignUpConfirmButton">
-                    <rect key="frame" x="75" y="372" width="264" height="42"/>
+                    <rect key="frame" x="55.5" y="372" width="264" height="42"/>
                     <state key="normal" backgroundImage="btn_SignUP"/>
                     <connections>
                         <action selector="signUpButtonPressed:" destination="-1" eventType="touchUpInside" id="oHa-DR-nEW"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" background="textfield_short" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kX8-ut-zBg" userLabel="LastNameField" customClass="PaddedTextField" customModule="Win2" customModuleProvider="target">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" background="textfield_short" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kX8-ut-zBg" userLabel="LastNameField" customClass="PaddedTextField" customModule="Win2_Ver2" customModuleProvider="target">
                     <rect key="frame" x="207" y="32" width="175" height="38"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" background="textfield_long" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Nil-Rw-qQP" userLabel="PasswordField" customClass="PaddedTextField" customModule="Win2" customModuleProvider="target">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" background="textfield_long" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Nil-Rw-qQP" userLabel="PasswordField" customClass="PaddedTextField" customModule="Win2_Ver2" customModuleProvider="target">
                     <rect key="frame" x="16" y="194" width="366" height="38"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" textAlignment="natural" minimumFontSize="17" background="textfield_long" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ic7-k8-T4M" userLabel="EmailField" customClass="PaddedTextField" customModule="Win2" customModuleProvider="target">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" textAlignment="natural" minimumFontSize="17" background="textfield_long" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ic7-k8-T4M" userLabel="EmailField" customClass="PaddedTextField" customModule="Win2_Ver2" customModuleProvider="target">
                     <rect key="frame" x="16" y="86" width="366" height="38"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                 </textField>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="87o-uG-fgO">
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="87o-uG-fgO">
                     <rect key="frame" x="304" y="249" width="51" height="31"/>
-                    <color key="onTintColor" red="0.62352941179999999" green="0.36078431370000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="onTintColor" red="0.62352941179999999" green="0.36078431370000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </switch>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="800" text="*(Optional) 생년월일 정보를 공유하시겠습니까?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTE-V6-aPK">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="800" misplaced="YES" text="* 생년월일 정보를 공유하시겠습니까?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTE-V6-aPK">
                     <rect key="frame" x="16" y="256" width="280" height="17"/>
                     <fontDescription key="fontDescription" name="NanumBarunGothic" family="NanumBarunGothic" pointSize="14"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="QtW-iX-h0K">
-                    <rect key="frame" x="47" y="289" width="320" height="67"/>
-                    <color key="tintColor" red="0.62352941179999999" green="0.36078431370000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="27.5" y="289" width="320" height="67"/>
+                    <color key="tintColor" red="0.62352941179999999" green="0.36078431370000003" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="67" id="yeY-sQ-hm2"/>
                     </constraints>
@@ -84,7 +89,7 @@
                     </date>
                 </datePicker>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vTE-V6-aPK" firstAttribute="top" secondItem="ic7-k8-T4M" secondAttribute="bottom" constant="32" id="0aH-12-lu8"/>
                 <constraint firstItem="ic7-k8-T4M" firstAttribute="leading" secondItem="qbC-w6-vPA" secondAttribute="leading" id="7F3-vU-6vY"/>
@@ -133,7 +138,6 @@
                 <constraint firstItem="ic7-k8-T4M" firstAttribute="top" secondItem="Nil-Rw-qQP" secondAttribute="bottom" constant="16" id="xfd-ie-6Wn"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2iz-o8-NFJ" secondAttribute="bottom" constant="4" id="y1R-DQ-om1"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="VIh-8q-r8F"/>
@@ -148,9 +152,9 @@
                     <exclude reference="xfd-ie-6Wn"/>
                     <exclude reference="PCm-fP-t3q"/>
                     <exclude reference="tju-js-zAb"/>
-                    <exclude reference="b9V-9r-QT6"/>
                     <exclude reference="OS2-Kc-DMZ"/>
                     <exclude reference="nl7-2U-sSb"/>
+                    <exclude reference="b9V-9r-QT6"/>
                     <exclude reference="0aH-12-lu8"/>
                     <exclude reference="LNc-VA-Nwu"/>
                     <exclude reference="lcX-Bt-nBW"/>

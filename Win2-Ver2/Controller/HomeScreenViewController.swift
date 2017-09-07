@@ -11,7 +11,7 @@ import UIKit
 class HomeScreenViewController: ParentViewController, FacebookFeedQueryDelegate {
     
     // MARK: Properties
-    var black: UIView!
+    var black: UIView?
     var firstObjectID: String!
     var imageBlackOverlay: UIView?
     @IBOutlet weak var newsArticleView: NewsArticleView!
@@ -27,6 +27,7 @@ class HomeScreenViewController: ParentViewController, FacebookFeedQueryDelegate 
         
         setUpUniqueUIForHomeVC()
         FacebookFeedQuery.sharedInstance.delegate = self
+        blackOverlayAndLoadingSpinnerUntilFBDataFinishedLoading()
         FacebookFeedQuery.sharedInstance.getFeedFromPIMagazine { (error) -> Void in
             if error != nil {
                 print(error!)
@@ -61,8 +62,8 @@ class HomeScreenViewController: ParentViewController, FacebookFeedQueryDelegate 
     
     fileprivate func blackOverlayAndLoadingSpinnerUntilFBDataFinishedLoading() {
         black = UIView(frame: view.frame)
-        black.backgroundColor = UIColor.black
-        view.addSubview(black)
+        black!.backgroundColor = UIColor.black
+        view.addSubview(black!)
         activityIndicator.center = view.center
         activityIndicator.startAnimating()
         view.addSubview(activityIndicator)
@@ -95,7 +96,7 @@ class HomeScreenViewController: ParentViewController, FacebookFeedQueryDelegate 
             FacebookPhotoQuery.sharedInstance.getNormalSizePhotoURLStringForCommunicationsFrom(firstObject.id, completion: { (normImgUrlString) -> Void in
                 if let urlString = URL(string: normImgUrlString) {
                     self.newsArticleView.backgroundImageView.setImageWith(urlString)
-                    self.black.removeFromSuperview()
+                    self.black?.removeFromSuperview()
                 }
                 self.activityIndicator.stopAnimating()
             })

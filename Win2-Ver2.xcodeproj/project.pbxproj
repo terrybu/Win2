@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		07F0AAB49E41C9D6D3C62D47 /* Pods_Win2_Ver2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 476D14124ED3389010A5DAE9 /* Pods_Win2_Ver2.framework */; };
+		CDCFA2A01F61B5D3007D56B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDCFA29E1F61B59A007D56B8 /* GoogleService-Info.plist */; };
 		D93170871D380318008B09AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93170851D380318008B09AB /* AppDelegate.swift */; };
 		D93170881D380318008B09AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D93170861D380318008B09AB /* Main.storyboard */; };
 		D93171711D3803C8008B09AB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D93171701D3803C8008B09AB /* Default-568h@2x.png */; };
@@ -52,7 +53,6 @@
 		D93172171D381268008B09AB /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D931719F1D381268008B09AB /* StringExtension.swift */; };
 		D93172181D381268008B09AB /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93171A01D381268008B09AB /* UIAlertControllerExtension.swift */; };
 		D93172191D381268008B09AB /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93171A11D381268008B09AB /* UIColorExtension.swift */; };
-		D931721A1D381268008B09AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D93171A21D381268008B09AB /* GoogleService-Info.plist */; };
 		D931721B1D381268008B09AB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93171A31D381268008B09AB /* Images.xcassets */; };
 		D931721C1D381268008B09AB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D93171A41D381268008B09AB /* Info.plist */; };
 		D931721D1D381268008B09AB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D93171A61D381268008B09AB /* InfoPlist.strings */; };
@@ -121,6 +121,9 @@
 		29C019477CC010D402F2DFB6 /* Pods-Win2-Ver2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Win2-Ver2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Win2-Ver2/Pods-Win2-Ver2.release.xcconfig"; sourceTree = "<group>"; };
 		476D14124ED3389010A5DAE9 /* Pods_Win2_Ver2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Win2_Ver2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8CD88310DF3062835D01307 /* Pods-Win2-Ver2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Win2-Ver2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Win2-Ver2/Pods-Win2-Ver2.debug.xcconfig"; sourceTree = "<group>"; };
+		CDCFA29C1F61AB6F007D56B8 /* AugustJoobo.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AugustJoobo.pdf; sourceTree = "<group>"; };
+		CDCFA29D1F61AB6F007D56B8 /* SeptemberJoobo.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SeptemberJoobo.pdf; sourceTree = "<group>"; };
+		CDCFA29E1F61B59A007D56B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D931706F1D3802D4008B09AB /* Win2-Ver2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Win2-Ver2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93170841D380317008B09AB /* Win2-Ver2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Win2-Ver2-Bridging-Header.h"; path = "../Win2-Ver2-Bridging-Header.h"; sourceTree = "<group>"; };
 		D93170851D380318008B09AB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -167,7 +170,6 @@
 		D931719F1D381268008B09AB /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		D93171A01D381268008B09AB /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		D93171A11D381268008B09AB /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		D93171A21D381268008B09AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D93171A31D381268008B09AB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
 		D93171A41D381268008B09AB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D93171A71D381268008B09AB /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -400,8 +402,10 @@
 		D93171BE1D381268008B09AB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CDCFA29E1F61B59A007D56B8 /* GoogleService-Info.plist */,
+				CDCFA29C1F61AB6F007D56B8 /* AugustJoobo.pdf */,
+				CDCFA29D1F61AB6F007D56B8 /* SeptemberJoobo.pdf */,
 				D93170841D380317008B09AB /* Win2-Ver2-Bridging-Header.h */,
-				D93171A21D381268008B09AB /* GoogleService-Info.plist */,
 				D93171A31D381268008B09AB /* Images.xcassets */,
 				D93171BF1D381268008B09AB /* Fonts */,
 				D93171C71D381268008B09AB /* Launch Screen.storyboard */,
@@ -601,7 +605,6 @@
 				D93171F21D381268008B09AB /* AboutPIViewController.xib in Resources */,
 				D93172371D381268008B09AB /* NanumMyeongjoOTF-YetHangul.otf in Resources */,
 				D93172511D381268008B09AB /* NewsArticleView.xib in Resources */,
-				D931721A1D381268008B09AB /* GoogleService-Info.plist in Resources */,
 				D931724C1D381268008B09AB /* ExpandableAboutView.xib in Resources */,
 				D93171FA1D381268008B09AB /* EvangelismViewController.xib in Resources */,
 				D93172481D381268008B09AB /* BoroSpecificNewsWidgetView.xib in Resources */,
@@ -612,6 +615,7 @@
 				D93172061D381268008B09AB /* NoticeCreationViewController.xib in Resources */,
 				D93171711D3803C8008B09AB /* Default-568h@2x.png in Resources */,
 				D931724A1D381268008B09AB /* CommunicationsTableViewCell.xib in Resources */,
+				CDCFA2A01F61B5D3007D56B8 /* GoogleService-Info.plist in Resources */,
 				D93172331D381268008B09AB /* NanumBarunGothicBold.otf in Resources */,
 				D93172361D381268008B09AB /* NanumBarunGothicUltraLight.otf in Resources */,
 				D931720B1D381268008B09AB /* SignUpViewController.xib in Resources */,

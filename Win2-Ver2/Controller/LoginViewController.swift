@@ -52,12 +52,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIGestureRecog
     }
     
     func developerModeBypassLogin() {
-        FirebaseManager.sharedManager.loginUser("terry@test.com", password: "password") { (success) -> Void in
-            if success {
-                if let dismissBlock = self.dismissBlock {	
-                    dismissBlock()
-                }
-            }
+//        FirebaseManager.sharedManager.loginUser("terry@test.com", password: "password") { (success) -> Void in
+//            if success {
+//                if let dismissBlock = self.dismissBlock {
+//                    dismissBlock()
+//                }
+//            }
+//        }
+        if let dismissBlock = self.dismissBlock {
+            dismissBlock()
         }
     }
     

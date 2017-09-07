@@ -227,16 +227,17 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
         return headerView
     }
     
-    
-    
     //Display today's month as title string fit for tableview top
     func getTodaysMonthStringForWeeklyProgramsTableView() -> String {
         let todaysMonthInt = DateManager.sharedInstance.getTodaysMonth()
         let todaysYearInt = DateManager.sharedInstance.getTodaysYear()
         let dateFormatter = DateFormatter()
         let monthNames = dateFormatter.standaloneMonthSymbols
-        let monthName = monthNames?[todaysMonthInt-1]
-        return "\(monthName) \(todaysYearInt) 주보 보기"
+        if let monthNameSymbols = monthNames {
+            let monthName = monthNameSymbols[todaysMonthInt-1]
+            return "\(monthName) \(todaysYearInt) 주보 보기"
+        }
+        return "\(todaysYearInt) 이번달 주보 보기"
     }
     
     func seeMoreArrowWasPressedForWeeklyProgramsTableView() {
@@ -270,6 +271,9 @@ class WorshipViewController: ParentViewController, WeeklyProgramDownloaderDelega
             }
         }
         else if tableView == songsTableView {
+            if songObjectsArray.isEmpty {
+                return
+            }
             let songObject = songObjectsArray[indexPath.row]
             if let songURLString = songObject.songYouTubeURL {
                 let trimSpacesFromURLString = songURLString.trimmingCharacters(in: CharacterSet.whitespaces)

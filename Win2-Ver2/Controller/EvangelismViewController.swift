@@ -34,6 +34,11 @@ class EvangelismViewController: ParentViewController, UIGestureRecognizerDelegat
                 evangelismNewsWidgetView.title = feedObject.parsedTitle
                 evangelismNewsWidgetView.dateLabel.text = feedObject.parsedDate
                 evangelismNewsWidgetView.viewMoreButton.addTarget(self, action: #selector(EvangelismViewController.viewMoreButtonWasPressedForEvangelismNews), for: UIControlEvents.touchUpInside)
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EvangelismViewController.viewMoreButtonWasPressedForEvangelismNews))
+                tapGesture.delegate = self
+                tapGesture.numberOfTapsRequired = 1
+                evangelismNewsWidgetView.isUserInteractionEnabled = true
+                evangelismNewsWidgetView.addGestureRecognizer(tapGesture)
                 break
             }
         }
