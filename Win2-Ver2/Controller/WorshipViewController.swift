@@ -203,9 +203,9 @@ extension WorshipViewController: UITableViewDelegate, UITableViewDataSource  {
             if thisMonthProgramsAreEmpty {
                 cell.textLabel?.font = UIFont.systemFont(ofSize: 13.0)
                 if indexPath.row == 0 {
-                    cell.textLabel!.text = "이번 달의 주보는 아직 업로드되지 않았습니다."
+                    cell.textLabel!.text = "이번 달의 주보가 존재하지 않거나 서버에 문제가 있습니다"
                 } else if indexPath.row == 1 {
-                    cell.textLabel!.text = "지난 달의 주보는 '더보기'를 참고해주세요"
+                    cell.textLabel!.text = "'더보기'를 참고해주세요"
                 } else if indexPath.row == 2 {
                     cell.textLabel!.text = "2017년 9월 3일 주보"
                 } else {
