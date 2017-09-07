@@ -906,7 +906,7 @@
 				DEVELOPMENT_TEAM = 3Y6M3UD97Q;
 				INFOPLIST_FILE = "$(SRCROOT)/Win2-Ver2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.terrybu.Win2test;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.terrybu.Win2-ReDone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Win2-Ver2/Win2-Ver2-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -925,7 +925,7 @@
 				DEVELOPMENT_TEAM = 3Y6M3UD97Q;
 				INFOPLIST_FILE = "$(SRCROOT)/Win2-Ver2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.terrybu.Win2test;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.terrybu.Win2-ReDone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Win2-Ver2/Win2-Ver2-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

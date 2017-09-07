@@ -1,19 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="NanumBarunGothic.ttf">
+        <array key="NanumBarunGothic.ttf">
             <string>NanumBarunGothic</string>
-            <string>NanumBarunGothic</string>
-            <string>NanumBarunGothic</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Win2" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Win2_Ver2" customModuleProvider="target">
             <connections>
                 <outlet property="emailTextField" destination="Q2O-WW-VpI" id="P3N-jj-aRa"/>
                 <outlet property="passwordTextField" destination="72p-I8-EZn" id="5Oy-zp-nt5"/>
@@ -33,12 +36,12 @@
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Q2O-WW-VpI">
                     <rect key="frame" x="81" y="265" width="281" height="19"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="SbX-Kf-13l"/>
                     </constraints>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" name="NanumBarunGothic" family="NanumBarunGothic" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <variation key="default">
@@ -52,12 +55,12 @@
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="72p-I8-EZn">
                     <rect key="frame" x="81" y="308" width="281" height="19"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="97" id="sDC-rA-JqU"/>
                     </constraints>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" name="NanumBarunGothic" family="NanumBarunGothic" pointSize="14"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                     <variation key="default">
@@ -90,17 +93,17 @@
                     <rect key="frame" x="258" y="609" width="61" height="32"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                     <state key="normal" title="Sign Up">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="signUpButtonWasPressed" destination="-1" eventType="touchUpInside" id="js9-fY-yI6"/>
                     </connections>
                 </button>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="underline_Sign-Up" translatesAutoresizingMaskIntoConstraints="NO" id="DBQ-Cl-pWs">
-                    <rect key="frame" x="257" y="641" width="65" height="1"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="underline_Sign-Up" translatesAutoresizingMaskIntoConstraints="NO" id="DBQ-Cl-pWs">
+                    <rect key="frame" x="256" y="641" width="65" height="1"/>
                 </imageView>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" image="WINTO_logo" translatesAutoresizingMaskIntoConstraints="NO" id="jso-vu-yIC">
-                    <rect key="frame" x="103" y="128" width="171" height="57"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="WINTO_logo" translatesAutoresizingMaskIntoConstraints="NO" id="jso-vu-yIC">
+                    <rect key="frame" x="102.5" y="128" width="170" height="57"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="150" id="Qoa-hQ-EQJ"/>
                         <constraint firstAttribute="width" constant="150" id="xln-9m-r93"/>
@@ -113,9 +116,9 @@
                     </variation>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Myg-1L-a8W" userLabel="Don't have an account?">
-                    <rect key="frame" x="61" y="615" width="189" height="20"/>
+                    <rect key="frame" x="61.5" y="615" width="188.5" height="20"/>
                     <fontDescription key="fontDescription" name="NanumBarunGothic" family="NanumBarunGothic" pointSize="17"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -175,7 +178,6 @@
                 <constraint firstItem="oiO-Np-C0z" firstAttribute="top" secondItem="Q2O-WW-VpI" secondAttribute="bottom" constant="-300" id="za4-Og-Z42"/>
                 <constraint firstItem="YQd-JU-JDa" firstAttribute="leading" secondItem="Myg-1L-a8W" secondAttribute="trailing" constant="8" id="zct-hq-XUQ"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="za4-Og-Z42"/>
@@ -205,7 +207,7 @@
         </view>
     </objects>
     <resources>
-        <image name="WINTO_logo" width="171" height="57"/>
+        <image name="WINTO_logo" width="170" height="57"/>
         <image name="bg_gradient" width="378" height="668"/>
         <image name="btn_Log-In" width="264" height="42"/>
         <image name="btn_Log-In_on" width="264" height="42"/>
