@@ -14,11 +14,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIGestureRecog
     var dismissBlock : (() -> Void)?
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
-    @IBAction func signUpButtonWasPressed() {
-        let signUpViewController = SignUpViewController()
-        let signUpNavController = UINavigationController(rootViewController: signUpViewController)
-        present(signUpNavController, animated: true, completion: nil)
-    }
+
     
     convenience init() {
         self.init(nibName: "LoginViewController", bundle: nil)
@@ -38,31 +34,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIGestureRecog
         let passwordPlaceHolderStr = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName:UIColor(white: 1, alpha: 0.5)])
         passwordTextField.attributedPlaceholder = passwordPlaceHolderStr
         
-        devBypassLogin()
+//        devBypassLogin()
     }
     
     fileprivate func devBypassLogin() {
         let rectangle = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         rectangle.backgroundColor = UIColor.clear
         rectangle.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.developerModeBypassLogin))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.skipLogin))
         rectangle.addGestureRecognizer(tapGesture)
         tapGesture.delegate = self
         view.addSubview(rectangle)
     }
     
-    func developerModeBypassLogin() {
-//        FirebaseManager.sharedManager.loginUser("terry@test.com", password: "password") { (success) -> Void in
-//            if success {
-//                if let dismissBlock = self.dismissBlock {
-//                    dismissBlock()
-//                }
-//            }
-//        }
-        if let dismissBlock = self.dismissBlock {
-            dismissBlock()
-        }
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -131,6 +115,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIGestureRecog
             }
         }
         return false
+    }
+    
+    
+    @IBAction func signUpButtonWasPressed() {
+        let signUpViewController = SignUpViewController()
+        let signUpNavController = UINavigationController(rootViewController: signUpViewController)
+        present(signUpNavController, animated: true, completion: nil)
+    }
+    
+    @IBAction func skipLogin() {
+        if let dismissBlock = self.dismissBlock {
+            dismissBlock()
+        }
     }
     
 }

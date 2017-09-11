@@ -32,10 +32,48 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="icon_email" translatesAutoresizingMaskIntoConstraints="NO" id="cYP-js-3mq">
-                    <rect key="frame" x="52" y="270" width="16" height="10"/>
+                    <rect key="frame" x="52" y="340" width="16" height="10"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rxa-Xu-367">
+                    <rect key="frame" x="51.5" y="249" width="272" height="22"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="home">
+                        <attributedString key="attributedTitle">
+                            <fragment content="   ">
+                                <attributes>
+                                    <font key="NSFont" size="17" name="NanumGothic"/>
+                                </attributes>
+                            </fragment>
+                            <fragment content="Tap to ">
+                                <attributes>
+                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="17" name="NanumGothic"/>
+                                    <font key="NSOriginalFont" size="18" name="Monaco"/>
+                                </attributes>
+                            </fragment>
+                            <fragment content="Skip Login">
+                                <attributes>
+                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="17" name="NanumGothic"/>
+                                    <font key="NSOriginalFont" size="18" name="Monaco"/>
+                                    <integer key="NSUnderline" value="1"/>
+                                </attributes>
+                            </fragment>
+                            <fragment content=" - 홈스크린으로">
+                                <attributes>
+                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="17" name="NanumGothic"/>
+                                    <font key="NSOriginalFont" size="18" name="Monaco"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </state>
+                    <connections>
+                        <action selector="skipLogin" destination="-1" eventType="touchUpInside" id="sRd-fS-iaL"/>
+                    </connections>
+                </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Q2O-WW-VpI">
-                    <rect key="frame" x="81" y="265" width="281" height="19"/>
+                    <rect key="frame" x="81" y="335" width="281" height="19"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -51,10 +89,10 @@
                     </variation>
                 </textField>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="icon_PW" translatesAutoresizingMaskIntoConstraints="NO" id="18t-6l-EBZ">
-                    <rect key="frame" x="52" y="310" width="12" height="15"/>
+                    <rect key="frame" x="52" y="380" width="12" height="15"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="72p-I8-EZn">
-                    <rect key="frame" x="81" y="308" width="281" height="19"/>
+                    <rect key="frame" x="81" y="378" width="281" height="19"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -70,16 +108,16 @@
                     </variation>
                 </textField>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="line_gray" translatesAutoresizingMaskIntoConstraints="NO" id="n7Z-Wr-qAw" userLabel="line_gray1">
-                    <rect key="frame" x="47" y="288" width="281" height="1"/>
+                    <rect key="frame" x="47" y="358" width="281" height="1"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="dzG-CP-Z0R"/>
                     </constraints>
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="line_gray" translatesAutoresizingMaskIntoConstraints="NO" id="BLz-mW-GbV" userLabel="line_gray2">
-                    <rect key="frame" x="47" y="333" width="281" height="1"/>
+                    <rect key="frame" x="47" y="403" width="281" height="1"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G58-lj-gCZ" userLabel="LoginButton">
-                    <rect key="frame" x="56" y="366" width="264" height="42"/>
+                    <rect key="frame" x="56" y="436" width="264" height="42"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="42" id="OmT-iE-24v"/>
                     </constraints>
@@ -90,7 +128,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQd-JU-JDa">
-                    <rect key="frame" x="258" y="609" width="61" height="32"/>
+                    <rect key="frame" x="258.5" y="609" width="61" height="32"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                     <state key="normal" title="Sign Up">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -100,7 +138,7 @@
                     </connections>
                 </button>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="underline_Sign-Up" translatesAutoresizingMaskIntoConstraints="NO" id="DBQ-Cl-pWs">
-                    <rect key="frame" x="256" y="641" width="65" height="1"/>
+                    <rect key="frame" x="256.5" y="641" width="65" height="1"/>
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="WINTO_logo" translatesAutoresizingMaskIntoConstraints="NO" id="jso-vu-yIC">
                     <rect key="frame" x="102.5" y="128" width="170" height="57"/>
@@ -116,7 +154,7 @@
                     </variation>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Myg-1L-a8W" userLabel="Don't have an account?">
-                    <rect key="frame" x="61.5" y="615" width="188.5" height="20"/>
+                    <rect key="frame" x="62" y="615" width="188.5" height="20"/>
                     <fontDescription key="fontDescription" name="NanumBarunGothic" family="NanumBarunGothic" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -124,7 +162,9 @@
             </subviews>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Myg-1L-a8W" secondAttribute="bottom" constant="32" id="0AA-g4-TnQ"/>
+                <constraint firstItem="Q2O-WW-VpI" firstAttribute="top" secondItem="rxa-Xu-367" secondAttribute="bottom" constant="64" id="2aZ-kL-JvZ"/>
                 <constraint firstItem="DBQ-Cl-pWs" firstAttribute="centerX" secondItem="YQd-JU-JDa" secondAttribute="centerX" id="2bw-h5-4br"/>
+                <constraint firstItem="rxa-Xu-367" firstAttribute="top" secondItem="jso-vu-yIC" secondAttribute="bottom" constant="64" id="3Ng-P8-5cw"/>
                 <constraint firstItem="72p-I8-EZn" firstAttribute="leading" secondItem="18t-6l-EBZ" secondAttribute="trailing" constant="17" id="5ek-GT-5sL"/>
                 <constraint firstItem="oiO-Np-C0z" firstAttribute="top" secondItem="heN-ZX-O7w" secondAttribute="top" id="6JZ-sP-Fbf"/>
                 <constraint firstItem="G58-lj-gCZ" firstAttribute="top" secondItem="BLz-mW-GbV" secondAttribute="bottom" constant="32" id="6kg-bg-3LS"/>
@@ -137,6 +177,7 @@
                 <constraint firstAttribute="trailingMargin" secondItem="G58-lj-gCZ" secondAttribute="trailing" constant="100" id="B0C-0F-lMP"/>
                 <constraint firstItem="cYP-js-3mq" firstAttribute="centerX" secondItem="heN-ZX-O7w" secondAttribute="centerX" id="Cgg-MS-6oI"/>
                 <constraint firstItem="oiO-Np-C0z" firstAttribute="leading" secondItem="heN-ZX-O7w" secondAttribute="leading" id="EHM-At-Ypf"/>
+                <constraint firstItem="rxa-Xu-367" firstAttribute="centerX" secondItem="jso-vu-yIC" secondAttribute="centerX" id="FfW-hG-XCa"/>
                 <constraint firstItem="G58-lj-gCZ" firstAttribute="centerX" secondItem="heN-ZX-O7w" secondAttribute="centerX" id="FlE-UA-Q2r"/>
                 <constraint firstAttribute="trailing" secondItem="oiO-Np-C0z" secondAttribute="trailing" id="GtD-7z-7Rk"/>
                 <constraint firstItem="Myg-1L-a8W" firstAttribute="top" secondItem="G58-lj-gCZ" secondAttribute="bottom" constant="40" id="Hvn-R2-32Z"/>
@@ -171,7 +212,6 @@
                 <constraint firstItem="72p-I8-EZn" firstAttribute="centerY" secondItem="18t-6l-EBZ" secondAttribute="centerY" id="qdm-Ey-48m"/>
                 <constraint firstItem="72p-I8-EZn" firstAttribute="top" secondItem="Q2O-WW-VpI" secondAttribute="bottom" constant="24" id="sRM-YE-AjJ"/>
                 <constraint firstItem="Myg-1L-a8W" firstAttribute="centerX" secondItem="heN-ZX-O7w" secondAttribute="centerX" id="sX1-l3-FpA"/>
-                <constraint firstItem="Q2O-WW-VpI" firstAttribute="top" secondItem="jso-vu-yIC" secondAttribute="bottom" constant="80" id="sZz-9m-m3m"/>
                 <constraint firstItem="Myg-1L-a8W" firstAttribute="centerX" secondItem="heN-ZX-O7w" secondAttribute="centerX" constant="-32" id="t93-Wo-aJu"/>
                 <constraint firstItem="G58-lj-gCZ" firstAttribute="leading" secondItem="heN-ZX-O7w" secondAttribute="leadingMargin" constant="100" id="uzC-41-95N"/>
                 <constraint firstItem="Myg-1L-a8W" firstAttribute="top" secondItem="G58-lj-gCZ" secondAttribute="bottom" constant="6" id="zGn-NR-0rM"/>
@@ -211,6 +251,7 @@
         <image name="bg_gradient" width="378" height="668"/>
         <image name="btn_Log-In" width="264" height="42"/>
         <image name="btn_Log-In_on" width="264" height="42"/>
+        <image name="home" width="21" height="22"/>
         <image name="icon_PW" width="12" height="15"/>
         <image name="icon_email" width="16" height="10"/>
         <image name="line_gray" width="264" height="1"/>
