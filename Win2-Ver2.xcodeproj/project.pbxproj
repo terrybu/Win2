@@ -910,8 +910,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.terrybu.win2redone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e1c6006f-ffc3-4a05-89d3-2077ab42d383";
-				PROVISIONING_PROFILE_SPECIFIER = redonedistr;
+				PROVISIONING_PROFILE = "e5028766-c4ce-4c54-98a0-db9b971ef29f";
+				PROVISIONING_PROFILE_SPECIFIER = Win2distributionhomemac;
 				SWIFT_OBJC_BRIDGING_HEADER = "Win2-Ver2/Win2-Ver2-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -932,8 +932,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.terrybu.win2redone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e1c6006f-ffc3-4a05-89d3-2077ab42d383";
-				PROVISIONING_PROFILE_SPECIFIER = redonedistr;
+				PROVISIONING_PROFILE = "e5028766-c4ce-4c54-98a0-db9b971ef29f";
+				PROVISIONING_PROFILE_SPECIFIER = Win2distributionhomemac;
 				SWIFT_OBJC_BRIDGING_HEADER = "Win2-Ver2/Win2-Ver2-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "\"$(SDKROOT)/usr/include/libxml2\"";
