@@ -33,13 +33,14 @@ class SocialServicesViewController: ParentViewController, UITableViewDelegate, U
         setUpExpandableAboutView(kOriginalAboutViewHeight, expandableAboutView: expandableAboutView, heightBuffer: 20, view: view, constraintHeightExpandableView: constraintHeightExpandableView, constraintContentViewHeight: constraintContentViewHeight, originalContentviewHeight: kOriginalContentViewHeight)
         
         for feedObject in FacebookFeedQuery.sharedInstance.FBFeedObjectsArray {
-            print(feedObject.parsedCategory)
-            if feedObject.parsedCategory == kSocialServicesTag {
-                socialFeedPost = feedObject
-                socialNewsWidgetView.title = feedObject.parsedTitle
-                socialNewsWidgetView.dateLabel.text = feedObject.parsedDate
-                socialNewsWidgetView.viewMoreButton.addTarget(self, action: #selector(SocialServicesViewController.viewMoreButtonWasPressed), for: UIControlEvents.touchUpInside)
-                break
+            if let parsed = feedObject.parsedCategory {
+                if parsed.contains(kSocialServicesTag) {
+                    socialFeedPost = feedObject
+                    socialNewsWidgetView.title = feedObject.parsedTitle
+                    socialNewsWidgetView.dateLabel.text = feedObject.parsedDate
+                    socialNewsWidgetView.viewMoreButton.addTarget(self, action: #selector(SocialServicesViewController.viewMoreButtonWasPressed), for: UIControlEvents.touchUpInside)
+                    break
+                }
             }
         }
         if socialFeedPost == nil {

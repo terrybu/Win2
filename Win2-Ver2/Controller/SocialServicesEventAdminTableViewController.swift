@@ -64,7 +64,6 @@ class SocialServicesEventAdminTableViewController: UITableViewController {
         let cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "reuse")
 
         let event = eventsArray![indexPath.row]
-        // Configure the cell...
         cell.textLabel!.text = event.title
         cell.detailTextLabel!.text = event.date
 

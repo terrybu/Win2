@@ -101,6 +101,8 @@ class HomeScreenViewController: ParentViewController, FacebookFeedQueryDelegate 
                 self.activityIndicator.stopAnimating()
             })
         }
+        self.black?.removeFromSuperview()
+        self.activityIndicator.stopAnimating()
     }
     
     

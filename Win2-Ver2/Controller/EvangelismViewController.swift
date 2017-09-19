@@ -29,17 +29,19 @@ class EvangelismViewController: ParentViewController, UIGestureRecognizerDelegat
         setUpExpandableAboutView(kOriginalAboutViewHeight, expandableAboutView: expandableAboutView, heightBuffer: 30, view: view, constraintHeightExpandableView: constraintHeightExpandableView, constraintContentViewHeight: constraintContentViewHeight, originalContentviewHeight: kOriginalContentViewHeight)
         
         for feedObject in FacebookFeedQuery.sharedInstance.FBFeedObjectsArray {
-            if feedObject.parsedCategory == kEvangelismTag {
-                evangelismFeedObject = feedObject
-                evangelismNewsWidgetView.title = feedObject.parsedTitle
-                evangelismNewsWidgetView.dateLabel.text = feedObject.parsedDate
-                evangelismNewsWidgetView.viewMoreButton.addTarget(self, action: #selector(EvangelismViewController.viewMoreButtonWasPressedForEvangelismNews), for: UIControlEvents.touchUpInside)
-                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EvangelismViewController.viewMoreButtonWasPressedForEvangelismNews))
-                tapGesture.delegate = self
-                tapGesture.numberOfTapsRequired = 1
-                evangelismNewsWidgetView.isUserInteractionEnabled = true
-                evangelismNewsWidgetView.addGestureRecognizer(tapGesture)
-                break
+            if let parsedCategory = feedObject.parsedCategory {
+                if parsedCategory.contains(kEvangelismTag) {
+                    evangelismFeedObject = feedObject
+                    evangelismNewsWidgetView.title = feedObject.parsedTitle
+                    evangelismNewsWidgetView.dateLabel.text = feedObject.parsedDate
+                    evangelismNewsWidgetView.viewMoreButton.addTarget(self, action: #selector(EvangelismViewController.viewMoreButtonWasPressedForEvangelismNews), for: UIControlEvents.touchUpInside)
+                    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EvangelismViewController.viewMoreButtonWasPressedForEvangelismNews))
+                    tapGesture.delegate = self
+                    tapGesture.numberOfTapsRequired = 1
+                    evangelismNewsWidgetView.isUserInteractionEnabled = true
+                    evangelismNewsWidgetView.addGestureRecognizer(tapGesture)
+                    break
+                }
             }
         }
         if evangelismFeedObject == nil {

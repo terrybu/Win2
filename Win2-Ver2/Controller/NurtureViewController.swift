@@ -33,15 +33,17 @@ class NurtureViewController: ParentViewController, UIGestureRecognizerDelegate{
             self.openHolyStarIntroViewController()
         }
         for feedObject in FacebookFeedQuery.sharedInstance.FBFeedObjectsArray {
-            if feedObject.parsedCategory == kNurtureTag {
-                nurtureFeedObject = feedObject
-                nurtureNewsWidget.title = feedObject.parsedTitle
-                nurtureNewsWidget.dateLabel.text = feedObject.parsedDate
-                nurtureNewsWidget.viewMoreButton.addTarget(self, action: #selector(NurtureViewController.viewMoreButtonWasPressedForNurtureNews), for: UIControlEvents.touchUpInside)
-                break
+            if let parsedCategory = feedObject.parsedCategory {
+                if parsedCategory.contains(kNurtureTag) {
+                    nurtureFeedObject = feedObject
+                    nurtureNewsWidget.title = feedObject.parsedTitle
+                    nurtureNewsWidget.dateLabel.text = feedObject.parsedDate
+                    nurtureNewsWidget.viewMoreButton.addTarget(self, action: #selector(NurtureViewController.viewMoreButtonWasPressedForNurtureNews), for: UIControlEvents.touchUpInside)
+                    break
+                }
             }
         }
-        guard let nurtureFeedObject = nurtureFeedObject else {
+        guard nurtureFeedObject != nil else {
             nurtureNewsWidget.title = "최근 양육뉴스가 존재하지 않습니다."
             nurtureNewsWidget.dateLabel.text = nil
             return
